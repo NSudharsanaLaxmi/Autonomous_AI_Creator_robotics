@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous AI Creator - Live Control & Evaluation Dashboard</title>
+  <meta name="description" content="Autonomous AI and Technology Persona that independently discovers topics, applies editorial judgment, uses memory, and publishes content over time.">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dark-theme">
+  <div class="glow-bg"></div>
+  
+  <div class="app-container">
+    <!-- Header Navbar -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-brain-circuit"></i>
+        </div>
+        <div class="brand-text">
+          <h1>AUTONOMOUS<span>.AI</span></h1>
+          <span class="badge live-badge"><span class="pulse-dot"></span> AUTONOMOUS PUBLISHING ACTIVE</span>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <div class="api-link-box">
+          <a href="/api/agent/feed" target="_blank" class="api-link-btn" title="View evaluator API feed response">
+            <i class="fa-solid fa-code"></i> GET /api/agent/feed
+          </a>
+        </div>
+        <button id="manualTriggerBtn" class="btn btn-primary glow-btn" title="Trigger an immediate autonomous discovery & editorial tick">
+          <i class="fa-solid fa-bolt"></i> Trigger Tick
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid Dashboard -->
+    <main class="dashboard-grid">
+      <!-- Sidebar: Persona Identity & Controls -->
+      <aside class="sidebar-card glass-panel">
+        <div class="persona-header">
+          <div id="personaAvatar" class="persona-avatar">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="persona-titles">
+            <h2 id="personaName">Ada</h2>
+            <span id="personaDomain" class="domain-tag">AI Security</span>
+            <p id="personaTitle" class="persona-sub">Senior AI Security Researcher</p>
+          </div>
+        </div>
+
+        <p id="personaTagline" class="persona-tagline">
+          "Auditing neural networks, dissecting prompt injections, and securing autonomous agent loops."
+        </p>
+
+        <div class="persona-meta">
+          <div class="meta-section">
+            <label><i class="fa-solid fa-bullseye"></i> Key Interests</label>
+            <div id="interestsTags" class="tags-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <div class="meta-section">
+            <label><i class="fa-solid fa-filter"></i> Editorial Rejection Criteria</label>
+            <ul id="rejectionCriteriaList" class="criteria-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="persona-selector-box">
+          <label for="switchPersonaSelect"><i class="fa-solid fa-user-gear"></i> Switch Active Persona</label>
+          <select id="switchPersonaSelect" class="styled-select">
+            <option value="ada">Ada — AI Security Researcher</option>
+            <option value="nova">Nova — ML Systems Architect</option>
+            <option value="cipher">Cipher — AI Ethics Specialist</option>
+            <option value="astra">Astra — Robotics & Embodied AI</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Main Content Area: Tabs & Live Feed -->
+      <section class="main-content">
+        <!-- Live Metrics Bar -->
+        <div class="metrics-row">
+          <div class="metric-card glass-panel">
+            <div class="metric-icon blue"><i class="fa-solid fa-rss"></i></div>
+            <div class="metric-data">
+              <span class="metric-value" id="statPostsCount">0</span>
+              <span class="metric-label">Published Posts</span>
+            </div>
+          </div>
+
+          <div class="metric-card glass-panel">
+            <div class="metric-icon red"><i class="fa-solid fa-ban"></i></div>
+            <div class="metric-data">
+              <span class="metric-value" id="statRejectionsCount">0</span>
+              <span class="metric-label">Intentional Rejections</span>
+            </div>
+          </div>
+
+          <div class="metric-card glass-panel">
+            <div class="metric-icon purple"><i class="fa-solid fa-database"></i></div>
+            <div class="metric-data">
+              <span class="metric-value" id="statMemoryCount">0</span>
+              <span class="metric-label">Memory Topics</span>
+            </div>
+          </div>
+
+          <div class="metric-card glass-panel">
+            <div class="metric-icon green"><i class="fa-solid fa-clock"></i></div>
+            <div class="metric-data">
+              <span class="metric-value" id="statStatusText">ACTIVE</span>
+              <span class="metric-label">48h Auto-Loop</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav-bar">
+          <button class="tab-btn active" data-tab="feedTab">
+            <i class="fa-solid fa-newspaper"></i> Published Feed <span id="feedBadgeCount" class="tab-badge">0</span>
+          </button>
+          <button class="tab-btn" data-tab="rejectionsTab">
+            <i class="fa-solid fa-shield-halved"></i> Editorial Rejections Log <span id="rejectionsBadgeCount" class="tab-badge">0</span>
+          </button>
+          <button class="tab-btn" data-tab="jsonTab">
+            <i class="fa-solid fa-code"></i> API Inspector (JSON)
+          </button>
+        </div>
+
+        <!-- Tab Panels -->
+        <div class="tab-content-container">
+          <!-- Feed Tab -->
+          <div id="feedTab" class="tab-panel active">
+            <div class="tab-header">
+              <h3><i class="fa-solid fa-timeline"></i> Autonomous Post Stream (Newest First)</h3>
+              <span class="sub-info">API standard compliant response for GET /api/agent/feed</span>
+            </div>
+            <div id="feedPostsContainer" class="feed-posts-list">
+              <!-- Rendered via app.js -->
+            </div>
+          </div>
+
+          <!-- Rejections Tab -->
+          <div id="rejectionsTab" class="tab-panel">
+            <div class="tab-header">
+              <h3><i class="fa-solid fa-filter-circle-xmark"></i> Editorial Judgment & Rejected Candidates</h3>
+              <p class="sub-info">Demonstrates explicit rejection of topics that failed persona relevance, technical depth, or memory uniqueness filters.</p>
+            </div>
+            <div id="rejectionsContainer" class="rejections-list">
+              <!-- Rendered via app.js -->
+            </div>
+          </div>
+
+          <!-- JSON Inspector Tab -->
+          <div id="jsonTab" class="tab-panel">
+            <div class="tab-header">
+              <h3><i class="fa-solid fa-code"></i> Exact Evaluator Response (`GET /api/agent/feed`)</h3>
+              <button id="copyJsonBtn" class="btn btn-secondary btn-sm"><i class="fa-regular fa-copy"></i> Copy JSON</button>
+            </div>
+            <pre id="jsonViewer" class="code-block"></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Autonomous AI Creator Platform &bull; Built for ABTalks Vibe Code Hackathon 2026 &bull; Operates autonomously over 48h evaluation window</p>
+    </footer>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
