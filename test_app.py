@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04, 05:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -11,6 +11,7 @@ Verifies contract requirements & Amendments 01, 02, 03, 04, 05:
 8. Amendment 03 Autonomous Curiosity Engine generates natural open questions & updates understanding
 9. Amendment 04 Cognitive Memory Context Engine classifies relationships (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
 10. Amendment 05 Belief Evolution Engine tracks provisional engineering beliefs (REMAIN, WEAKEN, EVOLVE)
+11. Amendment 06 Novelty vs Significance Matrix Evaluator rejects Quadrant III trending fluff
 """
 
 import sys
@@ -34,6 +35,7 @@ from app.agent.attention import EngineeringAttentionEvaluator
 from app.agent.curiosity import AutonomousCuriosityEngine
 from app.agent.context import CognitiveMemoryContextEngine
 from app.agent.beliefs import BeliefEvolutionEngine
+from app.agent.matrix import NoveltySignificanceMatrixEvaluator
 
 
 async def run_tests():
@@ -141,10 +143,27 @@ async def run_tests():
     print("\n[Test 10] Testing Amendment 05 — Belief Evolution Engine...")
     belief_res, note = BeliefEvolutionEngine.evaluate_and_evolve(valid_cand, memory_instance)
     assert len(memory_instance.provisional_beliefs) > 0, "Provisional engineering beliefs must be stored in memory"
-    print(f"[PASS] Belief Evolution Engine verified.")
-    print(f"   Active Provisional Beliefs in Memory: {len(memory_instance.provisional_beliefs)}")
-    if belief_res:
-        print(f"   Belief Evolution Triggered ({belief_res.action}): '{belief_res.updated_stance}'")
+    print(f"[PASS] Belief Evolution Engine verified. Active Beliefs: {len(memory_instance.provisional_beliefs)}")
+
+    # Test 11: Amendment 06 — Novelty vs Significance Matrix (Trending Fluff Rejection)
+    print("\n[Test 11] Testing Amendment 06 — Novelty vs Significance Matrix...")
+    trending_fluff = CandidateTopic(
+        title="Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        summary="Viral social media video shows a humanoid robot dancing with zero technical paper or open weights.",
+        sources=["https://example.com/viral-video"],
+        source_name="Trending Social Feed",
+        published_at="2026-08-08T15:00:00Z",
+        raw_keywords=["viral", "teaser", "dance"],
+        novelty=95.0,
+        technical_impact=20.0,
+        engineering_depth=20.0,
+        real_world_impact=20.0
+    )
+    matrix_res = NoveltySignificanceMatrixEvaluator.evaluate_matrix(trending_fluff)
+    assert not matrix_res.is_publishable, "Trending fluff with low technical significance MUST be rejected (Quadrant III)"
+    print(f"[PASS] Novelty vs Significance Matrix verified.")
+    print(f"   Quadrant: {matrix_res.quadrant} ({matrix_res.quadrant_name})")
+    print(f"   Rejection Reason: {matrix_res.rejection_reason}")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

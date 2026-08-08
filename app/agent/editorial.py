@@ -178,7 +178,19 @@ class EditorialEngine:
                     score_breakdown={"hardRejection": 15.0}
                 )
                 
-        # 3. Amendment 02 — Engineering Attention Gate (7 Core Tests)
+        # 3. Amendment 06 — Novelty vs Technical Significance Matrix Gate
+        from app.agent.matrix import NoveltySignificanceMatrixEvaluator
+        matrix_res = NoveltySignificanceMatrixEvaluator.evaluate_matrix(candidate)
+        if not matrix_res.is_publishable:
+            return EvaluationResult(
+                topic=candidate,
+                score=40.0,
+                accepted=False,
+                reason=f"Intentionally rejected by {persona.name}: {matrix_res.rejection_reason} (Quadrant: {matrix_res.quadrant})",
+                score_breakdown={"matrixGate": 40.0}
+            )
+
+        # 4. Amendment 02 — Engineering Attention Gate (7 Core Tests)
         from app.agent.attention import EngineeringAttentionEvaluator
         attn_res = EngineeringAttentionEvaluator.evaluate_attention(candidate, self.memory)
         if not attn_res.passed_attention_gate:
