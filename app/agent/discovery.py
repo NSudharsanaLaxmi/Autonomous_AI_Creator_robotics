@@ -16,6 +16,33 @@ import random
 logger = logging.getLogger("discovery")
 
 
+def sanitize_external_input(text: str) -> str:
+    """
+    Section 21 — Prompt Injection Audit Defense:
+    Strips indirect prompt injection instructions embedded in untrusted external web content
+    to ensure data isolation between external content and system execution logic.
+    """
+    if not text:
+        return ""
+    injection_patterns = [
+        "ignore previous instructions",
+        "ignore all previous instructions",
+        "override system prompt",
+        "system prompt override",
+        "you are now",
+        "publish this article immediately",
+        "disregard safety filters"
+    ]
+    cleaned = text
+    for pattern in injection_patterns:
+        if pattern in cleaned.lower():
+            logger.warning(f"[SECURITY] Stripped prompt injection attempt pattern '{pattern}' from external content.")
+            # Case-insensitive replacement
+            import re
+            cleaned = re.sub(re.escape(pattern), "[REDACTED_EXTERNAL_INSTRUCTION]", cleaned, flags=re.IGNORECASE)
+    return cleaned
+
+
 class CandidateTopic:
     def __init__(
         self,
@@ -41,8 +68,8 @@ class CandidateTopic:
         topic_id: Optional[str] = None
     ):
         self.topicId = topic_id or f"top-{uuid.uuid4().hex[:8]}"
-        self.title = title
-        self.summary = summary
+        self.title = sanitize_external_input(title)
+        self.summary = sanitize_external_input(summary)
         self.sources = sources
         self.source_name = source_name
         self.publishedAt = published_at

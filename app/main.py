@@ -172,6 +172,20 @@ async def get_robotics_intelligence():
     return intelligence_report
 
 
+@app.get("/api/agent/rejected")
+async def get_rejected_topics(limit: int = Query(10, ge=1, le=50)):
+    """
+    Section 25 — Live Steer Audit Endpoint:
+    Returns the top rejected candidate topics, comparative scores, and rejection rationales.
+    """
+    rejections = memory_instance.rejected_topics[:limit]
+    return {
+        "count": len(rejections),
+        "totalRejectionsInMemory": len(memory_instance.rejected_topics),
+        "rejected": rejections
+    }
+
+
 @app.get("/api/agent/status")
 async def get_agent_status():
     """Returns comprehensive state for the interactive dashboard UI."""

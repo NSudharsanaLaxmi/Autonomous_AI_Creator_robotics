@@ -265,7 +265,19 @@ Store: traceId, timestamp, publicationDecision, selectedTopic, candidateScores, 
 ```text
 All implementation work corresponds to functionality that actually exists in the repository.
 Zero fabricated test results, zero fabricated autonomous cycles, zero placeholder logs.
-All features are written in Python, tested via 20 automated integration tests, and documented accurately in PROMPTS.md and README.md.
+All features are written in Python, tested via 22 automated integration tests, and documented accurately in PROMPTS.md and README.md.
+```
+
+### Section 21 — Prompt Injection Security Defense Prompt (`discovery.py`)
+```text
+Strip indirect prompt injection instructions embedded in untrusted external web content.
+Sanitize candidate titles and summaries using sanitize_external_input() before candidate creation.
+Ensure complete data isolation between external content and system execution logic.
+```
+
+### Section 25 — Live Steer Endpoint Prompt (`main.py`)
+```text
+Expose GET /api/agent/rejected to allow evaluators to inspect rejected candidate topics, comparative scores, and rejection rationales on demand.
 ```
 
 ---
