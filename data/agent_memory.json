@@ -23,6 +23,306 @@
   ],
   "rejected_topics": [
     {
+      "id": "top-d7dab5b7",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.166157+00:00",
+      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
+      "score": 64.25,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-d7dab5b7",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 691 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.078047+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 64.25,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-22c9dfe6",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.154019+00:00",
+      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 55.6/100).",
+      "score": 55.63,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-22c9dfe6",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 19 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.077889+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 41.9,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 55.63,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-1c1366fc",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.126626+00:00",
+      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 60.0/100).",
+      "score": 60.01,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-1c1366fc",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 238 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.077764+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 63.8,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 60.01,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-bd4f979d",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.110108+00:00",
+      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
+      "score": 64.25,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-bd4f979d",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.077653+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 64.25,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-908e2ee7",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.094687+00:00",
+      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 59.6/100).",
+      "score": 59.65,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-908e2ee7",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 220 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.076647+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 59.65,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-e008151c",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:45:55.085484+00:00",
+      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.4/100).",
+      "score": 57.41,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-e008151c",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 108 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:45:55.075696+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 50.8,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 57.41,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
       "id": "top-f41da86b",
       "title": "Assembly Hall of Shame",
       "source_url": "https://github.com/xoreaxeaxeax/asm-hall-of-shame",
