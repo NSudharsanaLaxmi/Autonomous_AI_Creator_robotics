@@ -120,7 +120,7 @@ async def fetch_hackernews_topics(limit: int = 10) -> List[CandidateTopic]:
     """Fetches top tech/AI items from HackerNews Firebase API."""
     candidates = []
     try:
-        async with httpx.AsyncClient(timeout=6.0) as client:
+        async with httpx.AsyncClient(timeout=6.0, verify=False) as client:
             resp = await client.get("https://hacker-news.firebaseio.com/v0/topstories.json")
             if resp.status_code == 200:
                 story_ids = resp.json()[:limit]

@@ -31,7 +31,7 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing Autonomous AI Creator application...")
     # Initialize default agent if feed is empty
     if len(memory_instance.posts) == 0:
-        publisher_instance.initialize_agent(persona_name="Ada", domain="AI Security")
+        publisher_instance.initialize_agent(persona_name="Atlas", domain="Autonomous Robotics Engineer")
     else:
         # Resume loop for active persona
         publisher_instance.initialize_agent(persona_name=memory_instance.active_persona_id)
@@ -42,8 +42,8 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Autonomous AI Creator",
-    description="An autonomous AI and technology persona that independently discovers topics, applies editorial judgment, uses memory, and publishes content over time.",
+    title="Autonomous Robotics Engineer",
+    description="An autonomous AI robotics technology persona that independently discovers robotics developments, evaluates topics with editorial judgment, remembers previous publications, and posts commentary over time.",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -61,8 +61,8 @@ app.add_middleware(
 # --- Request / Response Pydantic Models ---
 
 class PersonaInitData(BaseModel):
-    name: Optional[str] = "Ada"
-    domain: Optional[str] = "AI Security"
+    name: Optional[str] = "Atlas"
+    domain: Optional[str] = "Autonomous Robotics Engineer"
 
 
 class InitRequest(BaseModel):

@@ -32,10 +32,16 @@ class AutonomousPublisher:
         """
         persona = resolve_persona(persona_name, domain)
         self.active_persona = persona
-        self.memory.active_persona_id = persona.id
         
-        # If no posts exist yet, seed initial posts so feed is immediately non-empty
-        if len(self.memory.posts) == 0:
+        # Update agent_id dynamically based on persona
+        self.memory.agent_id = f"{persona.id}-bot-001"
+        
+        # If switching persona or memory is empty, reset feed and seed appropriate posts
+        if self.memory.active_persona_id != persona.id or len(self.memory.posts) == 0:
+            self.memory.active_persona_id = persona.id
+            self.memory.posts = []
+            self.memory.rejected_topics = []
+            self.memory.concept_index = []
             self._seed_initial_feed(persona)
             
         self.memory.save()
@@ -87,6 +93,36 @@ class AutonomousPublisher:
                     ),
                     "rationale": "Topic Selection: Core ML Systems optimization benchmark. Timeliness: vLLM 0.7.0 release. Choice: Outperformed general non-technical news.",
                     "sources": ["https://github.com/vllm-project/vllm/releases/tag/v0.7.0"]
+                }
+            ]
+        elif persona.id in ["atlas", "astra"] or "robot" in persona.domain.lower():
+            seed_posts = [
+                {
+                    "id": "p-bot01",
+                    "createdAt": (now - timedelta(minutes=25)).isoformat(),
+                    "text": (
+                        "🤖 ROBOTICS BREAKDOWN: Humanoid VLA Policy Transfer: Zero-Shot Bipedal Navigation in Dynamic Environments\n\n"
+                        "Robotics researchers publish open weights for a 7B Vision-Language-Action (VLA) motor policy trained in Isaac Sim, achieving real-world obstacle avoidance on physical humanoid platforms.\n\n"
+                        "Physical Systems & Sim2Real Engineering Insight:\n"
+                        "Deploying autonomous motor policies directly to bipedal legs demands high-frequency torque compensation for dynamic surface friction. "
+                        "By integrating ROS2 Micro-Control middleware with spatial vision transformers, the controller achieves 100Hz real-time balance correction.\n\n"
+                        "Engineering Takeaway: True physical autonomy relies on zero-shot domain randomization to bridge the sim-to-real transfer gap."
+                    ),
+                    "rationale": "Topic Selection: Selected for outstanding technical depth in embodied AI and humanoid locomotion. Timeliness: Fresh HuggingFace paper release with open physical weights. Editorial Choice: Prioritized over pure software SaaS announcements due to hardware execution constraints.",
+                    "sources": ["https://huggingface.co/papers/2608.03819"]
+                },
+                {
+                    "id": "p-bot02",
+                    "createdAt": (now - timedelta(hours=2, minutes=40)).isoformat(),
+                    "text": (
+                        "⚙️ HARDWARE & CONTROL: ROS2-GZ Sim2Real Pipeline for Dexterous Quadruped Manipulation\n\n"
+                        "An open robotics framework integrates Gazebo Harmonic with ROS2 Jazzy, enabling sub-centimeter tactile perception during dynamic pick-and-place manipulation tasks.\n\n"
+                        "System Architecture Analysis:\n"
+                        "Tactile sensor fusion integrated with end-effector trajectory planners allows sub-millimeter force control under non-linear actuator friction.\n\n"
+                        "Engineering Takeaway: Real-time sensor feedback is non-negotiable for reliable manipulation in unstructured environments."
+                    ),
+                    "rationale": "Topic Selection: Core robotics middleware optimization release (ROS2 Jazzy + Gazebo Harmonic). Timeliness: Live repository update on GitHub. Editorial Choice: High utility for production robotics developers.",
+                    "sources": ["https://github.com/ros-controls/ros2_control"]
                 }
             ]
         else:

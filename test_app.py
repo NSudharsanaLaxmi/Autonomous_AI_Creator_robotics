@@ -27,12 +27,12 @@ from app.agent.publisher import publisher_instance
 
 async def run_tests():
     print("==================================================")
-    print("[TEST] Running Autonomous AI Creator Verification Tests")
+    print("[TEST] Running Autonomous Robotics Engineer Verification Tests")
     print("==================================================")
     
-    # Test 1: Persona Resolution & Init
-    print("\n[Test 1] Initializing Agent Persona ('Ada' - AI Security)...")
-    agent_id = publisher_instance.initialize_agent(persona_name="Ada", domain="AI Security")
+    # Test 1: Persona Resolution & Init for Atlas (Autonomous Robotics Engineer)
+    print("\n[Test 1] Initializing Agent Persona ('Atlas' - Autonomous Robotics Engineer)...")
+    agent_id = publisher_instance.initialize_agent(persona_name="Atlas", domain="Autonomous Robotics Engineer")
     assert agent_id is not None and len(agent_id) > 0, "Agent ID must not be empty"
     print(f"[PASS] Agent initialized successfully. agentId = '{agent_id}'")
 
@@ -51,24 +51,24 @@ async def run_tests():
     print(f"   Rationale: {first_post['rationale'][:100]}...")
     print(f"   Sources: {first_post['sources']}")
 
-    # Test 3: Editorial Rejection Filter
+    # Test 3: Editorial Rejection Filter for Non-Robotics / Non-Technical Fluff
     print("\n[Test 3] Testing Editorial Filter & Intentional Rejections...")
     engine = EditorialEngine(memory_instance)
-    persona_ada = resolve_persona("Ada", "AI Security")
+    persona_atlas = resolve_persona("Atlas", "Autonomous Robotics Engineer")
     
-    # A candidate topic containing prohibited phrase "top 10 prompts"
+    # A candidate topic containing prohibited phrase "crypto" or non-robotics content
     spam_cand = CandidateTopic(
-        title="Top 10 Easy ChatGPT Prompts to Write Emails Faster",
-        summary="A simple non-security listicle for beginners.",
-        source_url="https://example.com/spam",
-        source_name="Generic Tech Blog",
+        title="Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        summary="Spam networks flood social channels with fake announcements for a novel AI token.",
+        source_url="https://example.com/spam-news",
+        source_name="Clickbait Tech Blog",
         published_at="2026-08-08T12:00:00Z",
-        raw_keywords=["top 10 prompts", "easy prompts"]
+        raw_keywords=["crypto", "nft", "token"]
     )
     
-    eval_res = engine.evaluate_candidate(spam_cand, persona_ada)
-    assert not eval_res.accepted, "Editorial filter MUST reject non-security listicle candidate"
-    print(f"[PASS] Spam candidate correctly REJECTED by Ada.")
+    eval_res = engine.evaluate_candidate(spam_cand, persona_atlas)
+    assert not eval_res.accepted, "Editorial filter MUST reject crypto / off-topic candidate"
+    print(f"[PASS] Off-topic candidate correctly REJECTED by Atlas.")
     print(f"   Reason: {eval_res.reason}")
 
     # Test 4: Memory Duplicate Check

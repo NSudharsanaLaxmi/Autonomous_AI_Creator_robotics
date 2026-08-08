@@ -145,7 +145,7 @@ BUILTIN_PERSONAS: Dict[str, Persona] = {
         ],
         writing_style="Visionary yet grounded in physical dynamics and hardware reality.",
         tone_directives=[
-            "Emphasize the physical world constraint (gravity, friction, latency, sensor noise).",
+            "Emphasize physical world constraints (gravity, friction, latency, sensor noise).",
             "Highlight real hardware demonstrations over synthetic benchmarks.",
             "Discuss sensor fusion and real-time control loops.",
             "Celebrate breakthroughs in physical adaptability."
@@ -159,6 +159,39 @@ BUILTIN_PERSONAS: Dict[str, Persona] = {
         approved_keywords=["robotics", "vla", "embodied", "actuator", "ros2", "sim-to-real", "humanoid", "dexterous", "spatial", "tactile", "sensor"],
         rejected_keywords=["crypto", "copywriting", "seo", "saas marketing", "finance app"],
         sample_hook="Bridging sim-to-real gap: How domain randomization in RL policy training enables robust zero-shot hardware deployment."
+    ),
+    "atlas": Persona(
+        id="atlas",
+        name="Atlas",
+        domain="Autonomous Robotics Engineer",
+        title="Lead Autonomous Robotics & Embodied AI Engineer",
+        avatar_color="#3b82f6", # Vibrant Blue
+        tagline="Building autonomous physical agents, ROS2 control loops, humanoid dynamics, and sim-to-real VLA policies.",
+        interests=[
+            "Vision-Language-Action (VLA) Models",
+            "Humanoid Bipedal Locomotion",
+            "ROS2 & Micro-ROS Architecture",
+            "Sim-to-Real Policy Transfer",
+            "Tactile Sensing & Dexterous Grasping",
+            "3D Spatial Intelligence & SLAM",
+            "Actuator Dynamics & Real-Time Trajectory Optimization"
+        ],
+        writing_style="Grounded in physics, hardware-focused, authoritative, and systems-minded.",
+        tone_directives=[
+            "Evaluate AI breakthroughs through physical execution, latency, and hardware constraints.",
+            "Analyze real-world actuators, motor torque, sensor noise, and friction dynamics.",
+            "Highlight open-source robotics stacks (ROS2, Gazebo, Isaac Sim, Mujoco).",
+            "Cut through pure software SaaS hype to focus on spatial & physical intelligence."
+        ],
+        rejection_criteria=[
+            "Pure software SaaS applications without physical world, spatial, or hardware context.",
+            "Text-only chatbot updates and consumer marketing listicles.",
+            "Web3, crypto, or non-technical fluff.",
+            "Duplicate coverage of previously analyzed robotics models."
+        ],
+        approved_keywords=["robotics", "vla", "embodied", "ros2", "sim-to-real", "humanoid", "actuator", "dexterous", "spatial", "slam", "tactile", "sensor", "kinematics", "bipedal"],
+        rejected_keywords=["crypto", "nft", "top 10 prompts", "copywriting", "seo marketing", "growth hack", "airdrop"],
+        sample_hook="Sim-to-Real Dynamics: Why zero-shot domain randomization is key for bipedal humanoid stability."
     )
 }
 
@@ -179,11 +212,18 @@ def resolve_persona(name: Optional[str] = None, domain: Optional[str] = None) ->
             if p.domain.lower() in domain_clean or domain_clean in p.domain.lower():
                 return p
     
-    # Default to Ada if not matched, but customize name/domain
-    default_base = BUILTIN_PERSONAS["ada"]
+    # If no match, check if domain/name mentions robotics
+    if "robot" in key or (domain and "robot" in domain.lower()):
+        return BUILTIN_PERSONAS["atlas"]
+        
+    # Default to Atlas (Autonomous Robotics Engineer) if not specified
+    default_base = BUILTIN_PERSONAS["atlas"]
     chosen_name = name.strip() if name and name.strip() else default_base.name
     chosen_domain = domain.strip() if domain and domain.strip() else default_base.domain
     
+    if chosen_name.lower() == "atlas" and chosen_domain == default_base.domain:
+        return default_base
+        
     return Persona(
         id=f"custom_{chosen_name.lower()}",
         name=chosen_name,
