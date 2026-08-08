@@ -273,10 +273,18 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
+        # Amendment 03 — Autonomous Curiosity Engine: Check for answering evidence & generate open questions
+        from app.agent.curiosity import AutonomousCuriosityEngine
+        resolved_q, updated_understanding_str = AutonomousCuriosityEngine.check_for_answering_evidence(winner.topic, self.memory)
+        
+        new_questions = AutonomousCuriosityEngine.generate_natural_questions(winner.topic)
+        for q in new_questions:
+            self.memory.add_question(q)
+            
         # Analyze topic using Real-World Robotics Lens & Writing Engine
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
-        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis)
+        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str)
         
         self.memory.add_post(
             post_dict, 
@@ -322,18 +330,17 @@ class EditorialEngine:
         winner: EvaluationResult,
         rejections: List[EvaluationResult],
         persona: Persona,
-        eng_analysis: EngineeringAnalysis
+        eng_analysis: EngineeringAnalysis,
+        updated_understanding: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Synthesizes final post using exact Section 13 structure and Section 15 4-Question Rationale:
-        1. Why was this topic selected?
-        2. Why is it relevant now?
-        3. Why was it selected over competing candidates?
-        4. What makes the engineering angle interesting?
+        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, and Section 15 4-Question Rationale.
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
         now_iso = datetime.now(timezone.utc).isoformat()
+        
+        curiosity_str = f"\n\n{updated_understanding}" if updated_understanding else ""
         
         post_text = (
             f"HOOK\n"
@@ -344,6 +351,7 @@ class EditorialEngine:
             f"{eng_analysis.limitation}\n\n"
             f"ENGINEERING TAKEAWAY\n"
             f"{eng_analysis.takeaway}"
+            f"{curiosity_str}"
         )
         
         competing_rejection_summary = ""

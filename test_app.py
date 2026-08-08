@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01 & 02:
+Verifies contract requirements & Amendments 01, 02, 03:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -8,6 +8,7 @@ Verifies contract requirements & Amendments 01 & 02:
 5. Autonomous background ticker executes discovery -> evaluation -> publish cycles
 6. Amendment 01 Autonomous Robotics Intelligence System operates independently of publishing layer
 7. Amendment 02 Engineering Attention Evaluator enforces 7 Core Tests
+8. Amendment 03 Autonomous Curiosity Engine generates natural open questions & updates understanding
 """
 
 import sys
@@ -28,6 +29,7 @@ from app.agent.editorial import EditorialEngine
 from app.agent.publisher import publisher_instance
 from app.agent.intelligence import intelligence_instance
 from app.agent.attention import EngineeringAttentionEvaluator
+from app.agent.curiosity import AutonomousCuriosityEngine
 
 
 async def run_tests():
@@ -115,9 +117,16 @@ async def run_tests():
     )
     attn_res = EngineeringAttentionEvaluator.evaluate_attention(valid_cand, memory_instance)
     assert attn_res.passed_attention_gate, "High-quality robotics candidate MUST pass Engineering Attention Gate"
-    print(f"[PASS] Engineering Attention Gate verified.")
-    print(f"   Attention Score: {attn_res.attention_score:.1f}/100")
-    print(f"   7 Core Tests Passed: {sum(attn_res.to_dict()['7CoreTests'].values())}/7")
+    print(f"[PASS] Engineering Attention Gate verified. Attention Score: {attn_res.attention_score:.1f}/100")
+
+    # Test 8: Amendment 03 — Autonomous Curiosity Engine & Question Generation
+    print("\n[Test 8] Testing Amendment 03 — Autonomous Curiosity Engine...")
+    questions = AutonomousCuriosityEngine.generate_natural_questions(valid_cand)
+    assert len(questions) > 0, "Curiosity Engine must generate natural engineering questions"
+    for q in questions:
+        memory_instance.add_question(q)
+    print(f"[PASS] Curiosity Engine generated {len(questions)} natural engineering questions.")
+    print(f"   Sample Question ({questions[0]['category']}): '{questions[0]['questionText']}'")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

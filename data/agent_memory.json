@@ -23,6 +23,306 @@
   ],
   "rejected_topics": [
     {
+      "id": "top-e5016118",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.344145+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-e5016118",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 693 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277799+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-6acaad10",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.329442+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-6acaad10",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 22 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277744+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 42.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-4d3b7524",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.315651+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-4d3b7524",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 239 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277704+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 63.9,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-f4a9b013",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.306414+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-f4a9b013",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277622+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-72920f1a",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.294616+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-72920f1a",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 223 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277497+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.3,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
+      "id": "top-7812dc4a",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T10:52:10.280778+00:00",
+      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.5/100).",
+      "score": 57.53,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-7812dc4a",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 114 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T10:52:10.277052+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 51.4,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 57.53,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      }
+    },
+    {
       "id": "top-d000d336",
       "title": "What happens if an entire class of workers loses faith in their careers",
       "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
@@ -2143,5 +2443,31 @@
     "LLM integration vs true physical autonomy"
   ],
   "company_coverage_counts": {},
-  "concept_index": []
+  "concept_index": [],
+  "unresolved_questions": [
+    {
+      "questionId": "q-b2edb1",
+      "originTopicId": "top-0f3ab40e",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "compute",
+      "category": "inference latency",
+      "questionText": "Can the 7B motor policy inference run locally within a strict sub-15ms edge compute envelope without cloud tethering?",
+      "createdAt": "2026-08-08T10:52:13.496835+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-d45d70",
+      "originTopicId": "top-0f3ab40e",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "control",
+      "category": "sim-to-real performance",
+      "questionText": "What is the empirical zero-shot sim-to-real degradation rate for Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints when tested under unmodeled surface friction?",
+      "createdAt": "2026-08-08T10:52:13.496835+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    }
+  ]
 }

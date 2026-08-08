@@ -1,10 +1,11 @@
 """
-Persistent Agent Memory Engine (Section 10)
-Maintains 4 explicit memory structures:
+Persistent Agent Memory Engine (Section 10 & Amendment 03)
+Maintains 5 explicit memory structures:
 1. Published Memory: Post ID, Topic, Timestamp, Main argument, Editorial angle, Sources, Technologies, Companies, Keywords.
 2. Rejected Memory: Topic, Timestamp, Rejection reason, Score, Candidate representation.
 3. Editorial Memory: Recurring themes, Stable opinions, Topics frequently discussed, Topics recently covered.
 4. Similarity Memory: Checks duplicate stories, duplicate arguments, duplicate hooks, repetitive source coverage, and company repetition.
+5. Curiosity Memory (Amendment 03): Persistent unresolved engineering questions arising naturally from observed developments.
 """
 
 import json
@@ -94,6 +95,9 @@ class AgentMemory:
         self.company_coverage_counts: Dict[str, int] = {}
         self.concept_index: List[str] = []
         
+        # 5. Curiosity Memory (Amendment 03)
+        self.unresolved_questions: List[Dict[str, Any]] = []
+        
         self._ensure_dir()
         self.load()
 
@@ -112,7 +116,8 @@ class AgentMemory:
                     self.editorial_themes = data.get("editorial_themes", self.editorial_themes)
                     self.company_coverage_counts = data.get("company_coverage_counts", {})
                     self.concept_index = data.get("concept_index", [])
-                    logger.info(f"Loaded {len(self.posts)} published posts and {len(self.rejected_topics)} rejections from memory.")
+                    self.unresolved_questions = data.get("unresolved_questions", [])
+                    logger.info(f"Loaded {len(self.posts)} posts, {len(self.rejected_topics)} rejections, and {len(self.unresolved_questions)} curiosity questions.")
             except Exception as e:
                 logger.error(f"Failed loading memory file: {e}")
 
@@ -126,20 +131,24 @@ class AgentMemory:
                     "rejected_topics": self.rejected_topics,
                     "editorial_themes": self.editorial_themes,
                     "company_coverage_counts": self.company_coverage_counts,
-                    "concept_index": self.concept_index
+                    "concept_index": self.concept_index,
+                    "unresolved_questions": self.unresolved_questions
                 }, f, indent=2)
         except Exception as e:
             logger.error(f"Failed saving memory file: {e}")
 
+    def add_question(self, question_dict: Dict[str, Any]):
+        """Adds a natural engineering question into persistent curiosity memory (Amendment 03)."""
+        self.unresolved_questions.insert(0, question_dict)
+        if len(self.unresolved_questions) > 50:
+            self.unresolved_questions = self.unresolved_questions[:50]
+        self.save()
+
     def is_duplicate(self, title: str, summary: str, companies: Optional[List[str]] = None) -> Tuple[bool, str]:
-        """
-        Similarity Memory Check (Section 10):
-        Checks for duplicate stories, duplicate arguments, duplicate hooks, or repetitive company coverage.
-        """
+        """Similarity Memory Check (Section 10)."""
         title_lower = title.lower()
         title_words = set(w for w in title_lower.split() if len(w) > 3)
         
-        # Check company repetition penalty
         if companies:
             for comp in companies:
                 if self.company_coverage_counts.get(comp, 0) >= 3:
@@ -149,7 +158,6 @@ class AgentMemory:
             post_text = post.get("text", "").lower()
             post_words = set(w for w in post_text.split() if len(w) > 3)
             
-            # Word overlap calculation
             overlap = title_words.intersection(post_words)
             if len(overlap) >= 4:
                 common_str = ", ".join(list(overlap)[:3])
@@ -175,7 +183,6 @@ class AgentMemory:
     def add_rejection(self, rejection: Dict[str, Any]):
         """Adds a rejection record to rejected memory."""
         self.rejected_topics.insert(0, rejection)
-        # Cap rejections memory at 100
         if len(self.rejected_topics) > 100:
             self.rejected_topics = self.rejected_topics[:100]
         self.save()
