@@ -57,7 +57,11 @@ class RejectedTopic(dict):
         reason: str,
         score: float,
         persona_id: str,
-        candidate_representation: Optional[Dict[str, Any]] = None
+        candidate_representation: Optional[Dict[str, Any]] = None,
+        evidence_considered: Optional[List[str]] = None,
+        related_previous_topics: Optional[List[str]] = None,
+        re_evaluation_eligible: bool = True,
+        re_evaluated_status: str = "REJECTED"
     ):
         super().__init__(
             id=topic_id,
@@ -68,7 +72,11 @@ class RejectedTopic(dict):
             reason=reason,
             score=score,
             personaId=persona_id,
-            candidateRepresentation=candidate_representation or {}
+            candidateRepresentation=candidate_representation or {},
+            evidenceConsidered=evidence_considered or [],
+            relatedPreviousTopics=related_previous_topics or [],
+            reEvaluationEligible=re_evaluation_eligible,
+            reEvaluatedStatus=re_evaluated_status
         )
 
 

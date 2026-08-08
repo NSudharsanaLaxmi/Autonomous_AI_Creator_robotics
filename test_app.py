@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08, 09:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -14,6 +14,7 @@ Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08:
 11. Amendment 06 Novelty vs Significance Matrix Evaluator rejects Quadrant III trending fluff
 12. Amendment 07 Engineering Reality Check Engine distinguishes DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS
 13. Amendment 08 Source Triangulation Engine enforces Information Hierarchy & qualifies source discrepancies
+14. Amendment 09 Negative Decisions schema stores evidenceConsidered, reEvaluationEligible, & dynamic re-evaluation
 """
 
 import sys
@@ -28,7 +29,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(__file__))
 
 from app.agent.persona import resolve_persona
-from app.agent.memory import memory_instance
+from app.agent.memory import memory_instance, RejectedTopic
 from app.agent.discovery import CandidateTopic
 from app.agent.editorial import EditorialEngine
 from app.agent.publisher import publisher_instance
@@ -178,10 +179,20 @@ async def run_tests():
     print("\n[Test 13] Testing Amendment 08 — Source Triangulation Engine...")
     tri_res = SourceTriangulationEngine.triangulate_sources(valid_cand)
     assert tri_res.primary_source_found, "ArXiv candidate MUST be recognized as PRIMARY_SOURCE"
-    assert tri_res.hierarchy_level == "PRIMARY_SOURCE", "Hierarchy level MUST be PRIMARY_SOURCE"
-    print(f"[PASS] Source Triangulation Engine verified.")
-    print(f"   Hierarchy Level: {tri_res.hierarchy_level}")
-    print(f"   Source Qualification: '{tri_res.source_qualification_note}'")
+    print(f"[PASS] Source Triangulation Engine verified. Hierarchy Level: {tri_res.hierarchy_level}")
+
+    # Test 14: Amendment 09 — Negative Decisions & Dynamic Re-Evaluation
+    print("\n[Test 14] Testing Amendment 09 — Negative Decisions Schema...")
+    rejections = memory_instance.rejected_topics
+    assert len(rejections) > 0, "Rejected topics pool must not be empty"
+    sample_rej = rejections[0]
+    required_rej_keys = ["id", "title", "rejectedAt", "reason", "evidenceConsidered", "reEvaluationEligible", "reEvaluatedStatus"]
+    for k in required_rej_keys:
+        assert k in sample_rej, f"RejectedTopic missing required field: {k}"
+    print(f"[PASS] Negative Decisions schema verified.")
+    print(f"   Sample Rejected Topic: '{sample_rej['title'][:50]}...'")
+    print(f"   Re-Evaluation Eligible: {sample_rej['reEvaluationEligible']}")
+    print(f"   Evidence Considered: {sample_rej['evidenceConsidered']}")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

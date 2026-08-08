@@ -285,7 +285,11 @@ class EditorialEngine:
                     reason=res.reason,
                     score=res.score,
                     persona_id=persona.id,
-                    candidate_representation=cand.to_dict()
+                    candidate_representation=cand.to_dict(),
+                    evidence_considered=[cand.source_name] + (cand.sources or []),
+                    related_previous_topics=[],
+                    re_evaluation_eligible=not any(rkw.lower() in cand.title.lower() for rkw in persona.rejected_keywords),
+                    re_evaluated_status="REJECTED"
                 )
                 self.memory.add_rejection(rej_obj)
 

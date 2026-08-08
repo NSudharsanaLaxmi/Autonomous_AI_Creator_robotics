@@ -144,7 +144,85 @@ Run automated integration test suite verifying:
 
 ---
 
-## 9. Deployment Prompts
+## 9. Amendment Prompts (Amendments 01 – 09)
+
+### Amendment 01 — Autonomous Robotics Intelligence Prompt (`intelligence.py`)
+```text
+Operate autonomous engineering attention & delta detection independently of publishing layers.
+Expose ecosystem signals, noise filtering ratios, and subsystem deltas via GET /api/agent/intelligence.
+```
+
+### Amendment 02 — Engineering Attention Gate Prompt (`attention.py`)
+```text
+Evaluate candidate against 7 Core Tests:
+1. Is this new?
+2. Is this important?
+3. Is this technically meaningful?
+4. Is this relevant to robotics?
+5. Does it change existing understanding?
+6. Does it connect to previously observed developments?
+7. Would an engineer reasonably benefit from knowing this now?
+If candidate fails any core test, discard immediately.
+```
+
+### Amendment 03 — Autonomous Curiosity Engine Prompt (`curiosity.py`)
+```text
+Extract natural technical questions from discovered developments (sim-to-real transfer, latency, thermal envelopes).
+Store unresolved questions in persistent memory. Search future discovery cycles for answering evidence.
+```
+
+### Amendment 04 — Cognitive Memory Context Engine Prompt (`context.py`)
+```text
+Scan 4 memory layers (Episodic, Topic, Editorial, Open-Question) and classify relationship:
+CONFIRMS | CONTRADICTS | EXTENDS | UNRELATED.
+```
+
+### Amendment 05 — Belief Evolution Engine Prompt (`beliefs.py`)
+```text
+Maintain provisional engineering beliefs in memory. When new evidence conflicts with active beliefs, audit relative source credibility and trigger evolution:
+REMAIN | WEAKEN | EVOLVE.
+Acknowledge position evolution in published commentary.
+```
+
+### Amendment 06 — Novelty vs Significance Matrix Prompt (`matrix.py`)
+```text
+Decouple Novelty (recency/popularity) from Technical Significance (real-world impact).
+Classify candidate across 4 Quadrants:
+- Q1: High Novelty + High Significance -> Top Priority
+- Q2: Low Novelty + High Significance -> Field Milestone
+- Q3: High Novelty + Low Significance (Trending Fluff) -> REJECT IMMEDIATELY (Significance < 60.0)
+- Q4: Low Novelty + Low Significance -> REJECT
+Trending status is NEVER sufficient justification for publication.
+```
+
+### Amendment 07 — Engineering Reality Check Prompt (`reality_check.py`)
+```text
+Distinguish DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS.
+Evaluate 7 questions:
+1. What is demonstrated?
+2. What is claimed?
+3. What evidence supports claim?
+4. What assumptions does system depend on?
+5. What has not been demonstrated?
+6. Requirements for deployment outside lab?
+7. Primary system bottleneck?
+```
+
+### Amendment 08 — Source Triangulation Prompt (`triangulation.py`)
+```text
+Establish Information Hierarchy: PRIMARY SOURCE -> TECHNICAL EVIDENCE -> INDEPENDENT CORROBORATION -> EDITORIAL INTERPRETATION.
+If sources disagree, resolve via primary evidence, qualify in commentary, or REJECT topic.
+```
+
+### Amendment 09 — Negative Decisions Prompt (`memory.py` & `editorial.py`)
+```text
+Store enriched rejection schema (evidenceConsidered, reEvaluationEligible, reEvaluatedStatus).
+Allow dynamic unblocking & re-evaluation when fresh primary evidence or higher significance emerges.
+```
+
+---
+
+## 10. Deployment Prompts
 
 ```text
 Package application as a production ASGI FastAPI web application using Uvicorn.
