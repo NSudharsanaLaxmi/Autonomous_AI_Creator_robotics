@@ -273,6 +273,10 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
+        # Amendment 04 — Memory as Context: Retrieve historical context & classify relationship (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
+        from app.agent.context import CognitiveMemoryContextEngine
+        cog_context = CognitiveMemoryContextEngine.retrieve_and_reason(winner.topic, self.memory)
+        
         # Amendment 03 — Autonomous Curiosity Engine: Check for answering evidence & generate open questions
         from app.agent.curiosity import AutonomousCuriosityEngine
         resolved_q, updated_understanding_str = AutonomousCuriosityEngine.check_for_answering_evidence(winner.topic, self.memory)
@@ -284,7 +288,7 @@ class EditorialEngine:
         # Analyze topic using Real-World Robotics Lens & Writing Engine
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
-        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str)
+        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context)
         
         self.memory.add_post(
             post_dict, 
@@ -331,10 +335,11 @@ class EditorialEngine:
         rejections: List[EvaluationResult],
         persona: Persona,
         eng_analysis: EngineeringAnalysis,
-        updated_understanding: Optional[str] = None
+        updated_understanding: Optional[str] = None,
+        cog_context: Optional[Any] = None
     ) -> Dict[str, Any]:
         """
-        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, and Section 15 4-Question Rationale.
+        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, Amendment 04 cognitive memory context, and Section 15 4-Question Rationale.
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
@@ -359,9 +364,13 @@ class EditorialEngine:
             top_rej = rejections[0]
             competing_rejection_summary = f" Competing candidate '{top_rej.topic.title}' was rejected due to: {top_rej.reason}."
             
-        # Dynamically constructed 4-question rationale (Section 15)
+        cog_summary = ""
+        if cog_context and cog_context.has_historical_relation:
+            cog_summary = f" Historical Memory Context ({cog_context.relationship_type}): {cog_context.cognitive_reasoning}"
+
+        # Dynamically constructed 4-question rationale (Section 15 & Amendment 04)
         rationale_text = (
-            f"Topic Selection: Selected '{topic.title}' because it directly addresses core physical systems engineering challenges in {persona.domain} and scored {winner.score:.1f}/100 on weighted technical criteria. "
+            f"Topic Selection: Selected '{topic.title}' because it directly addresses core physical systems engineering challenges in {persona.domain} and scored {winner.score:.1f}/100 on weighted technical criteria.{cog_summary} "
             f"Timeliness: Relevant now because recent paper and open-weights releases in {topic.source_name} transition this technology from controlled labs toward field task deployment. "
             f"Choice Over Competitors: Chosen over competing candidates because it provides verified empirical evidence and hardware execution data rather than promotional marketing.{competing_rejection_summary} "
             f"Engineering Angle Interest: The engineering angle is compelling because it evaluates the {topic.affectedSubsystem.upper()} subsystem against physical latency, power, and sim-to-real transfer constraints."
