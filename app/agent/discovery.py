@@ -8,130 +8,240 @@ import httpx
 import feedparser
 import asyncio
 import logging
+import uuid
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 import random
 
 logger = logging.getLogger("discovery")
 
+
 class CandidateTopic:
     def __init__(
         self,
         title: str,
         summary: str,
-        source_url: str,
-        source_name: str,
+        sources: List[str],
         published_at: str,
-        raw_keywords: List[str] = None,
+        source_name: str,
+        domain: str = "Robotics & Autonomous Systems",
+        technical_impact: float = 70.0,
+        novelty: float = 70.0,
+        timeliness: float = 80.0,
+        robotics_relevance: float = 75.0,
+        engineering_depth: float = 70.0,
+        source_quality: float = 80.0,
+        real_world_impact: float = 70.0,
+        editorial_potential: float = 75.0,
         factual_development: Optional[str] = None,
-        robotics_relevance: Optional[str] = None,
-        preliminary_significance: float = 70.0
+        affected_subsystem: str = "control",
+        raw_keywords: Optional[List[str]] = None,
+        companies: Optional[List[str]] = None,
+        technologies: Optional[List[str]] = None,
+        topic_id: Optional[str] = None
     ):
+        self.topicId = topic_id or f"top-{uuid.uuid4().hex[:8]}"
         self.title = title
         self.summary = summary
-        self.source_url = source_url
+        self.sources = sources
         self.source_name = source_name
-        self.published_at = published_at
+        self.publishedAt = published_at
+        self.domain = domain
+        self.technicalImpact = technical_impact
+        self.novelty = novelty
+        self.timeliness = timeliness
+        self.roboticsRelevance = robotics_relevance
+        self.engineeringDepth = engineering_depth
+        self.sourceQuality = source_quality
+        self.realWorldImpact = real_world_impact
+        self.editorialPotential = editorial_potential
+        self.factualDevelopment = factual_development or title
+        self.affectedSubsystem = affected_subsystem
         self.raw_keywords = raw_keywords or []
-        self.factual_development = factual_development or title
-        self.robotics_relevance = robotics_relevance or "Analysis of real-world robotics systems impact."
-        self.preliminary_significance = preliminary_significance
+        self.companies = companies or []
+        self.technologies = technologies or []
+        self.overallScore: float = 0.0
 
     def to_dict(self) -> Dict[str, Any]:
         return {
+            "topicId": self.topicId,
             "title": self.title,
             "summary": self.summary,
-            "source_url": self.source_url,
-            "source_name": self.source_name,
-            "published_at": self.published_at,
-            "raw_keywords": self.raw_keywords,
-            "factual_development": self.factual_development,
-            "robotics_relevance": self.robotics_relevance,
-            "preliminary_significance": self.preliminary_significance
+            "sources": self.sources,
+            "sourceName": self.source_name,
+            "publishedAt": self.publishedAt,
+            "domain": self.domain,
+            "technicalImpact": self.technicalImpact,
+            "novelty": self.novelty,
+            "timeliness": self.timeliness,
+            "roboticsRelevance": self.roboticsRelevance,
+            "engineeringDepth": self.engineeringDepth,
+            "sourceQuality": self.sourceQuality,
+            "realWorldImpact": self.realWorldImpact,
+            "editorialPotential": self.editorialPotential,
+            "overallScore": self.overallScore,
+            "factualDevelopment": self.factualDevelopment,
+            "affectedSubsystem": self.affectedSubsystem,
+            "rawKeywords": self.raw_keywords,
+            "companies": self.companies,
+            "technologies": self.technologies
         }
 
 
-# High-quality fallback topics covering the breadth of robotics & autonomous systems
+# High-quality fallback pool covering diverse robotics developments and distractor candidates
 CURATED_LIVE_POOL = [
     {
         "title": "Humanoid VLA Policy Transfer: Zero-Shot Bipedal Navigation in Dynamic Environments",
         "summary": "Robotics researchers publish open weights for a 7B Vision-Language-Action (VLA) motor policy trained in Isaac Sim, achieving real-world obstacle avoidance on physical bipedal platforms.",
-        "source_url": "https://huggingface.co/papers/2608.03819",
+        "sources": ["https://huggingface.co/papers/2608.03819"],
         "source_name": "HuggingFace Robotics Papers",
-        "keywords": ["robotics", "vla", "embodied", "sim-to-real", "humanoid", "ros2", "spatial", "bipedal"],
+        "technical_impact": 90.0,
+        "novelty": 88.0,
+        "timeliness": 95.0,
+        "robotics_relevance": 95.0,
+        "engineering_depth": 88.0,
+        "source_quality": 90.0,
+        "real_world_impact": 85.0,
+        "editorial_potential": 90.0,
         "factual_development": "Open weights released for 7B Vision-Language-Action policy trained via domain randomization in Isaac Sim.",
-        "robotics_relevance": "Evaluates whether zero-shot sim-to-real transfer holds under unmodeled surface friction and real-world sensor noise.",
-        "preliminary_significance": 92.0
+        "affected_subsystem": "control",
+        "keywords": ["robotics", "vla", "embodied", "sim-to-real", "humanoid", "ros2", "spatial", "bipedal"],
+        "companies": ["HuggingFace", "NVIDIA"],
+        "technologies": ["Isaac Sim", "ROS 2", "VLA Transformer", "PyTorch"]
     },
     {
         "title": "ROS 2 Jazzy & Gazebo Harmonic Pipeline for Micro-ROS Real-Time Tactile Control",
         "summary": "An open robotics framework integrates Gazebo Harmonic with ROS 2 Jazzy, enabling sub-centimeter tactile sensor feedback during dynamic pick-and-place manipulation under non-linear actuator friction.",
-        "source_url": "https://github.com/ros-controls/ros2_control",
+        "sources": ["https://github.com/ros-controls/ros2_control"],
         "source_name": "ROS 2 Middleware Publications",
-        "keywords": ["ros2", "robotics", "tactile", "dexterous", "sim-to-real", "sensor", "actuator", "control"],
+        "technical_impact": 85.0,
+        "novelty": 82.0,
+        "timeliness": 90.0,
+        "robotics_relevance": 95.0,
+        "engineering_depth": 92.0,
+        "source_quality": 95.0,
+        "real_world_impact": 90.0,
+        "editorial_potential": 85.0,
         "factual_development": "ROS 2 Jazzy integration with Gazebo Harmonic for real-time tactile sensor loop execution.",
-        "robotics_relevance": "Directly impacts low-latency closed-loop manipulation in unstructured industrial and warehouse environments.",
-        "preliminary_significance": 88.0
+        "affected_subsystem": "sensing",
+        "keywords": ["ros2", "robotics", "tactile", "dexterous", "sim-to-real", "sensor", "actuator", "control"],
+        "companies": ["Open Robotics", "ROS-Controls"],
+        "technologies": ["ROS 2 Jazzy", "Gazebo Harmonic", "Micro-ROS", "C++20"]
     },
     {
         "title": "NVIDIA Isaac Lab 2.0: GPU-Accelerated Synthetic Digital Twins for AMR Fleet SLAM",
         "summary": "NVIDIA releases Isaac Lab 2.0 featuring photorealistic RTX sensor simulation for autonomous mobile robot (AMR) multi-camera SLAM and spatial occupancy mapping.",
-        "source_url": "https://developer.nvidia.com/isaac",
+        "sources": ["https://developer.nvidia.com/isaac"],
         "source_name": "NVIDIA Technical Publications",
-        "keywords": ["isaac", "nvidia", "digital twin", "slam", "amr", "synthetic data", "edge ai", "gpu"],
+        "technical_impact": 88.0,
+        "novelty": 85.0,
+        "timeliness": 92.0,
+        "robotics_relevance": 90.0,
+        "engineering_depth": 85.0,
+        "source_quality": 95.0,
+        "real_world_impact": 88.0,
+        "editorial_potential": 86.0,
         "factual_development": "Isaac Lab 2.0 release providing hardware-in-the-loop sensor simulation for multi-camera AMR fleets.",
-        "robotics_relevance": "Accelerates digital twin validation for industrial warehouse AMR navigation under bandwidth constraints.",
-        "preliminary_significance": 86.0
+        "affected_subsystem": "simulation",
+        "keywords": ["isaac", "nvidia", "digital twin", "slam", "amr", "synthetic data", "edge ai", "gpu"],
+        "companies": ["NVIDIA"],
+        "technologies": ["Isaac Lab", "PhysX 5", "RTX Sensor Sim", "CUDA"]
     },
     {
         "title": "Edge AI Benchmarks on Jetson Thor: 100Hz Local Trajectory Planning Under 30W Power Limits",
         "summary": "Embedded robotics benchmark compares real-time motion planning latency across Jetson Orin and Jetson Thor modules operating under strict thermal and wattage constraints on field mobile robots.",
-        "source_url": "https://arxiv.org/abs/2608.06102",
+        "sources": ["https://arxiv.org/abs/2608.06102"],
         "source_name": "ArXiv Robotics (cs.RO)",
-        "keywords": ["edge ai", "embedded", "jetson", "power", "latency", "motion planning", "control", "real-time"],
+        "technical_impact": 86.0,
+        "novelty": 84.0,
+        "timeliness": 88.0,
+        "robotics_relevance": 92.0,
+        "engineering_depth": 90.0,
+        "source_quality": 90.0,
+        "real_world_impact": 89.0,
+        "editorial_potential": 88.0,
         "factual_development": "Empirical latency and power efficiency profiling of transformer motion planners on embedded edge compute.",
-        "robotics_relevance": "Critical for un-tethered field robots operating where cloud connectivity and high power draw are impossible.",
-        "preliminary_significance": 85.0
+        "affected_subsystem": "compute",
+        "keywords": ["edge ai", "embedded", "jetson", "power", "latency", "motion planning", "control", "real-time"],
+        "companies": ["NVIDIA Hardware Labs"],
+        "technologies": ["Jetson Thor", "Jetson Orin", "TensorRT", "CUDA"]
     },
     {
         "title": "Tactile Perception & Dexterous Grasping in Agriculture: Soft Robotic End-Effectors",
         "summary": "IEEE Transactions on Robotics details soft pneumatic actuators embedded with optical tactile array sensors for zero-damage fruit harvesting in outdoor farming.",
-        "source_url": "https://ieeexplore.ieee.org/document/9812049",
+        "sources": ["https://ieeexplore.ieee.org/document/9812049"],
         "source_name": "IEEE Robotics & Automation",
-        "keywords": ["actuator", "tactile", "sensor", "manipulation", "agricultural", "soft robotics", "perception"],
+        "technical_impact": 82.0,
+        "novelty": 85.0,
+        "timeliness": 80.0,
+        "robotics_relevance": 90.0,
+        "engineering_depth": 88.0,
+        "source_quality": 95.0,
+        "real_world_impact": 84.0,
+        "editorial_potential": 82.0,
         "factual_development": "Soft robotic end-effector design integrating optical tactile arrays for fragile harvesting.",
-        "robotics_relevance": "Demonstrates mechanical compliance solving manipulation challenges where pure vision models fail.",
-        "preliminary_significance": 81.0
+        "affected_subsystem": "manipulation",
+        "keywords": ["actuator", "tactile", "sensor", "manipulation", "agricultural", "soft robotics", "perception"],
+        "companies": ["IEEE Robotics Society"],
+        "technologies": ["Soft Pneumatic Actuators", "Optical Tactile Array", "ROS"]
     },
+    # --- Intentionally Rejectable Distractor Candidates ---
     {
         "title": "Flashy Humanoid Video Demo Claims Full Household Autonomy Without Hardware Specs",
         "summary": "A viral video showcases a humanoid folding laundry in a staged room, omitting details regarding teleoperation, latency, power draw, or control loop frequencies.",
-        "source_url": "https://example.com/viral-demo",
+        "sources": ["https://example.com/viral-demo"],
         "source_name": "Tech Hype Blog",
-        "keywords": ["humanoid demo", "controlled environment", "no code", "viral video"],
+        "technical_impact": 20.0,
+        "novelty": 30.0,
+        "timeliness": 80.0,
+        "robotics_relevance": 40.0,
+        "engineering_depth": 15.0,
+        "source_quality": 25.0,
+        "real_world_impact": 20.0,
+        "editorial_potential": 20.0,
         "factual_development": "Viral video clip showcasing humanoid laundry folding without peer-reviewed data or technical whitepaper.",
-        "robotics_relevance": "Superficial demo lacking evidence of real-world reliability or autonomous decision-making.",
-        "preliminary_significance": 35.0
+        "affected_subsystem": "autonomy",
+        "keywords": ["humanoid demo", "controlled environment", "no code", "viral video"],
+        "companies": ["Generic Robotics Startup"],
+        "technologies": ["Unspecified LLM"]
     },
     {
         "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
         "summary": "Spam networks flood social channels with fake announcements for a novel AI token claiming 100x returns.",
-        "source_url": "https://example.com/spam-news",
+        "sources": ["https://example.com/spam-news"],
         "source_name": "Clickbait Tech Blog",
-        "keywords": ["crypto", "nft", "token", "make money", "airdrop"],
+        "technical_impact": 5.0,
+        "novelty": 5.0,
+        "timeliness": 80.0,
+        "robotics_relevance": 5.0,
+        "engineering_depth": 5.0,
+        "source_quality": 10.0,
+        "real_world_impact": 5.0,
+        "editorial_potential": 5.0,
         "factual_development": "Automated crypto token promotion.",
-        "robotics_relevance": "Completely off-topic spam lacking any robotics engineering relevance.",
-        "preliminary_significance": 10.0
+        "affected_subsystem": "hardware",
+        "keywords": ["crypto", "nft", "token", "make money", "airdrop"],
+        "companies": ["Unknown Token Team"],
+        "technologies": ["Blockchain Token"]
     },
     {
         "title": "Top 10 Easy ChatGPT Prompts to Write Emails Faster",
         "summary": "A basic listicle explaining standard email drafting techniques for general users.",
-        "source_url": "https://example.com/top-10-prompts",
+        "sources": ["https://example.com/top-10-prompts"],
         "source_name": "Generic Tech Blog",
-        "keywords": ["top 10 prompts", "simple tutorial", "easy prompts", "copywriting"],
+        "technical_impact": 10.0,
+        "novelty": 10.0,
+        "timeliness": 70.0,
+        "robotics_relevance": 10.0,
+        "engineering_depth": 10.0,
+        "source_quality": 30.0,
+        "real_world_impact": 10.0,
+        "editorial_potential": 10.0,
         "factual_development": "Consumer prompt engineering listicle.",
-        "robotics_relevance": "Non-physical software tool listicle unrelated to physical AI or robotics systems.",
-        "preliminary_significance": 15.0
+        "affected_subsystem": "perception",
+        "keywords": ["top 10 prompts", "simple tutorial", "easy prompts", "copywriting"],
+        "companies": ["Generic Tech Site"],
+        "technologies": ["ChatGPT Web UI"]
     }
 ]
 
@@ -158,13 +268,22 @@ async def fetch_hackernews_topics(limit: int = 10) -> List[CandidateTopic]:
                         candidates.append(CandidateTopic(
                             title=title,
                             summary=f"HackerNews story with {score} points discussing: {title}",
-                            source_url=url,
+                            sources=[url],
                             source_name="HackerNews",
                             published_at=datetime.now(timezone.utc).isoformat(),
-                            raw_keywords=keywords,
+                            technical_impact=min(85.0, 40.0 + (score / 10.0)),
+                            novelty=75.0,
+                            timeliness=90.0,
+                            robotics_relevance=65.0 if any(w in title.lower() for w in ["robot", "ros", "isaac", "sim", "control", "hardware"]) else 35.0,
+                            engineering_depth=60.0,
+                            source_quality=70.0,
+                            real_world_impact=60.0,
+                            editorial_potential=70.0,
                             factual_development=title,
-                            robotics_relevance="HackerNews community discussion on emerging technology.",
-                            preliminary_significance=min(85.0, 40.0 + (score / 10.0))
+                            affected_subsystem="planning",
+                            raw_keywords=keywords,
+                            companies=["HackerNews Community"],
+                            technologies=["Tech Stack"]
                         ))
     except Exception as e:
         logger.warning(f"HackerNews fetch failed: {e}")
@@ -192,13 +311,22 @@ async def fetch_arxiv_topics() -> List[CandidateTopic]:
                 candidates.append(CandidateTopic(
                     title=title,
                     summary=summary,
-                    source_url=link,
+                    sources=[link],
                     source_name=source_name,
                     published_at=datetime.now(timezone.utc).isoformat(),
-                    raw_keywords=keywords,
+                    technical_impact=82.0,
+                    novelty=85.0,
+                    timeliness=92.0,
+                    robotics_relevance=90.0 if "cs.RO" in source_name else 70.0,
+                    engineering_depth=88.0,
+                    source_quality=92.0,
+                    real_world_impact=75.0,
+                    editorial_potential=80.0,
                     factual_development=f"ArXiv preprint published: {title[:80]}...",
-                    robotics_relevance="Peer-reviewed or preprint research on robotics, perception, or spatial AI.",
-                    preliminary_significance=82.0
+                    affected_subsystem="control" if "robot" in title.lower() else "perception",
+                    raw_keywords=keywords,
+                    companies=["ArXiv Research Group"],
+                    technologies=["Deep Learning", "PyTorch"]
                 ))
         except Exception as e:
             logger.warning(f"ArXiv RSS fetch failed for {url}: {e}")
@@ -228,13 +356,22 @@ async def discover_topics(count: int = 8) -> List[CandidateTopic]:
         curated_candidates.append(CandidateTopic(
             title=item["title"],
             summary=item["summary"],
-            source_url=item["source_url"],
+            sources=item["sources"],
             source_name=item["source_name"],
             published_at=datetime.now(timezone.utc).isoformat(),
-            raw_keywords=item["keywords"],
-            factual_development=item["factual_development"],
+            technical_impact=item["technical_impact"],
+            novelty=item["novelty"],
+            timeliness=item["timeliness"],
             robotics_relevance=item["robotics_relevance"],
-            preliminary_significance=item["preliminary_significance"]
+            engineering_depth=item["engineering_depth"],
+            source_quality=item["source_quality"],
+            real_world_impact=item["real_world_impact"],
+            editorial_potential=item["editorial_potential"],
+            factual_development=item["factual_development"],
+            affected_subsystem=item["affected_subsystem"],
+            raw_keywords=item["keywords"],
+            companies=item["companies"],
+            technologies=item["technologies"]
         ))
         
     random.shuffle(curated_candidates)

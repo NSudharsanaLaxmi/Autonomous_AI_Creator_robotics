@@ -61,7 +61,7 @@ async def run_tests():
     spam_cand = CandidateTopic(
         title="Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
         summary="Spam networks flood social channels with fake announcements for a novel AI token.",
-        source_url="https://example.com/spam-news",
+        sources=["https://example.com/spam-news"],
         source_name="Clickbait Tech Blog",
         published_at="2026-08-08T12:00:00Z",
         raw_keywords=["crypto", "nft", "token"]
@@ -78,7 +78,7 @@ async def run_tests():
     dup_cand = CandidateTopic(
         title=existing_title,
         summary="Duplicate text summary",
-        source_url="https://example.com/dup",
+        sources=["https://example.com/dup"],
         source_name="Duplicate Feed",
         published_at="2026-08-08T13:00:00Z"
     )
