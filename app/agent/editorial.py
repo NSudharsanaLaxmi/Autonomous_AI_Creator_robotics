@@ -300,19 +300,23 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
-        # Amendment 07 — Engineering Reality Check Engine (Distinguishes DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS)
+        # Amendment 12 — Temporal Continuity Engine (Reasons about change over time across discovery cycles)
+        from app.agent.temporal import TemporalContinuityEngine
+        temporal_res = TemporalContinuityEngine.evaluate_temporal_delta(winner.topic, self.memory)
+        
+        # Amendment 07 — Engineering Reality Check Engine
         from app.agent.reality_check import EngineeringRealityCheckEngine
         reality_check_res = EngineeringRealityCheckEngine.perform_reality_check(winner.topic)
         
-        # Amendment 05 — Belief Evolution Engine: Evaluate & evolve provisional engineering beliefs
+        # Amendment 05 — Belief Evolution Engine
         from app.agent.beliefs import BeliefEvolutionEngine
         belief_res, belief_note = BeliefEvolutionEngine.evaluate_and_evolve(winner.topic, self.memory)
         
-        # Amendment 04 — Memory as Context: Retrieve historical context & classify relationship (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
+        # Amendment 04 — Memory as Context Engine
         from app.agent.context import CognitiveMemoryContextEngine
         cog_context = CognitiveMemoryContextEngine.retrieve_and_reason(winner.topic, self.memory)
         
-        # Amendment 03 — Autonomous Curiosity Engine: Check for answering evidence & generate open questions
+        # Amendment 03 — Autonomous Curiosity Engine
         from app.agent.curiosity import AutonomousCuriosityEngine
         resolved_q, updated_understanding_str = AutonomousCuriosityEngine.check_for_answering_evidence(winner.topic, self.memory)
         
@@ -324,6 +328,41 @@ class EditorialEngine:
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
         post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context, belief_note, reality_check_res)
+        
+        # Amendment 13 — Pre-Publication Self-Audit Gate (7 Verification Checks)
+        from app.agent.audit import PrePublicationAuditGate
+        audit_res = PrePublicationAuditGate.audit_publication(
+            candidate=winner.topic,
+            post_text=post_dict.get("text", ""),
+            rationale_text=post_dict.get("rationale", ""),
+            total_score=winner.score,
+            persona=persona,
+            memory=self.memory
+        )
+        
+        if not audit_res.passed_audit:
+            logger.warning(f"Pre-Publication Audit FAILED for topic '{winner.topic.title}': {audit_res.audit_summary}. Exercising autonomous restraint.")
+            return None, [r.topic.to_dict() for r in rejected_results]
+
+        # Amendment 14 — Structured Decision Trace (No Private CoT)
+        from app.agent.trace import StructuredDecisionTrace
+        trace_obj = StructuredDecisionTrace(
+            trace_id=f"trc-{uuid.uuid4().hex[:6]}",
+            timestamp=datetime.now(timezone.utc).isoformat(),
+            publication_decision="PUBLISHED",
+            selected_topic={"id": winner.topic.topicId, "title": winner.topic.title, "score": round(winner.score, 1)},
+            candidate_scores=[{"topicId": r.topic.topicId, "title": r.topic.title, "score": round(r.score, 1)} for r in (accepted_results + rejected_results)],
+            evidence_references=winner.topic.sources,
+            rejection_categories=[{"topicId": r.topic.topicId, "reason": r.reason} for r in rejected_results],
+            engineering_angle=eng_analysis.to_dict(),
+            memory_matches=winner.topic.raw_keywords[:4],
+            publication_rationale=post_dict.get("rationale", ""),
+            pre_publication_audit_scores=audit_res.check_details,
+            temporal_continuity_context=temporal_res.to_dict()
+        )
+        post_dict["structuredDecisionTrace"] = trace_obj.to_dict()
+        post_dict["prePublicationAudit"] = audit_res.to_dict()
+        post_dict["temporalContinuity"] = temporal_res.to_dict()
         
         self.memory.add_post(
             post_dict, 
