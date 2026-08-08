@@ -1,9 +1,7 @@
 """
-Editorial Judgment & Engineering Analysis Engine
-Applies weighted multi-factor scoring (20% Tech Significance, 20% Robotics Relevance, 15% Eng Depth,
-15% Novelty, 10% Real-World Impact, 10% Timeliness, 5% Source Quality, 5% Editorial Potential).
-Performs dedicated Technical Analysis (Section 11) to extract central engineering insights.
-Logs explicit candidate rejections into persistent memory (Section 8).
+Editorial Judgment, Real-World Robotics Lens & Writing Engine
+Applies weighted multi-factor scoring (Section 7), 10-dimension Real-World Robotics Lens (Section 12),
+and the 4-part Engineering Writing Engine (HOOK, INTERPRETATION, LIMITATION, TAKEAWAY) (Section 13).
 """
 
 import uuid
@@ -33,31 +31,68 @@ class EvaluationResult:
         self.score_breakdown = score_breakdown
 
 
+class RealWorldRoboticsLens:
+    """Evaluates candidates along the 10 real-world robotics dimensions (Section 12)."""
+    DIMENSIONS = {
+        "perception": "Can the robot reliably understand its environment under varying lighting, occlusion, and sensor noise?",
+        "planning": "Can it make optimal trajectory decisions under real-time uncertainty and dynamic obstacles?",
+        "control": "Can high-level decisions be translated into stable low-level physical motion and motor torque?",
+        "hardware": "Can the structural actuators, joint bearings, and mechanical linkages support the claimed motion?",
+        "compute": "Can model inference execute locally within strict edge latency (<10ms) and power (<30W) budgets?",
+        "communication": "Does the system depend on continuous low-latency network connectivity, or can it run untethered?",
+        "safety": "What deterministic fallback occurs when the vision or motion model produces an erroneous output?",
+        "reliability": "Does the robot execute the task repeatedly across thousands of cycles rather than a single lab demo?",
+        "simulation": "Does the policy performance survive zero-shot sim-to-real transfer with unmodeled physical friction?",
+        "scalability": "Can this system be deployed across unstructured industrial fleets beyond a controlled laboratory environment?"
+    }
+
+    @classmethod
+    def select_relevant_lenses(cls, topic: CandidateTopic) -> List[Tuple[str, str]]:
+        """Selects 2-3 most relevant robotics dimensions for a candidate topic."""
+        combined = f"{topic.title} {topic.summary} {topic.affectedSubsystem}".lower()
+        selected = []
+        
+        if any(w in combined for w in ["sim", "isaac", "gazebo", "sim-to-real"]):
+            selected.append(("Simulation", cls.DIMENSIONS["simulation"]))
+        if any(w in combined for w in ["vla", "humanoid", "locomotion", "bipedal", "torque", "motor"]):
+            selected.append(("Control", cls.DIMENSIONS["control"]))
+        if any(w in combined for w in ["ros2", "tactile", "sensor", "force", "grasping"]):
+            selected.append(("Perception", cls.DIMENSIONS["perception"]))
+        if any(w in combined for w in ["jetson", "edge", "power", "latency", "compute"]):
+            selected.append(("Compute", cls.DIMENSIONS["compute"]))
+        if any(w in combined for w in ["slam", "amr", "planning", "trajectory"]):
+            selected.append(("Planning", cls.DIMENSIONS["planning"]))
+            
+        # Fallback to Reliability & Hardware if fewer than 2 matched
+        if len(selected) < 2:
+            selected.append(("Reliability", cls.DIMENSIONS["reliability"]))
+            selected.append(("Hardware", cls.DIMENSIONS["hardware"]))
+            
+        return selected[:3]
+
+
 class EngineeringAnalysis:
     def __init__(
         self,
-        what_changed: str,
-        affected_subsystem: str,
-        bottleneck_addressed: str,
-        remaining_limitations: str,
-        deployment_risks: str,
-        central_insight: str
+        hook: str,
+        interpretation: str,
+        limitation: str,
+        takeaway: str,
+        relevant_lenses: List[Tuple[str, str]]
     ):
-        self.what_changed = what_changed
-        self.affected_subsystem = affected_subsystem
-        self.bottleneck_addressed = bottleneck_addressed
-        self.remaining_limitations = remaining_limitations
-        self.deployment_risks = deployment_risks
-        self.central_insight = central_insight
+        self.hook = hook
+        self.interpretation = interpretation
+        self.limitation = limitation
+        self.takeaway = takeaway
+        self.relevant_lenses = relevant_lenses
 
-    def to_dict(self) -> Dict[str, str]:
+    def to_dict(self) -> Dict[str, Any]:
         return {
-            "whatChanged": self.what_changed,
-            "affectedSubsystem": self.affected_subsystem,
-            "bottleneckAddressed": self.bottleneck_addressed,
-            "remainingLimitations": self.remaining_limitations,
-            "deploymentRisks": self.deployment_risks,
-            "centralInsight": self.central_insight
+            "hook": self.hook,
+            "interpretation": self.interpretation,
+            "limitation": self.limitation,
+            "takeaway": self.takeaway,
+            "relevantLenses": [l[0] for l in self.relevant_lenses]
         }
 
 
@@ -79,7 +114,6 @@ class EditorialEngine:
         """
         combined_text = f"{candidate.title} {candidate.summary}".lower()
         
-        # Calculate domain match bonus / penalty
         domain_matches = sum(1 for akw in persona.approved_keywords if akw.lower() in combined_text)
         robotics_rel = candidate.roboticsRelevance
         if domain_matches == 0:
@@ -109,9 +143,7 @@ class EditorialEngine:
         return total_score, score_breakdown
 
     def evaluate_candidate(self, candidate: CandidateTopic, persona: Persona) -> EvaluationResult:
-        """
-        Evaluates a single candidate topic against persona standards, rejection filters, and memory.
-        """
+        """Evaluates a single candidate topic against persona standards, rejection filters, and memory."""
         combined_text = f"{candidate.title} {candidate.summary}".lower()
         
         # 1. Hard Rejection Filter for Prohibited Keywords / Fluff
@@ -139,7 +171,6 @@ class EditorialEngine:
         # 3. Calculate Weighted Score
         total_score, breakdown = self.calculate_weighted_score(candidate, persona)
         
-        # Determine explicit rejection reasons for candidates below threshold (Section 8)
         min_threshold = 65.0
         if total_score >= min_threshold:
             return EvaluationResult(
@@ -150,7 +181,6 @@ class EditorialEngine:
                 score_breakdown=breakdown
             )
         else:
-            # Categorize specific rejection reason based on lowest weighted component
             if candidate.roboticsRelevance < 40.0:
                 rej_category = "Low robotics relevance"
             elif candidate.engineeringDepth < 40.0:
@@ -190,7 +220,6 @@ class EditorialEngine:
                 accepted_results.append(res)
             else:
                 rejected_results.append(res)
-                # Store rejection record in persistent memory (Section 8 & 10)
                 rej_obj = RejectedTopic(
                     topic_id=cand.topicId,
                     title=cand.title,
@@ -208,17 +237,14 @@ class EditorialEngine:
             logger.info("Batch evaluation complete: All candidate topics were intentionally rejected by editorial judgment. Publishing nothing.")
             return None, [r.topic.to_dict() for r in rejected_results]
             
-        # Rank accepted candidates by overall score descending (Section 9)
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
-        # Perform dedicated Technical Analysis (Section 11)
+        # Analyze topic using Real-World Robotics Lens & Engineering Writing Engine (Section 12 & 13)
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
-        # Synthesize final post based on central engineering insight
         post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis)
         
-        # Save post into persistent memory (Section 10)
         self.memory.add_post(
             post_dict, 
             keywords=winner.topic.raw_keywords,
@@ -230,29 +256,36 @@ class EditorialEngine:
 
     def _perform_engineering_analysis(self, topic: CandidateTopic, persona: Persona) -> EngineeringAnalysis:
         """
-        Dedicated technical analysis step before writing (Section 11).
-        Determines subsystem affected, bottleneck addressed, limitations, and central insight.
+        Performs dedicated engineering analysis using Section 12 Real-World Robotics Lens.
+        Formats exact 4-part structure (HOOK, INTERPRETATION, LIMITATION, TAKEAWAY) for Section 13.
         """
-        subsystem = topic.affectedSubsystem or "control"
+        lenses = RealWorldRoboticsLens.select_relevant_lenses(topic)
+        lens_names = ", ".join([l[0] for l in lenses])
         
-        what_changed = topic.factualDevelopment or f"New research published regarding {topic.title}"
-        bottleneck = f"Addressing real-world deployment challenges in {subsystem} systems under physical hardware constraints."
-        limitations = "Requires empirical verification under unmodeled surface friction, sensor noise, and thermal compute budgets."
-        deployment_risks = "Failure during un-tethered deployment if low-level safety control loops experience latency spikes."
+        hook = f"Robotics researchers published open results for {topic.title}."
         
-        central_insight = (
-            f"What does this development actually change for robots operating in the real world? "
-            f"By directly improving the {subsystem} subsystem, it addresses key real-world bottlenecks in {topic.domain}, "
-            f"proving that systems engineering reliability matters far more than impressive controlled demonstrations."
+        interpretation = (
+            f"What does this actually change for robots in the real world? "
+            f"Evaluating through the lens of {lens_names}, this work addresses fundamental physical execution bottlenecks. "
+            f"Rather than relying on high-level LLM reasoning alone, it couples spatial representations directly with low-latency control loops."
+        )
+        
+        limitation = (
+            f"While simulation policy transfer is improving, unmodeled surface friction, joint actuator latency, "
+            f"and thermal compute budgets remain major deployment bottlenecks. "
+            f"A policy that functions in a controlled environment is not yet a reliable field-ready system."
+        )
+        
+        takeaway = (
+            f"Watch for empirical benchmarks measuring long-horizon task execution repeatability and edge inference latency on physical hardware."
         )
         
         return EngineeringAnalysis(
-            what_changed=what_changed,
-            affected_subsystem=subsystem,
-            bottleneck_addressed=bottleneck,
-            remaining_limitations=limitations,
-            deployment_risks=deployment_risks,
-            central_insight=central_insight
+            hook=hook,
+            interpretation=interpretation,
+            limitation=limitation,
+            takeaway=takeaway,
+            relevant_lenses=lenses
         )
 
     def _synthesize_post(
@@ -263,33 +296,25 @@ class EditorialEngine:
         eng_analysis: EngineeringAnalysis
     ) -> Dict[str, Any]:
         """
-        Synthesizes post text based on central engineering insight and constructs required 3-part rationale.
+        Synthesizes final post using exact Section 13 structure:
+        HOOK -> ENGINEERING INTERPRETATION -> REAL-WORLD LIMITATION -> ENGINEERING TAKEAWAY
+        Word count kept within 100-250 words without emoji clutter.
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
         now_iso = datetime.now(timezone.utc).isoformat()
         
-        if persona.id in ["ada", "atlas", "astra"] or "robot" in persona.domain.lower():
-            post_text = (
-                f"🤖 ROBOTICS & AUTONOMOUS SYSTEMS ANALYSIS: {topic.title}\n\n"
-                f"Factual Breakthrough:\n{topic.summary}\n\n"
-                f"Real-World Systems Engineering Perspective:\n"
-                f"{eng_analysis.central_insight}\n\n"
-                f"Subsystem & Hardware Analysis ({eng_analysis.affected_subsystem.upper()}):\n"
-                f"Evaluating this against physical constraints—latency, bandwidth, power budgets, sensor noise, and actuator friction—reveals critical trade-offs. "
-                f"Robotics is fundamentally a multi-disciplinary systems engineering challenge where perception, motion planning, control loops, compute, sensing, and mechanics must interact reliably. "
-                f"While simulation accelerates policy iteration, real-world reliability in unstructured field environments matters far more than impressive controlled lab demos. "
-                f"Adding an LLM or foundation model to a robot does not automatically grant physical autonomy.\n\n"
-                f"Engineering Conclusion: Practical reliability under hardware constraints remains the true benchmark of progress."
-            )
-        else:
-            post_text = (
-                f"📌 PERSPECTIVE ({persona.domain}): {topic.title}\n\n"
-                f"{topic.summary}\n\n"
-                f"Central Engineering Insight:\n"
-                f"{eng_analysis.central_insight}"
-            )
-            
+        post_text = (
+            f"HOOK\n"
+            f"{topic.title}\n\n"
+            f"ENGINEERING INTERPRETATION\n"
+            f"{eng_analysis.interpretation}\n\n"
+            f"REAL-WORLD LIMITATION\n"
+            f"{eng_analysis.limitation}\n\n"
+            f"ENGINEERING TAKEAWAY\n"
+            f"{eng_analysis.takeaway}"
+        )
+        
         rejected_summary_str = ""
         if rejections:
             rejected_titles = [f"'{r.topic.title}' ({r.reason})" for r in rejections[:2]]
