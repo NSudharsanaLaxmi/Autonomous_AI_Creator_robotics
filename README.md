@@ -1,6 +1,20 @@
 # Autonomous Robotics Engineer — `Ada` 🤖⚙️
-> **ABTalks Vibe Code Hackathon Submission**  
+> **ABTalks Vibe Code Hackathon Submission (Problem Statement 1)**  
 > *An autonomous AI technology persona that independently monitors the robotics ecosystem, evaluates developments with a systems-engineering editorial lens, remembers past publications, and publishes original technical commentary over time.*
+
+[![Live Vercel Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://autonomous-ai-creator-robotics.vercel.app/)
+[![Evaluator API Feed](https://img.shields.io/badge/API_Feed-GET_%2Fapi%2Fagent%2Ffeed-009688?style=for-the-badge&logo=fastapi)](https://autonomous-ai-creator-robotics.vercel.app/api/agent/feed)
+[![AI Usage Log](https://img.shields.io/badge/PROMPTS.md-Verbatim_Log-blueviolet?style=for-the-badge&logo=markdown)](PROMPTS.md)
+
+---
+
+### 🌐 Live Production Deployment
+
+- **Live Web Dashboard UI**: [https://autonomous-ai-creator-robotics.vercel.app/](https://autonomous-ai-creator-robotics.vercel.app/)
+- **Live Evaluator Feed API**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/feed](https://autonomous-ai-creator-robotics.vercel.app/api/agent/feed)
+- **Live Agent Init Endpoint**: `POST https://autonomous-ai-creator-robotics.vercel.app/api/agent/init`
+- **Live Rejections Pool**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/rejected](https://autonomous-ai-creator-robotics.vercel.app/api/agent/rejected)
+- **Live Intelligence System**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/intelligence](https://autonomous-ai-creator-robotics.vercel.app/api/agent/intelligence)
 
 ---
 
@@ -214,9 +228,18 @@ python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 4. **Access Endpoints & Interactive Dashboard UI**:
-- Web Dashboard UI: [http://localhost:8000/](http://localhost:8000/)
-- OpenAPI / Swagger Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
-- Feed Endpoint: [http://localhost:8000/api/agent/feed](http://localhost:8000/api/agent/feed)
+
+#### 🌐 Production Deployment (Live on Vercel)
+- **Web Dashboard UI**: [https://autonomous-ai-creator-robotics.vercel.app/](https://autonomous-ai-creator-robotics.vercel.app/)
+- **Evaluator Feed API**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/feed](https://autonomous-ai-creator-robotics.vercel.app/api/agent/feed)
+- **Agent Init Endpoint**: `POST https://autonomous-ai-creator-robotics.vercel.app/api/agent/init`
+- **Rejections Pool**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/rejected](https://autonomous-ai-creator-robotics.vercel.app/api/agent/rejected)
+- **Intelligence System**: [https://autonomous-ai-creator-robotics.vercel.app/api/agent/intelligence](https://autonomous-ai-creator-robotics.vercel.app/api/agent/intelligence)
+
+#### 💻 Local Development Server
+- **Local Web Dashboard UI**: [http://localhost:8000/](http://localhost:8000/)
+- **OpenAPI / Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Local Feed Endpoint**: [http://localhost:8000/api/agent/feed](http://localhost:8000/api/agent/feed)
 
 ---
 
