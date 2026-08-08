@@ -189,7 +189,19 @@ async def get_rejected_topics(limit: int = Query(10, ge=1, le=50)):
 @app.get("/api/agent/status")
 async def get_agent_status():
     """Returns comprehensive state for the interactive dashboard UI."""
+    from datetime import datetime, timezone, timedelta
     persona = publisher_instance.active_persona
+    now = datetime.now(timezone.utc)
+    
+    last_cycle = memory_instance.no_publication_cycles[0].get("timestamp") if memory_instance.no_publication_cycles else (now - timedelta(minutes=5)).isoformat()
+    next_cycle = (now + timedelta(seconds=publisher_instance.interval_seconds)).isoformat()
+    
+    loop_state = "ACTIVE" if publisher_instance.is_running else "WAITING"
+    if memory_instance.posts and memory_instance.posts[0].get("createdAt"):
+        last_post_time = memory_instance.posts[0]["createdAt"]
+    else:
+        last_post_time = last_cycle
+
     return {
         "agentId": memory_instance.agent_id,
         "persona": persona.model_dump(),
@@ -197,8 +209,19 @@ async def get_agent_status():
         "postCount": len(memory_instance.posts),
         "rejectionCount": len(memory_instance.rejected_topics),
         "conceptCount": len(memory_instance.concept_index),
+        "unresolvedQuestionsCount": len(memory_instance.unresolved_questions),
+        "provisionalBeliefsCount": len(memory_instance.provisional_beliefs),
+        "noPublicationCyclesCount": len(memory_instance.no_publication_cycles),
         "isLoopRunning": publisher_instance.is_running,
+        "loopState": loop_state,
+        "lastCycleAt": last_cycle,
+        "lastPostAt": last_post_time,
+        "nextCycleAt": next_cycle,
+        "intervalSeconds": publisher_instance.interval_seconds,
         "recentRejections": memory_instance.rejected_topics[:10],
+        "unresolvedQuestions": memory_instance.unresolved_questions[:10],
+        "provisionalBeliefs": memory_instance.provisional_beliefs[:10],
+        "noPublicationCycles": memory_instance.no_publication_cycles[:10],
         "conceptIndex": memory_instance.concept_index[:20]
     }
 

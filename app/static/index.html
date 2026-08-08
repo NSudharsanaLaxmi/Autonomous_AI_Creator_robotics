@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autonomous AI Creator - Live Control & Evaluation Dashboard</title>
-  <meta name="description" content="Autonomous AI and Technology Persona that independently discovers topics, applies editorial judgment, uses memory, and publishes content over time.">
+  <title>FORGE — Autonomous Robotics Engineer Telemetry Dashboard</title>
+  <meta name="description" content="FORGE — Autonomous Robotics Engineer that independently watches the physical-AI ecosystem, decides what deserves engineering attention, and develops an evolving technical point of view.">
   
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,15 +20,23 @@
   <div class="glow-bg"></div>
   
   <div class="app-container">
+    <!-- Offline / Error Banner -->
+    <div id="offlineBanner" class="alert-banner hidden">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span>Backend server unavailable. Retrying connection...</span>
+    </div>
+
     <!-- Header Navbar -->
     <header class="app-header">
       <div class="brand">
         <div class="brand-icon">
-          <i class="fa-solid fa-brain-circuit"></i>
+          <i class="fa-solid fa-microchip"></i>
         </div>
         <div class="brand-text">
-          <h1>AUTONOMOUS<span>.AI</span></h1>
-          <span class="badge live-badge"><span class="pulse-dot"></span> AUTONOMOUS PUBLISHING ACTIVE</span>
+          <h1>FORGE<span>.ROBOTICS</span></h1>
+          <span class="badge live-badge" id="engineStatusBadge">
+            <span class="pulse-dot"></span> AUTONOMOUS ENGINE ● ACTIVE
+          </span>
         </div>
       </div>
       
@@ -38,11 +46,31 @@
             <i class="fa-solid fa-code"></i> GET /api/agent/feed
           </a>
         </div>
-        <button id="manualTriggerBtn" class="btn btn-primary glow-btn" title="Trigger an immediate autonomous discovery & editorial tick">
-          <i class="fa-solid fa-bolt"></i> Trigger Tick
-        </button>
+        <a href="/api/agent/intelligence" target="_blank" class="api-link-btn intel-btn" title="View direct autonomous intelligence analytics">
+          <i class="fa-solid fa-brain"></i> Intelligence System
+        </a>
       </div>
     </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner glass-panel">
+      <div class="hero-content">
+        <h2>FORGE — Autonomous Robotics Engineer</h2>
+        <p class="hero-tagline">
+          An AI robotics engineer that independently watches the physical-AI ecosystem, decides what deserves engineering attention, and develops an evolving technical point of view.
+        </p>
+      </div>
+      <div class="hero-telemetry">
+        <div class="telemetry-pill">
+          <span class="telemetry-label">LAST CYCLE</span>
+          <span class="telemetry-val" id="telemetryLastCycle">--:-- UTC</span>
+        </div>
+        <div class="telemetry-pill">
+          <span class="telemetry-label">NEXT CYCLE</span>
+          <span class="telemetry-val" id="telemetryNextCycle">~ 3 min</span>
+        </div>
+      </div>
+    </section>
 
     <!-- Main Grid Dashboard -->
     <main class="dashboard-grid">
@@ -54,39 +82,40 @@
           </div>
           <div class="persona-titles">
             <h2 id="personaName">Ada</h2>
-            <span id="personaDomain" class="domain-tag">AI Security</span>
-            <p id="personaTitle" class="persona-sub">Senior AI Security Researcher</p>
+            <span id="personaDomain" class="domain-tag">Robotics & Autonomous Systems</span>
+            <p id="personaTitle" class="persona-sub">Autonomous Robotics Systems Engineer</p>
           </div>
         </div>
 
         <p id="personaTagline" class="persona-tagline">
-          "Auditing neural networks, dissecting prompt injections, and securing autonomous agent loops."
+          "Evaluating physical AI capability against real-world actuation, latency, power budgets, and sim-to-real constraints."
         </p>
 
         <div class="persona-meta">
           <div class="meta-section">
-            <label><i class="fa-solid fa-bullseye"></i> Key Interests</label>
+            <label><i class="fa-solid fa-bullseye"></i> Engineering Focus Areas</label>
             <div id="interestsTags" class="tags-container">
-              <!-- Dynamically populated -->
+              <span class="tag-item">Control Loops</span>
+              <span class="tag-item">Sim-to-Real</span>
+              <span class="tag-item">Edge AI</span>
+              <span class="tag-item">Tactile Sensing</span>
+              <span class="tag-item">ROS 2</span>
             </div>
           </div>
 
           <div class="meta-section">
             <label><i class="fa-solid fa-filter"></i> Editorial Rejection Criteria</label>
             <ul id="rejectionCriteriaList" class="criteria-list">
-              <!-- Dynamically populated -->
+              <li>Generic AI marketing hype without hardware evidence</li>
+              <li>Viral video demos omitting latency & power specs</li>
+              <li>Crypto / NFT promotional spam</li>
             </ul>
           </div>
         </div>
 
-        <div class="persona-selector-box">
-          <label for="switchPersonaSelect"><i class="fa-solid fa-user-gear"></i> Switch Active Persona</label>
-          <select id="switchPersonaSelect" class="styled-select">
-            <option value="ada">Ada — AI Security Researcher</option>
-            <option value="nova">Nova — ML Systems Architect</option>
-            <option value="cipher">Cipher — AI Ethics Specialist</option>
-            <option value="astra">Astra — Robotics & Embodied AI</option>
-          </select>
+        <div class="agent-id-box">
+          <span class="id-label">ACTIVE AGENT ID</span>
+          <code id="activeAgentIdCode">ada-bot-001</code>
         </div>
       </aside>
 
@@ -95,7 +124,7 @@
         <!-- Live Metrics Bar -->
         <div class="metrics-row">
           <div class="metric-card glass-panel">
-            <div class="metric-icon blue"><i class="fa-solid fa-rss"></i></div>
+            <div class="metric-icon blue"><i class="fa-solid fa-newspaper"></i></div>
             <div class="metric-data">
               <span class="metric-value" id="statPostsCount">0</span>
               <span class="metric-label">Published Posts</span>
@@ -111,18 +140,18 @@
           </div>
 
           <div class="metric-card glass-panel">
-            <div class="metric-icon purple"><i class="fa-solid fa-database"></i></div>
+            <div class="metric-icon purple"><i class="fa-solid fa-circle-question"></i></div>
             <div class="metric-data">
-              <span class="metric-value" id="statMemoryCount">0</span>
-              <span class="metric-label">Memory Topics</span>
+              <span class="metric-value" id="statCuriosityCount">0</span>
+              <span class="metric-label">Curiosity Questions</span>
             </div>
           </div>
 
           <div class="metric-card glass-panel">
-            <div class="metric-icon green"><i class="fa-solid fa-clock"></i></div>
+            <div class="metric-icon green"><i class="fa-solid fa-shield-halved"></i></div>
             <div class="metric-data">
-              <span class="metric-value" id="statStatusText">ACTIVE</span>
-              <span class="metric-label">48h Auto-Loop</span>
+              <span class="metric-value" id="statBeliefsCount">0</span>
+              <span class="metric-label">Engineering Beliefs</span>
             </div>
           </div>
         </div>
@@ -130,13 +159,16 @@
         <!-- Tab Navigation -->
         <div class="tab-nav-bar">
           <button class="tab-btn active" data-tab="feedTab">
-            <i class="fa-solid fa-newspaper"></i> Published Feed <span id="feedBadgeCount" class="tab-badge">0</span>
+            <i class="fa-solid fa-rss"></i> Published Feed <span id="feedBadgeCount" class="tab-badge">0</span>
           </button>
-          <button class="tab-btn" data-tab="rejectionsTab">
-            <i class="fa-solid fa-shield-halved"></i> Editorial Rejections Log <span id="rejectionsBadgeCount" class="tab-badge">0</span>
+          <button class="tab-btn" data-tab="decisionsTab">
+            <i class="fa-solid fa-sliders"></i> How FORGE Decides
+          </button>
+          <button class="tab-btn" data-tab="memoryTab">
+            <i class="fa-solid fa-brain"></i> Persistent Memory View
           </button>
           <button class="tab-btn" data-tab="jsonTab">
-            <i class="fa-solid fa-code"></i> API Inspector (JSON)
+            <i class="fa-solid fa-code"></i> API Inspector
           </button>
         </div>
 
@@ -153,21 +185,58 @@
             </div>
           </div>
 
-          <!-- Rejections Tab -->
-          <div id="rejectionsTab" class="tab-panel">
+          <!-- How FORGE Decides Tab -->
+          <div id="decisionsTab" class="tab-panel">
             <div class="tab-header">
-              <h3><i class="fa-solid fa-filter-circle-xmark"></i> Editorial Judgment & Rejected Candidates</h3>
-              <p class="sub-info">Demonstrates explicit rejection of topics that failed persona relevance, technical depth, or memory uniqueness filters.</p>
+              <h3><i class="fa-solid fa-scale-balanced"></i> Decision History & Comparative Selection</h3>
+              <p class="sub-info">Preserves real candidate alternative evaluation records and Pre-Publication Audit Gate verification details without exposing private CoT.</p>
             </div>
-            <div id="rejectionsContainer" class="rejections-list">
+            <div id="decisionsContainer" class="decisions-list">
               <!-- Rendered via app.js -->
+            </div>
+          </div>
+
+          <!-- Memory View Tab -->
+          <div id="memoryTab" class="tab-panel">
+            <div class="tab-header">
+              <h3><i class="fa-solid fa-database"></i> Persistent Memory Architecture</h3>
+              <p class="sub-info">Maintains 4 persistent layers: Episodic Publications, Intentional Rejections, Unresolved Curiosity Questions, and Provisional Engineering Beliefs.</p>
+            </div>
+
+            <div class="memory-grid">
+              <div class="memory-card glass-panel">
+                <div class="memory-card-header blue">
+                  <h4><i class="fa-solid fa-question"></i> Unresolved Curiosity Questions</h4>
+                </div>
+                <ul id="curiosityQuestionsList" class="memory-list">
+                  <!-- Rendered via app.js -->
+                </ul>
+              </div>
+
+              <div class="memory-card glass-panel">
+                <div class="memory-card-header green">
+                  <h4><i class="fa-solid fa-lightbulb"></i> Provisional Engineering Beliefs</h4>
+                </div>
+                <ul id="provisionalBeliefsList" class="memory-list">
+                  <!-- Rendered via app.js -->
+                </ul>
+              </div>
+
+              <div class="memory-card glass-panel span-2">
+                <div class="memory-card-header red">
+                  <h4><i class="fa-solid fa-ban"></i> Recent Intentional Rejections Pool</h4>
+                </div>
+                <div id="rejectionsMemoryContainer" class="rejections-list">
+                  <!-- Rendered via app.js -->
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- JSON Inspector Tab -->
           <div id="jsonTab" class="tab-panel">
             <div class="tab-header">
-              <h3><i class="fa-solid fa-code"></i> Exact Evaluator Response (`GET /api/agent/feed`)</h3>
+              <h3><i class="fa-solid fa-code"></i> Live Feed API Response (`GET /api/agent/feed`)</h3>
               <button id="copyJsonBtn" class="btn btn-secondary btn-sm"><i class="fa-regular fa-copy"></i> Copy JSON</button>
             </div>
             <pre id="jsonViewer" class="code-block"></pre>
@@ -178,7 +247,7 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>Autonomous AI Creator Platform &bull; Built for ABTalks Vibe Code Hackathon 2026 &bull; Operates autonomously over 48h evaluation window</p>
+      <p>FORGE — Autonomous Robotics Engineer &bull; Powered by Live Python Backend & Persistent Memory &bull; ABTalks Vibe Code Hackathon 2026</p>
     </footer>
   </div>
 

@@ -1,30 +1,30 @@
-// Autonomous AI Creator - Live Dashboard JavaScript
+// FORGE Autonomous Robotics Engineer — Telemetry Dashboard JavaScript
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Elements
-  const personaName = document.getElementById("personaName");
-  const personaDomain = document.getElementById("personaDomain");
-  const personaTitle = document.getElementById("personaTitle");
-  const personaTagline = document.getElementById("personaTagline");
-  const personaAvatar = document.getElementById("personaAvatar");
-  const interestsTags = document.getElementById("interestsTags");
-  const rejectionCriteriaList = document.getElementById("rejectionCriteriaList");
-  const switchPersonaSelect = document.getElementById("switchPersonaSelect");
-  
+  // DOM Elements
+  const offlineBanner = document.getElementById("offlineBanner");
+  const engineStatusBadge = document.getElementById("engineStatusBadge");
+  const telemetryLastCycle = document.getElementById("telemetryLastCycle");
+  const telemetryNextCycle = document.getElementById("telemetryNextCycle");
+
   const statPostsCount = document.getElementById("statPostsCount");
   const statRejectionsCount = document.getElementById("statRejectionsCount");
-  const statMemoryCount = document.getElementById("statMemoryCount");
-  
+  const statCuriosityCount = document.getElementById("statCuriosityCount");
+  const statBeliefsCount = document.getElementById("statBeliefsCount");
+
   const feedBadgeCount = document.getElementById("feedBadgeCount");
-  const rejectionsBadgeCount = document.getElementById("rejectionsBadgeCount");
-  
+  const activeAgentIdCode = document.getElementById("activeAgentIdCode");
+
   const feedPostsContainer = document.getElementById("feedPostsContainer");
-  const rejectionsContainer = document.getElementById("rejectionsContainer");
+  const decisionsContainer = document.getElementById("decisionsContainer");
+  const rejectionsMemoryContainer = document.getElementById("rejectionsMemoryContainer");
+  const curiosityQuestionsList = document.getElementById("curiosityQuestionsList");
+  const provisionalBeliefsList = document.getElementById("provisionalBeliefsList");
+  
   const jsonViewer = document.getElementById("jsonViewer");
   const copyJsonBtn = document.getElementById("copyJsonBtn");
-  const manualTriggerBtn = document.getElementById("manualTriggerBtn");
 
-  // Tab switching
+  // Tab switching logic
   const tabBtns = document.querySelectorAll(".tab-btn");
   const tabPanels = document.querySelectorAll(".tab-panel");
 
@@ -36,26 +36,56 @@ document.addEventListener("DOMContentLoaded", () => {
       tabPanels.forEach(p => p.classList.remove("active"));
       
       btn.classList.add("active");
-      document.getElementById(targetTab).classList.add("active");
+      const targetPanel = document.getElementById(targetTab);
+      if (targetPanel) {
+        targetPanel.classList.add("active");
+      }
     });
   });
 
-  // Fetch status and feed
+  // Format UTC ISO timestamps cleanly
+  function formatUtcTime(isoStr) {
+    if (!isoStr) return "--:-- UTC";
+    try {
+      const d = new Date(isoStr);
+      return d.toUTCString().replace("GMT", "UTC").replace(/^.*?, /, "").replace(/:\d\d UTC$/, " UTC");
+    } catch(e) {
+      return isoStr;
+    }
+  }
+
+  // Load telemetry data from backend
   async function loadDashboardData() {
     try {
-      // 1. Fetch status
+      // 1. Fetch live status telemetry
       const statusRes = await fetch("/api/agent/status");
-      if (statusRes.ok) {
-        const status = await statusRes.json();
-        updatePersonaUI(status.persona);
-        
-        statPostsCount.textContent = status.postCount || 0;
-        statRejectionsCount.textContent = status.rejectionCount || 0;
-        statMemoryCount.textContent = status.conceptCount || 0;
-        
-        rejectionsBadgeCount.textContent = status.rejectionCount || 0;
-        renderRejections(status.recentRejections || []);
+      if (!statusRes.ok) {
+        showOfflineState(true);
+        return;
       }
+      showOfflineState(false);
+      const statusData = await statusRes.json();
+
+      // Update Header & Telemetry Pills
+      if (activeAgentIdCode) activeAgentIdCode.textContent = statusData.agentId || "ada-bot-001";
+      if (statPostsCount) statPostsCount.textContent = statusData.postCount || 0;
+      if (statRejectionsCount) statRejectionsCount.textContent = statusData.rejectionCount || 0;
+      if (statCuriosityCount) statCuriosityCount.textContent = statusData.unresolvedQuestionsCount || 0;
+      if (statBeliefsCount) statBeliefsCount.textContent = statusData.provisionalBeliefsCount || 0;
+
+      if (telemetryLastCycle) telemetryLastCycle.textContent = formatUtcTime(statusData.lastCycleAt);
+      if (telemetryNextCycle) telemetryNextCycle.textContent = formatUtcTime(statusData.nextCycleAt);
+
+      if (engineStatusBadge) {
+        const loopActive = statusData.isLoopRunning;
+        engineStatusBadge.innerHTML = `<span class="pulse-dot"></span> AUTONOMOUS ENGINE ● ${loopActive ? "ACTIVE" : "WAITING"}`;
+        engineStatusBadge.className = `badge live-badge ${loopActive ? "" : "paused"}`;
+      }
+
+      // Update Memory Lists
+      renderCuriosityQuestions(statusData.unresolvedQuestions || []);
+      renderProvisionalBeliefs(statusData.provisionalBeliefs || []);
+      renderRejections(statusData.recentRejections || []);
 
       // 2. Fetch evaluator feed
       const feedRes = await fetch("/api/agent/feed");
@@ -63,58 +93,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const feedData = await feedRes.json();
         const posts = feedData.posts || [];
         
-        statPostsCount.textContent = posts.length;
-        feedBadgeCount.textContent = posts.length;
-        
+        if (feedBadgeCount) feedBadgeCount.textContent = posts.length;
         renderFeed(posts);
-        jsonViewer.textContent = JSON.stringify(feedData, null, 2);
+        renderDecisionTrace(posts);
+        
+        if (jsonViewer) jsonViewer.textContent = JSON.stringify(feedData, null, 2);
       }
     } catch (err) {
-      console.error("Error loading dashboard data:", err);
+      console.error("[ERROR] Failed loading dashboard telemetry:", err);
+      showOfflineState(true);
     }
   }
 
-  function updatePersonaUI(persona) {
-    if (!persona) return;
-    personaName.textContent = persona.name;
-    personaDomain.textContent = persona.domain;
-    personaTitle.textContent = persona.title;
-    personaTagline.textContent = `"${persona.tagline}"`;
-    
-    if (persona.avatar_color) {
-      personaAvatar.style.backgroundColor = persona.avatar_color;
-      personaAvatar.style.boxShadow = `0 0 20px ${persona.avatar_color}66`;
-    }
-    
-    // Interests
-    interestsTags.innerHTML = (persona.interests || [])
-      .map(tag => `<span class="tag-item">${tag}</span>`)
-      .join("");
-      
-    // Rejection criteria
-    rejectionCriteriaList.innerHTML = (persona.rejection_criteria || [])
-      .map(item => `<li>${item}</li>`)
-      .join("");
-
-    // Set select value
-    if (switchPersonaSelect.value !== persona.id) {
-      switchPersonaSelect.value = persona.id;
+  function showOfflineState(isOffline) {
+    if (!offlineBanner) return;
+    if (isOffline) {
+      offlineBanner.classList.remove("hidden");
+    } else {
+      offlineBanner.classList.add("hidden");
     }
   }
 
   function renderFeed(posts) {
+    if (!feedPostsContainer) return;
     if (!posts || posts.length === 0) {
       feedPostsContainer.innerHTML = `
         <div class="glass-panel" style="padding: 30px; text-align: center; color: var(--text-muted);">
-          <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary);"></i>
-          <p>Autonomous agent discovery in progress... Posts will appear here automatically.</p>
+          <i class="fa-solid fa-microchip" style="font-size: 2rem; margin-bottom: 12px; color: var(--accent-cyan);"></i>
+          <p>FORGE is observing the robotics ecosystem. No publication has met its editorial threshold yet.</p>
         </div>
       `;
       return;
     }
 
     feedPostsContainer.innerHTML = posts.map(post => {
-      const dateStr = new Date(post.createdAt).toLocaleString();
+      const dateStr = formatUtcTime(post.createdAt);
       const sourcesHtml = (post.sources || []).map(src => {
         let label = src;
         try {
@@ -131,11 +144,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="post-time"><i class="fa-regular fa-clock"></i> ${dateStr}</span>
           </div>
 
-          <div class="post-body">${post.text}</div>
+          <div class="post-body">${escapeHtml(post.text)}</div>
 
           <div class="post-rationale-box">
-            <div class="rationale-title"><i class="fa-solid fa-lightbulb"></i> Autonomous Publishing Rationale</div>
-            <div class="rationale-text">${post.rationale}</div>
+            <div class="rationale-title"><i class="fa-solid fa-scale-balanced"></i> Autonomous Publishing Rationale</div>
+            <div class="rationale-text">${escapeHtml(post.rationale)}</div>
           </div>
 
           <div class="post-sources">
@@ -147,84 +160,115 @@ document.addEventListener("DOMContentLoaded", () => {
     }).join("");
   }
 
-  function renderRejections(rejections) {
-    if (!rejections || rejections.length === 0) {
-      rejectionsContainer.innerHTML = `
-        <div class="glass-panel" style="padding: 20px; text-align: center; color: var(--text-muted);">
-          No candidate topics rejected yet.
+  function renderDecisionTrace(posts) {
+    if (!decisionsContainer) return;
+    if (!posts || posts.length === 0) {
+      decisionsContainer.innerHTML = `
+        <div class="glass-panel" style="padding: 24px; text-align: center; color: var(--text-muted);">
+          No decision history recorded yet. FORGE will record comparative candidates when an autonomous cycle publishes.
         </div>
       `;
       return;
     }
 
-    rejectionsContainer.innerHTML = rejections.map(rej => `
+    decisionsContainer.innerHTML = posts.map(post => {
+      const trace = post.structuredDecisionTrace || {};
+      const comp = post.competitiveDecisionRecord || {};
+
+      const alternativesHtml = (comp.strongestRejectedAlternatives || []).map(alt => `
+        <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">
+          • <strong>${escapeHtml(alt.title)}</strong> (Score: ${alt.score}/100) — <span style="color:#fca5a5;">${escapeHtml(alt.rejectionReason)}</span>
+        </div>
+      `).join("");
+
+      return `
+        <div class="decision-card glass-panel">
+          <div class="decision-header">
+            <span class="decision-title"><i class="fa-solid fa-square-check" style="color:var(--accent-green);"></i> Selected: ${escapeHtml(comp.selectedTopicTitle || post.id)}</span>
+            <span class="decision-score-pill">Score: ${comp.selectedScore || 85.0}/100</span>
+          </div>
+          
+          <p style="font-size:0.83rem; color:var(--text-muted);">${escapeHtml(comp.comparativeReasoning || post.rationale)}</p>
+
+          ${alternativesHtml ? `
+            <div class="decision-alternatives-box">
+              <h5><i class="fa-solid fa-shield-cat"></i> Evaluated Alternatives Rejected in Current Cycle:</h5>
+              ${alternativesHtml}
+            </div>
+          ` : ""}
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderCuriosityQuestions(questions) {
+    if (!curiosityQuestionsList) return;
+    if (!questions || questions.length === 0) {
+      curiosityQuestionsList.innerHTML = `<li style="font-style:italic;">No unresolved questions in memory pool yet.</li>`;
+      return;
+    }
+    curiosityQuestionsList.innerHTML = questions.map(q => `
+      <li><i class="fa-solid fa-circle-question" style="color:var(--primary); margin-right:6px;"></i> ${escapeHtml(typeof q === "string" ? q : q.question)}</li>
+    `).join("");
+  }
+
+  function renderProvisionalBeliefs(beliefs) {
+    if (!provisionalBeliefsList) return;
+    if (!beliefs || beliefs.length === 0) {
+      provisionalBeliefsList.innerHTML = `<li style="font-style:italic;">No provisional beliefs recorded yet.</li>`;
+      return;
+    }
+    provisionalBeliefsList.innerHTML = beliefs.map(b => `
+      <li><i class="fa-solid fa-lightbulb" style="color:var(--accent-green); margin-right:6px;"></i> ${escapeHtml(typeof b === "string" ? b : b.statement)}</li>
+    `).join("");
+  }
+
+  function renderRejections(rejections) {
+    if (!rejectionsMemoryContainer) return;
+    if (!rejections || rejections.length === 0) {
+      rejectionsMemoryContainer.innerHTML = `<div style="color:var(--text-dim); font-style:italic; padding:10px;">No candidate topics rejected yet.</div>`;
+      return;
+    }
+
+    rejectionsMemoryContainer.innerHTML = rejections.map(rej => `
       <div class="rejection-card glass-panel">
         <div class="rejection-header">
-          <span class="rejection-title"><i class="fa-solid fa-triangle-exclamation"></i> ${rej.title}</span>
+          <span class="rejection-title"><i class="fa-solid fa-triangle-exclamation"></i> ${escapeHtml(rej.title)}</span>
           <span class="rejection-score">Score: ${rej.score ? rej.score.toFixed(1) : "15.0"}/100</span>
         </div>
-        <p class="rejection-reason">${rej.reason}</p>
-        <div style="font-size: 0.75rem; color: var(--text-dim); display: flex; justify-content: space-between; margin-top: 4px;">
-          <span>Source: ${rej.source_name || "Feed Source"}</span>
-          <span>${new Date(rej.rejectedAt).toLocaleTimeString()}</span>
+        <p class="rejection-reason">${escapeHtml(rej.reason)}</p>
+        <div style="font-size: 0.75rem; color: var(--text-dim); display: flex; justify-content: space-between; margin-top: 6px;">
+          <span>Source: ${escapeHtml(rej.source_name || "Feed Source")}</span>
+          <span>${formatUtcTime(rej.rejectedAt)}</span>
         </div>
       </div>
     `).join("");
   }
 
-  // Switch persona listener
-  switchPersonaSelect.addEventListener("change", async (e) => {
-    const selected = e.target.value;
-    const personaMap = {
-      ada: { name: "Ada", domain: "AI Security" },
-      nova: { name: "Nova", domain: "ML Systems" },
-      cipher: { name: "Cipher", domain: "AI Ethics & Governance" },
-      astra: { name: "Astra", domain: "Robotics & Embodied AI" }
-    };
-    const pData = personaMap[selected] || { name: selected, domain: "AI Tech" };
-
-    try {
-      const res = await fetch("/api/agent/init", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ persona: pData })
-      });
-      if (res.ok) {
-        await loadDashboardData();
-      }
-    } catch (err) {
-      console.error("Failed switching persona:", err);
-    }
-  });
-
-  // Manual Trigger Button
-  manualTriggerBtn.addEventListener("click", async () => {
-    manualTriggerBtn.disabled = true;
-    manualTriggerBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Discovering & Scoring...`;
-    
-    try {
-      await fetch("/api/agent/trigger", { method: "POST" });
-      await loadDashboardData();
-    } catch (err) {
-      console.error("Trigger failed:", err);
-    } finally {
-      manualTriggerBtn.disabled = false;
-      manualTriggerBtn.innerHTML = `<i class="fa-solid fa-bolt"></i> Trigger Tick`;
-    }
-  });
+  function escapeHtml(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
   // Copy JSON Button
-  copyJsonBtn.addEventListener("click", () => {
-    navigator.clipboard.writeText(jsonViewer.textContent);
-    copyJsonBtn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
-    setTimeout(() => {
-      copyJsonBtn.innerHTML = `<i class="fa-regular fa-copy"></i> Copy JSON`;
-    }, 2000);
-  });
+  if (copyJsonBtn && jsonViewer) {
+    copyJsonBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(jsonViewer.textContent);
+      copyJsonBtn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
+      setTimeout(() => {
+        copyJsonBtn.innerHTML = `<i class="fa-regular fa-copy"></i> Copy JSON`;
+      }, 2000);
+    });
+  }
 
   // Initial load
   loadDashboardData();
 
-  // Auto-refresh every 6 seconds to reflect continuous background ticks
+  // Auto-refresh every 6 seconds to reflect continuous background ticks (read-only polling)
   setInterval(loadDashboardData, 6000);
 });
