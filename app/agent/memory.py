@@ -212,9 +212,10 @@ class AgentMemory:
 
     def get_feed(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
         """Returns posts in reverse chronological order (newest first)."""
+        sorted_posts = sorted(self.posts, key=lambda p: p.get("createdAt", ""), reverse=True)
         if limit:
-            return self.posts[:limit]
-        return self.posts
+            return sorted_posts[:limit]
+        return sorted_posts
 
 
 # Global memory instance
