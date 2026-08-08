@@ -1,11 +1,12 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements:
+Verifies contract requirements & Amendment 01:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
 4. Memory deduplication prevents duplicate posts
 5. Autonomous background ticker executes discovery -> evaluation -> publish cycles
+6. Amendment 01 Autonomous Robotics Intelligence System operates independently of publishing layer
 """
 
 import sys
@@ -24,6 +25,7 @@ from app.agent.memory import memory_instance
 from app.agent.discovery import CandidateTopic
 from app.agent.editorial import EditorialEngine
 from app.agent.publisher import publisher_instance
+from app.agent.intelligence import intelligence_instance
 
 
 async def run_tests():
@@ -57,7 +59,6 @@ async def run_tests():
     engine = EditorialEngine(memory_instance)
     persona_ada = resolve_persona("Ada", "Robotics & Autonomous Systems")
     
-    # A candidate topic containing prohibited phrase "crypto" or non-robotics content
     spam_cand = CandidateTopic(
         title="Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
         summary="Spam networks flood social channels with fake announcements for a novel AI token.",
@@ -92,6 +93,16 @@ async def run_tests():
         print(f"[PASS] Autonomous tick generated new post: '{new_post['id']}'")
     else:
         print("[PASS] Autonomous tick completed (candidates evaluated & rejected by editorial filter).")
+
+    # Test 6: Amendment 01 — Autonomous Robotics Intelligence System
+    print("\n[Test 6] Testing Amendment 01 — Autonomous Robotics Intelligence System...")
+    intel_report = await intelligence_instance.analyze_ecosystem(persona_ada)
+    assert "totalEcosystemCandidatesAnalyzed" in intel_report, "Intelligence report missing candidates count"
+    assert "filteredNoiseRatio" in intel_report, "Intelligence report missing noise ratio"
+    print(f"[PASS] Autonomous Robotics Intelligence System active.")
+    print(f"   Analyzed candidates: {intel_report['totalEcosystemCandidatesAnalyzed']}")
+    print(f"   Technically significant deltas: {intel_report['technicallySignificantDeltas']}")
+    print(f"   Filtered noise ratio: {intel_report['filteredNoiseRatio']}")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

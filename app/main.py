@@ -156,7 +156,21 @@ async def get_feed(agentId: Optional[str] = Query(None)):
         raise HTTPException(status_code=500, detail=f"Failed retrieving feed: {str(e)}")
 
 
-# --- Dashboard Support Endpoints ---
+# --- Dashboard & Autonomous Intelligence Endpoints ---
+
+@app.get("/api/agent/intelligence")
+async def get_robotics_intelligence():
+    """
+    AMENDMENT 01 — Core Product Distinction:
+    Autonomous Robotics Intelligence System Endpoint.
+    Returns autonomous engineering attention & judgment analysis (deltas, noise filtering,
+    technical significance rankings, and knowledge connections) independent of the publishing layer.
+    """
+    from app.agent.intelligence import intelligence_instance
+    persona = publisher_instance.active_persona
+    intelligence_report = await intelligence_instance.analyze_ecosystem(persona)
+    return intelligence_report
+
 
 @app.get("/api/agent/status")
 async def get_agent_status():
