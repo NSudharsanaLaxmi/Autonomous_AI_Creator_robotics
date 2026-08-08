@@ -1,12 +1,13 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendment 01:
+Verifies contract requirements & Amendments 01 & 02:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
 4. Memory deduplication prevents duplicate posts
 5. Autonomous background ticker executes discovery -> evaluation -> publish cycles
 6. Amendment 01 Autonomous Robotics Intelligence System operates independently of publishing layer
+7. Amendment 02 Engineering Attention Evaluator enforces 7 Core Tests
 """
 
 import sys
@@ -26,6 +27,7 @@ from app.agent.discovery import CandidateTopic
 from app.agent.editorial import EditorialEngine
 from app.agent.publisher import publisher_instance
 from app.agent.intelligence import intelligence_instance
+from app.agent.attention import EngineeringAttentionEvaluator
 
 
 async def run_tests():
@@ -100,9 +102,22 @@ async def run_tests():
     assert "totalEcosystemCandidatesAnalyzed" in intel_report, "Intelligence report missing candidates count"
     assert "filteredNoiseRatio" in intel_report, "Intelligence report missing noise ratio"
     print(f"[PASS] Autonomous Robotics Intelligence System active.")
-    print(f"   Analyzed candidates: {intel_report['totalEcosystemCandidatesAnalyzed']}")
-    print(f"   Technically significant deltas: {intel_report['technicallySignificantDeltas']}")
-    print(f"   Filtered noise ratio: {intel_report['filteredNoiseRatio']}")
+
+    # Test 7: Amendment 02 — Engineering Attention Gate (7 Core Tests)
+    print("\n[Test 7] Testing Amendment 02 — Engineering Attention Gate (7 Core Tests)...")
+    valid_cand = CandidateTopic(
+        title="Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+        summary="Open weights released for Isaac Sim policy achieving 98% real-world stability under dynamic obstacles.",
+        sources=["https://arxiv.org/abs/2608.03819"],
+        source_name="ArXiv cs.RO",
+        published_at="2026-08-08T14:00:00Z",
+        raw_keywords=["sim-to-real", "bipedal", "torque", "locomotion"]
+    )
+    attn_res = EngineeringAttentionEvaluator.evaluate_attention(valid_cand, memory_instance)
+    assert attn_res.passed_attention_gate, "High-quality robotics candidate MUST pass Engineering Attention Gate"
+    print(f"[PASS] Engineering Attention Gate verified.")
+    print(f"   Attention Score: {attn_res.attention_score:.1f}/100")
+    print(f"   7 Core Tests Passed: {sum(attn_res.to_dict()['7CoreTests'].values())}/7")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

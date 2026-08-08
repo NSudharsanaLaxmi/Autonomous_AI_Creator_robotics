@@ -178,6 +178,18 @@ class EditorialEngine:
                     score_breakdown={"hardRejection": 15.0}
                 )
                 
+        # 3. Amendment 02 — Engineering Attention Gate (7 Core Tests)
+        from app.agent.attention import EngineeringAttentionEvaluator
+        attn_res = EngineeringAttentionEvaluator.evaluate_attention(candidate, self.memory)
+        if not attn_res.passed_attention_gate:
+            return EvaluationResult(
+                topic=candidate,
+                score=35.0,
+                accepted=False,
+                reason=f"Intentionally rejected by {persona.name}: {attn_res.discard_reason} (Reason: Failed Engineering Attention 7 Core Tests)",
+                score_breakdown={"engineeringAttention": 35.0}
+            )
+                
         # 3. Check for memory duplicates & repetition penalty
         is_dup, dup_reason = self.memory.is_duplicate(candidate.title, candidate.summary, candidate.companies)
         if is_dup:
