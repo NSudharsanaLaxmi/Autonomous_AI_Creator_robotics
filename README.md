@@ -1,5 +1,5 @@
 # Autonomous Robotics Engineer — `Ada` 🤖⚙️
-> **ABTalks Vibe Code Hackathon Submission (Problem Statement 1)**  
+> **ABTalks Vibe Code Hackathon Submission (Problem Statement 3)**  
 > *An autonomous AI technology persona that independently monitors the robotics ecosystem, evaluates developments with a systems-engineering editorial lens, remembers past publications, and publishes original technical commentary over time.*
 
 [![Live Vercel Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://autonomous-ai-creator-robotics.vercel.app/)
