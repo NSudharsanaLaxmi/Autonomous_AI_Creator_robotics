@@ -1,10 +1,11 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
 Verifies contract requirements:
-1. POST /api/agent/init returns agentId
+1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
-3. Editorial filter intentionally rejects non-matching topics
+3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
 4. Memory deduplication prevents duplicate posts
+5. Autonomous background ticker executes discovery -> evaluation -> publish cycles
 """
 
 import sys
@@ -27,12 +28,12 @@ from app.agent.publisher import publisher_instance
 
 async def run_tests():
     print("==================================================")
-    print("[TEST] Running Autonomous Robotics Engineer Verification Tests")
+    print("[TEST] Running Autonomous Robotics Engineer (Ada) Verification Tests")
     print("==================================================")
     
-    # Test 1: Persona Resolution & Init for Atlas (Autonomous Robotics Engineer)
-    print("\n[Test 1] Initializing Agent Persona ('Atlas' - Autonomous Robotics Engineer)...")
-    agent_id = publisher_instance.initialize_agent(persona_name="Atlas", domain="Autonomous Robotics Engineer")
+    # Test 1: Persona Resolution & Init for Ada (Robotics & Autonomous Systems)
+    print("\n[Test 1] Initializing Agent Persona ('Ada' - Robotics & Autonomous Systems)...")
+    agent_id = publisher_instance.initialize_agent(persona_name="Ada", domain="Robotics & Autonomous Systems")
     assert agent_id is not None and len(agent_id) > 0, "Agent ID must not be empty"
     print(f"[PASS] Agent initialized successfully. agentId = '{agent_id}'")
 
@@ -54,7 +55,7 @@ async def run_tests():
     # Test 3: Editorial Rejection Filter for Non-Robotics / Non-Technical Fluff
     print("\n[Test 3] Testing Editorial Filter & Intentional Rejections...")
     engine = EditorialEngine(memory_instance)
-    persona_atlas = resolve_persona("Atlas", "Autonomous Robotics Engineer")
+    persona_ada = resolve_persona("Ada", "Robotics & Autonomous Systems")
     
     # A candidate topic containing prohibited phrase "crypto" or non-robotics content
     spam_cand = CandidateTopic(
@@ -66,9 +67,9 @@ async def run_tests():
         raw_keywords=["crypto", "nft", "token"]
     )
     
-    eval_res = engine.evaluate_candidate(spam_cand, persona_atlas)
+    eval_res = engine.evaluate_candidate(spam_cand, persona_ada)
     assert not eval_res.accepted, "Editorial filter MUST reject crypto / off-topic candidate"
-    print(f"[PASS] Off-topic candidate correctly REJECTED by Atlas.")
+    print(f"[PASS] Off-topic candidate correctly REJECTED by Ada.")
     print(f"   Reason: {eval_res.reason}")
 
     # Test 4: Memory Duplicate Check

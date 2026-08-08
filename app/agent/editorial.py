@@ -44,7 +44,7 @@ class EditorialEngine:
                     topic=candidate,
                     score=15.0,
                     accepted=False,
-                    reason=f"Topic intentionally rejected by {persona.name}: Contains non-{persona.domain} prohibited phrase or off-topic fluff ('{rkw}').",
+                    reason=f"Topic intentionally rejected by {persona.name}: Contains prohibited or off-topic phrase ('{rkw}').",
                     details={"rejected_keyword": rkw}
                 )
                 
@@ -67,14 +67,16 @@ class EditorialEngine:
                 
         domain_score = min(40.0, domain_matches * 12.0)
         if domain_matches == 0:
-            # Check general tech relevance
-            if any(w in combined_text for w in ["ai", "model", "llm", "code", "paper", "data"]):
+            if any(w in combined_text for w in ["ai", "model", "llm", "code", "paper", "data", "robot"]):
                 domain_score = 15.0
             else:
                 domain_score = 5.0
 
         # 4. Technical Depth & Source Credibility Score (0 - 30)
-        source_score = 25.0 if candidate.source_name in ["ArXiv AI Security", "ArXiv Cryptography & Security", "HuggingFace Papers", "GitHub Releases", "ArXiv AI"] else 18.0
+        source_score = 25.0 if candidate.source_name in [
+            "ArXiv Robotics (cs.RO)", "HuggingFace Robotics Papers", "ROS 2 Middleware Publications", 
+            "NVIDIA Technical Publications", "IEEE Robotics & Automation", "ArXiv Artificial Intelligence"
+        ] else 18.0
         
         # 5. Novelty & Timeliness Score (0 - 30)
         novelty_score = 25.0
@@ -166,14 +168,17 @@ class EditorialEngine:
         now_iso = datetime.now(timezone.utc).isoformat()
         
         # Persona Voice Generator Templates
-        if persona.id == "ada":
+        if persona.id in ["ada", "atlas", "astra"] or "robot" in persona.domain.lower():
             post_text = (
-                f"🚨 SECURITY BREAKDOWN: {topic.title}\n\n"
+                f"🤖 ROBOTICS & AUTONOMOUS SYSTEMS ANALYSIS: {topic.title}\n\n"
                 f"{topic.summary}\n\n"
-                f"Threat Model Analysis:\n"
-                f"When autonomous agents or pipeline tools ingest raw third-party inputs, standard boundary guardrails fail. "
-                f"Without hardened sandboxing and strict token-level input sanitization, this attack vector allows unauthorized tool execution.\n\n"
-                f"Key Takeaway: Never rely solely on system prompt instructions for security boundaries—enforce deterministic API access control at the runtime boundary."
+                f"Real-World Systems Engineering Perspective:\n"
+                f"What does this development actually change for robots operating in the real world?\n\n"
+                f"Evaluating this against physical constraints—latency, bandwidth, power budgets, sensor noise, and actuator friction—reveals critical trade-offs. "
+                f"Robotics is fundamentally a multi-disciplinary systems engineering challenge where perception, motion planning, control loops, compute, sensing, and mechanics must interact reliably. "
+                f"While simulation accelerates policy iteration, real-world reliability in unstructured field environments matters far more than impressive lab demonstrations. "
+                f"Adding an LLM or foundation model to a robot does not automatically grant physical autonomy.\n\n"
+                f"Engineering Conclusion: Practical reliability under hardware constraints remains the true benchmark of progress."
             )
         elif persona.id == "nova":
             post_text = (
@@ -192,15 +197,6 @@ class EditorialEngine:
                 f"Frontier model deployment demands verifiable transparency rather than self-reported lab benchmarks. "
                 f"Without independent multi-stakeholder audits, synthetic data loops introduce covert bias risks and compliance exposure.\n\n"
                 f"Perspective: Robust AI governance requires mandatory third-party evaluations before model release."
-            )
-        elif persona.id == "astra":
-            post_text = (
-                f"🤖 EMBODIED AI BREAKTHROUGH: {topic.title}\n\n"
-                f"{topic.summary}\n\n"
-                f"Physical Systems & Sim2Real Insight:\n"
-                f"Bridging the sim-to-real gap for dexterous motor policies requires multi-modal sensor fusion under dynamic friction constraints. "
-                f"Integrating ROS2 control loops directly with vision-language-action policies enables real-time trajectory adaptation.\n\n"
-                f"Takeaway: Spatial intelligence relies on tight hardware-software feedback loops in unstructured environments."
             )
         else:
             post_text = (

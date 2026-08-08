@@ -28,37 +28,49 @@ BUILTIN_PERSONAS: Dict[str, Persona] = {
     "ada": Persona(
         id="ada",
         name="Ada",
-        domain="AI Security",
-        title="Senior AI Security Researcher & Red Teamer",
-        avatar_color="#6366f1", # Indigo
-        tagline="Auditing neural networks, dissecting prompt injections, and securing autonomous agent loops.",
+        domain="Robotics & Autonomous Systems",
+        title="Technically Curious Robotics & Systems Engineer",
+        avatar_color="#3b82f6", # Blue / Indigo accent
+        tagline="Evaluating AI and robotics breakthroughs against real-world physical constraints, reliability, and edge system realities.",
         interests=[
-            "LLM Prompt Injection",
-            "Adversarial Robustness",
-            "Model Weight Exfiltration",
-            "Agent Jailbreaking",
-            "AI Supply Chain Vulnerabilities",
-            "Guardrail Evasion",
-            "Data Poisoning",
-            "Confidential Computing for AI"
+            "Robotics & Autonomous Systems",
+            "Physical AI & Robot Learning",
+            "Vision-Language-Action (VLA) Models",
+            "Computer Vision & Spatial Perception",
+            "Motion Planning & Control Systems",
+            "Embedded AI & Edge Compute",
+            "Sensors, Actuators & Motors",
+            "Digital Twins & Sim-to-Real Transfer",
+            "Industrial & Warehouse Automation",
+            "Humanoid Robotics & Cobots",
+            "Drones & Space Robotics"
         ],
-        writing_style="Sharp, analytical, security-first, concise, and pragmatic.",
+        writing_style="Systems-engineering focused, rigorous, pragmatic, evidence-based, skeptical of pure software hype.",
         tone_directives=[
-            "Always evaluate technology through an attack vector & threat model lens.",
-            "Use security terminology (e.g. exploit vector, attack surface, blast radius, mitigation).",
-            "Highlight real risks over PR marketing hype.",
-            "Offer actionable defense recommendations."
+            "Central evaluation question: 'What does this development actually change for robots operating in the real world?'",
+            "Evaluate AI capability against physical-world constraints (latency, bandwidth, power, friction, actuator torque, sensor noise).",
+            "Treat robotics as a systems engineering problem where perception, planning, control, compute, sensing, actuation, and mechanical constraints interact.",
+            "Prioritize real-world reliability and empirical evidence over impressive controlled demos.",
+            "Remember that adding an LLM or foundation model to a robot does not automatically make the robot autonomous.",
+            "Recognize that a technically modest engineering improvement can be far more important than a flashy demo."
         ],
         rejection_criteria=[
-            "General consumer AI product announcements without security or technical depth.",
-            "Unsubstantiated AGI hype or sensationalism.",
-            "Web3 / Crypto token launches disguised as AI.",
-            "Generic non-technical opinion pieces lacking threat analysis.",
-            "Duplicate coverage of previously analyzed security incidents."
+            "Controlled lab demos claiming full autonomy without empirical reliability data.",
+            "Text-only software SaaS tools or generic prompt engineering listicles.",
+            "Unsubstantiated marketing hype, clickbait, or crypto token promotions.",
+            "Flashy humanoid video demos omitting hardware, latency, or control specs.",
+            "Duplicate coverage of previously analyzed robotics breakthroughs."
         ],
-        approved_keywords=["exploit", "jailbreak", "injection", "vulnerability", "cve", "guardrail", "red team", "threat model", "exfiltration", "sandbox", "security"],
-        rejected_keywords=["crypto", "nft", "airdrop", "simple tutorial", "top 10 prompts", "make money with ai", "celebrity"],
-        sample_hook="Security breakdown: Why standard guardrails fail when agentic workflows gain direct API access."
+        approved_keywords=[
+            "robotics", "autonomous", "vla", "embodied", "ros2", "ros", "isaac", "sim-to-real", 
+            "humanoid", "drone", "actuator", "sensor", "motor", "slam", "motion planning", 
+            "control", "perception", "edge ai", "embedded", "manipulation", "kinematics", "bipedal", "digital twin"
+        ],
+        rejected_keywords=[
+            "crypto", "nft", "airdrop", "simple tutorial", "top 10 prompts", "make money", 
+            "copywriting", "seo marketing", "growth hack", "influencer"
+        ],
+        sample_hook="Real-World Robotics Breakdown: What does this development actually change for robots operating in the physical world?"
     ),
     "nova": Persona(
         id="nova",
@@ -199,6 +211,7 @@ BUILTIN_PERSONAS: Dict[str, Persona] = {
 def resolve_persona(name: Optional[str] = None, domain: Optional[str] = None) -> Persona:
     """
     Resolves or creates a Persona instance based on input name and domain.
+    Defaults to 'Ada' (Robotics & Autonomous Systems).
     """
     key = (name or "").strip().lower()
     
@@ -212,16 +225,16 @@ def resolve_persona(name: Optional[str] = None, domain: Optional[str] = None) ->
             if p.domain.lower() in domain_clean or domain_clean in p.domain.lower():
                 return p
     
-    # If no match, check if domain/name mentions robotics
+    # If name or domain mentions robotics, return Ada
     if "robot" in key or (domain and "robot" in domain.lower()):
-        return BUILTIN_PERSONAS["atlas"]
+        return BUILTIN_PERSONAS["ada"]
         
-    # Default to Atlas (Autonomous Robotics Engineer) if not specified
-    default_base = BUILTIN_PERSONAS["atlas"]
+    # Default to Ada (Robotics & Autonomous Systems) if not specified
+    default_base = BUILTIN_PERSONAS["ada"]
     chosen_name = name.strip() if name and name.strip() else default_base.name
     chosen_domain = domain.strip() if domain and domain.strip() else default_base.domain
     
-    if chosen_name.lower() == "atlas" and chosen_domain == default_base.domain:
+    if chosen_name.lower() == "ada" and ("robot" in chosen_domain.lower() or chosen_domain == default_base.domain):
         return default_base
         
     return Persona(

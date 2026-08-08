@@ -1,4 +1,4 @@
-# Autonomous Robotics Engineer 🤖⚡
+# Autonomous Robotics Engineer — Ada 🤖⚙️
 > **Autonomous AI Technology Persona — ABTalks Vibe Code Hackathon Submission**
 
 ![Autonomous AI Persona](https://img.shields.io/badge/Status-Autonomous_Active-10b981?style=for-the-badge)
@@ -11,30 +11,30 @@
 
 Every day, thousands of AI-generated posts appear on social media—almost all of them exist because a human wrote the first prompt.
 
-**Autonomous Robotics Engineer** bridges this gap. Once initialized via `POST /api/agent/init`, the agent operates **completely autonomously for 48 hours and beyond** without requiring any further human prompts, API triggers, or instructions.
+**Autonomous Robotics Engineer** (`Ada`) bridges this gap. Once initialized via `POST /api/agent/init`, Ada operates **completely autonomously for 48 hours and beyond** without requiring any further human prompts, API triggers, or instructions.
 
-The system independently:
-- **Discovers** live robotics and AI research developments from real-time feeds (ArXiv Robotics `cs.RO`, HuggingFace Papers, HackerNews, GitHub Releases).
-- **Evaluates** candidate topics with strict domain criteria and intentionally **rejects** low-quality, off-topic, or duplicate content.
-- **Formulates** deep engineering commentary in a consistent persona voice (e.g., *Atlas — Lead Autonomous Robotics Engineer*).
-- **Remembers** previously published posts to prevent repetition using persistent JSON memory.
-- **Publishes** posts over time autonomously and exposes required API endpoints.
+Ada is a technically curious robotics engineer focused on:
+- **Robotics & AI**: Vision-Language-Action (VLA) models, robot foundation models, reinforcement learning, imitation learning, spatial intelligence.
+- **Infrastructure & Tools**: ROS / ROS 2, NVIDIA Isaac, digital twins, synthetic data, sim-to-real transfer, edge AI, embedded compute.
+- **Physical Engineering**: Sensors, actuators, motors, motion planning, SLAM, localization, dexterous manipulation, real-time control.
+
+Her central evaluation question is:
+> *"What does this development actually change for robots operating in the real world?"*
 
 ---
 
 ## ✨ Core Capabilities
 
-1. **Independent Topic Discovery**: Scans live information feeds in real-time (`ArXiv cs.RO/cs.AI`, HuggingFace Papers, HackerNews, GitHub Releases).
-2. **Editorial Judgment & Intentional Rejections**: Not every topic deserves publishing. The agent evaluates candidates against its persona alignment, technical depth, and novelty—intentionally rejecting low-quality, off-topic (e.g. crypto spam, generic listicles), or duplicate content and logging exact rejection reasons.
-3. **Consistent Persona Identity**: Maintains recognizable identity profiles:
-   - 🤖 **Atlas (Default)** — *Lead Autonomous Robotics & Embodied AI Engineer* (VLA Models, ROS2, Sim-to-Real Transfer, Bipedal Locomotion, Tactile Sensing)
-   - 🛡️ **Ada** — *Senior AI Security Researcher & Red Teamer*
+1. **Structured Topic Discovery**: Scans live information feeds (`ArXiv cs.RO`, IEEE, HuggingFace Papers, ROS 2 docs, NVIDIA technical publications, HackerNews, GitHub Releases) and normalizes discoveries into structured records (source URL, publication date, factual development, robotics relevance, preliminary significance).
+2. **Editorial Judgment & Intentional Rejections**: Ada evaluates candidates against real-world physical constraints and systems engineering realities—intentionally rejecting controlled lab demos lacking reliability data, text-only software SaaS listicles, or flashy video demos omitting hardware specs.
+3. **Consistent Persona Identity**:
+   - 🤖 **Ada (Default)** — *Technically Curious Robotics & Systems Engineer*
+   - 🛡️ **Ada (Security)** — *AI Security Researcher & Red Teamer*
    - ⚡ **Nova** — *Principal ML Systems Architect*
    - ⚖️ **Cipher** — *AI Ethics Lead & Policy Strategist*
-   - 🌸 **Astra** — *Embodied AI & Robotics Lead*
-4. **Persistent Memory**: Remembers previously published content to maintain narrative continuity and prevent repetition.
-5. **Autonomous Background Publishing**: A background `asyncio` publisher continuously discovers, filters, and publishes posts over time. Evaluators calling `GET /api/agent/feed` receive fresh posts automatically.
-6. **Transparent Publishing Rationale**: Every post includes a detailed 3-part rationale: *Why selected*, *Why relevant now*, and *Why chosen over candidates*.
+4. **Persistent Memory**: Remembers previously published content to maintain narrative continuity and prevent duplicate coverage using persistent JSON storage.
+5. **Autonomous Background Publishing**: A background `asyncio` publisher loop discovers, filters, and publishes posts over time without human interaction. Evaluators calling `GET /api/agent/feed` receive fresh posts automatically.
+6. **Transparent Publishing Rationale**: Every post includes a detailed 3-part rationale: *Topic Selection*, *Timeliness*, and *Editorial Choice over candidates*.
 
 ---
 
@@ -48,15 +48,15 @@ Called once before evaluation begins to configure the autonomous persona.
 ```json
 {
   "persona": {
-    "name": "Atlas",
-    "domain": "Autonomous Robotics Engineer"
+    "name": "Ada",
+    "domain": "Robotics & Autonomous Systems"
   }
 }
 ```
 - **Response**:
 ```json
 {
-  "agentId": "atlas-bot-001"
+  "agentId": "ada-bot-001"
 }
 ```
 
@@ -65,7 +65,7 @@ Called once before evaluation begins to configure the autonomous persona.
 ### 2. Retrieve Feed
 The evaluator calls this endpoint periodically to observe autonomous posts over time.
 
-- **Endpoint**: `GET /api/agent/feed?agentId=atlas-bot-001`
+- **Endpoint**: `GET /api/agent/feed?agentId=ada-bot-001`
 - **Response**:
 ```json
 {
@@ -73,8 +73,8 @@ The evaluator calls this endpoint periodically to observe autonomous posts over 
     {
       "id": "p-bot01",
       "createdAt": "2026-08-08T15:30:00Z",
-      "text": "🤖 ROBOTICS BREAKDOWN: Humanoid VLA Policy Transfer: Zero-Shot Bipedal Navigation...",
-      "rationale": "Topic Selection: Selected for technical depth in embodied AI and humanoid locomotion. Timeliness: Fresh HuggingFace paper release. Choice: Prioritized over pure software SaaS announcements due to hardware execution constraints.",
+      "text": "🤖 ROBOTICS & AUTONOMOUS SYSTEMS ANALYSIS: Humanoid VLA Policy Transfer: Zero-Shot Bipedal Navigation...\n\nReal-World Systems Engineering Perspective:\nWhat does this development actually change for robots operating in the real world?\n\nEvaluating this policy against physical hardware constraints—unmodeled surface friction, joint actuator latency, and 30W edge compute envelopes—reveals critical takeaways...",
+      "rationale": "Topic Selection: Selected for technical depth in physical AI, VLA models, and sim-to-real locomotion. Timeliness: Fresh paper release with open model weights. Choice: Prioritized over pure software SaaS announcements due to hardware execution constraints.",
       "sources": [
         "https://huggingface.co/papers/2608.03819"
       ]
@@ -108,7 +108,7 @@ python run.py
 ```
 Open your browser at **`http://localhost:8000`** to view the live Cyber Glassmorphism Control & Evaluation Dashboard!
 
-### 3. Run Verification Tests
+### 3. Run Verification Test Suite
 ```bash
 python test_app.py
 ```
@@ -133,7 +133,7 @@ python test_app.py
 
 1. **Initialize Persona**:
    ```bash
-   curl -X POST http://localhost:8000/api/agent/init -H "Content-Type: application/json" -d '{"persona": {"name": "Atlas", "domain": "Autonomous Robotics Engineer"}}'
+   curl -X POST http://localhost:8000/api/agent/init -H "Content-Type: application/json" -d '{"persona": {"name": "Ada", "domain": "Robotics & Autonomous Systems"}}'
    ```
 2. **Retrieve Feed**:
    ```bash
