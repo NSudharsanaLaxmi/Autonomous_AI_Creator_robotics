@@ -1091,25 +1091,44 @@ The current local time is: 2026-08-08T16:14:34+05:30.
 
 ```text
 <USER_REQUEST>
-## AMENDMENT 01 — CORE PRODUCT DISTINCTION
-
-Do not treat autonomous content generation as the primary objective.
-
-The primary objective is autonomous engineering attention and judgment.
-
-The agent should independently determine:
-
-* what changed in robotics,
-* what deserves investigation,
-* what is technically significant,
-* what is merely noise,
-* what connects to previously observed developments,
-* what deserves an engineering opinion,
-* and when there is nothing worth publishing.
-
-Publishing is an output of this process, not the purpose of the process.
-
-The system should therefore remain useful as an autonomous robotics intelligence system even if the publishing layer is temporarily disabled.
+## AMENDMENT 01 — CORE PRODUCT DISTINCTION
+
+
+
+Do not treat autonomous content generation as the primary objective.
+
+
+
+The primary objective is autonomous engineering attention and judgment.
+
+
+
+The agent should independently determine:
+
+
+
+* what changed in robotics,
+
+* what deserves investigation,
+
+* what is technically significant,
+
+* what is merely noise,
+
+* what connects to previously observed developments,
+
+* what deserves an engineering opinion,
+
+* and when there is nothing worth publishing.
+
+
+
+Publishing is an output of this process, not the purpose of the process.
+
+
+
+The system should therefore remain useful as an autonomous robotics intelligence system even if the publishing layer is temporarily disabled.
+
 
 </USER_REQUEST>
 <ADDITIONAL_METADATA>
@@ -1258,33 +1277,60 @@ The current local time is: 2026-08-08T16:25:31+05:30.
 
 ```text
 <USER_REQUEST>
-## AMENDMENT 07 — ENGINEERING REALITY CHECK
-
-For technically significant developments, FORGE should perform an engineering reality check before publication.
-
-Ask:
-
-* What is demonstrated?
-* What is claimed?
-* What evidence supports the claim?
-* What assumptions does the system depend on?
-* What has not been demonstrated?
-* What would be required for deployment outside the reported environment?
-* What could become the bottleneck?
-
-Do not automatically criticize developments.
-
-The purpose is not negativity.
-
-The purpose is to distinguish:
-
-DEMONSTRATION
-from
-CAPABILITY
-from
-DEPLOYMENT READINESS.
-
-Only apply this analysis when relevant to the topic.
+## AMENDMENT 07 — ENGINEERING REALITY CHECK
+
+
+
+For technically significant developments, FORGE should perform an engineering reality check before publication.
+
+
+
+Ask:
+
+
+
+* What is demonstrated?
+
+* What is claimed?
+
+* What evidence supports the claim?
+
+* What assumptions does the system depend on?
+
+* What has not been demonstrated?
+
+* What would be required for deployment outside the reported environment?
+
+* What could become the bottleneck?
+
+
+
+Do not automatically criticize developments.
+
+
+
+The purpose is not negativity.
+
+
+
+The purpose is to distinguish:
+
+
+
+DEMONSTRATION
+
+from
+
+CAPABILITY
+
+from
+
+DEPLOYMENT READINESS.
+
+
+
+Only apply this analysis when relevant to the topic.
+
 
 </USER_REQUEST>
 <ADDITIONAL_METADATA>
@@ -1645,98 +1691,74 @@ The current local time is: 2026-08-08T16:45:01+05:30.
 
 ```text
 <USER_REQUEST>
-# PROMPTS.MD — TRANSPARENT AI USAGE LOG
-
-Create a file at the repository root:
-
-`PROMPTS.md`
-
-Populate it with the prompts I have actually given you during this project.
-
-## Rules
-
-1. Copy my prompts **verbatim wherever the exact text is available**.
-2. Preserve the original wording, structure, terminology, mistakes, and formatting as much as reasonably possible.
-3. Do NOT rewrite, improve, summarize, paraphrase, or consolidate my prompts.
-4. Do NOT invent prompts that I did not give you.
-5. Do NOT add prompts simply because they would have been useful.
-6. Do NOT fabricate dates, timestamps, commit hashes, implementation results, or development steps.
-7. Do NOT make the prompt history look more organized or sophisticated than it actually was.
-8. If multiple prompts were given separately, keep them as separate entries.
-9. Preserve the chronological order in which the prompts were given, wherever that order is available.
-10. Include the actual prompts related to:
-
-* project conception,
-* persona design,
-* architecture,
-* implementation,
-* debugging,
-* testing,
-* security,
-* deployment,
-* prompt refinement,
-* and any other project-development activity.
-
-11. Do not include ordinary conversational messages that had nothing to do with developing this project.
-12. Do not modify the actual project code as part of this task unless necessary to create the file.
-
-## Format
-
-Use a very simple chronological format:
-
-# AI Usage Log
-
-## Prompt 1
-
-```text
-[exact prompt]
-```
-
-## Prompt 2
-
-```text
-[exact prompt]
-```
-
-## Prompt 3
-
-```text
-[exact prompt]
-```
-
-Continue until all available project-related prompts have been documented.
-
-## Missing History
-
-If you do not have access to the exact wording of an earlier prompt, do NOT reconstruct it.
-
-Instead write:
-
-```text
-[Exact prompt unavailable in current context]
-```
-
-Only include this placeholder when necessary.
-
-## Important
-
-This file is an authenticity record for the hackathon.
-
-Its purpose is transparency.
-
-Do not optimize the history for judging.
-
-Do not make it sound more professional.
-
-Do not remove prompts because they contain mistakes or early ideas.
-
-Do not add explanations between prompts unless they are necessary to distinguish separate prompts.
-
-The final `PROMPTS.md` should represent the actual AI-assisted development conversation as faithfully as possible.
+# PROMPTS.MD — TRANSPARENT AI USAGE LOG
 
-</USER_REQUEST>
-<ADDITIONAL_METADATA>
-The current local time is: 2026-08-08T16:55:00+05:30.
-</ADDITIONAL_METADATA>
-```
+
+
+Create a file at the repository root:
+
+
+
+`PROMPTS.md`
+
+
+
+Populate it with the prompts I have actually given you during this project.
+
+
+
+## Rules
+
+
+
+1. Copy my prompts **verbatim wherever the exact text is available**.
+
+2. Preserve the original wording, structure, terminology, mistakes, and formatting as much as reasonably possible.
+
+3. Do NOT rewrite, improve, summarize, paraphrase, or consolidate my prompts.
+
+4. Do NOT invent prompts that I did not give you.
+
+5. Do NOT add prompts simply because they would have been useful.
+
+6. Do NOT fabricate dates, timestamps, commit hashes, implementation results, or development steps.
+
+7. Do NOT make the prompt history look more organized or sophisticated than it actually was.
+
+8. If multiple prompts were given separately, keep them as separate entries.
+
+9. Preserve the chronological order in which the prompts were given, wherever that order is available.
+
+10. Include the actual prompts related to:
+
+
+
+* project conception,
+
+* persona design,
+
+* architecture,
+
+* implementation,
+
+* debugging,
+
+* testing,
+
+* security,
+
+* deployment,
+
+* prompt refinement,
+
+* and any other project-development activity.
+
+
+
+11. Do not include ordinary conversational messages that had nothing to do with developing this project.
+
+12. Do not modify the actual project code as part of this task unless necessary to create the file.
+
+
+
 
