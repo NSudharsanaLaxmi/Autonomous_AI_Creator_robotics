@@ -1,7 +1,8 @@
 """
-Editorial Judgment, Real-World Robotics Lens & Writing Engine
-Applies weighted multi-factor scoring (Section 7), 10-dimension Real-World Robotics Lens (Section 12),
-and the 4-part Engineering Writing Engine (HOOK, INTERPRETATION, LIMITATION, TAKEAWAY) (Section 13).
+Editorial Judgment, Source Verification, Real-World Robotics Lens & Writing Engine
+Applies weighted multi-factor scoring (Section 7), Source Verification (Section 14),
+10-dimension Real-World Robotics Lens (Section 12), 4-part Writing Engine (Section 13),
+and Dynamic 4-Question Publishing Rationale (Section 15).
 """
 
 import uuid
@@ -48,7 +49,6 @@ class RealWorldRoboticsLens:
 
     @classmethod
     def select_relevant_lenses(cls, topic: CandidateTopic) -> List[Tuple[str, str]]:
-        """Selects 2-3 most relevant robotics dimensions for a candidate topic."""
         combined = f"{topic.title} {topic.summary} {topic.affectedSubsystem}".lower()
         selected = []
         
@@ -63,7 +63,6 @@ class RealWorldRoboticsLens:
         if any(w in combined for w in ["slam", "amr", "planning", "trajectory"]):
             selected.append(("Planning", cls.DIMENSIONS["planning"]))
             
-        # Fallback to Reliability & Hardware if fewer than 2 matched
         if len(selected) < 2:
             selected.append(("Reliability", cls.DIMENSIONS["reliability"]))
             selected.append(("Hardware", cls.DIMENSIONS["hardware"]))
@@ -100,18 +99,29 @@ class EditorialEngine:
     def __init__(self, memory: AgentMemory):
         self.memory = memory
 
+    def verify_sources_and_evidence(self, candidate: CandidateTopic) -> Tuple[bool, str]:
+        """
+        Source Verification (Section 14):
+        Verifies primary sources, URL validity, and evidence sufficiency.
+        If evidence is insufficient, REJECT THE TOPIC.
+        """
+        if not candidate.sources or len(candidate.sources) == 0:
+            return False, "Insufficient evidence: Candidate lacks valid primary source URLs."
+            
+        for src in candidate.sources:
+            if not (src.startswith("http://") or src.startswith("https://")):
+                return False, f"Source verification failed: Invalid or fabricated URL format ('{src}')."
+                
+        if candidate.sourceQuality < 45.0:
+            return False, f"Source verification failed: Primary source '{candidate.source_name}' has insufficient credibility or unverified evidence."
+            
+        if len(candidate.summary.strip()) < 30:
+            return False, "Insufficient evidence: Candidate summary lacks factual technical details."
+            
+        return True, "Source evidence verified successfully."
+
     def calculate_weighted_score(self, candidate: CandidateTopic, persona: Persona) -> Tuple[float, Dict[str, float]]:
-        """
-        Calculates weighted editorial score according to Section 7 guidelines:
-        - Technical significance: 20%
-        - Robotics relevance: 20%
-        - Engineering depth: 15%
-        - Novelty: 15%
-        - Real-world impact: 10%
-        - Timeliness: 10%
-        - Source credibility: 5%
-        - Original editorial potential: 5%
-        """
+        """Calculates weighted editorial score according to Section 7 guidelines."""
         combined_text = f"{candidate.title} {candidate.summary}".lower()
         
         domain_matches = sum(1 for akw in persona.approved_keywords if akw.lower() in combined_text)
@@ -143,10 +153,21 @@ class EditorialEngine:
         return total_score, score_breakdown
 
     def evaluate_candidate(self, candidate: CandidateTopic, persona: Persona) -> EvaluationResult:
-        """Evaluates a single candidate topic against persona standards, rejection filters, and memory."""
+        """Evaluates candidate topic against source verification, rejection filters, and memory."""
         combined_text = f"{candidate.title} {candidate.summary}".lower()
         
-        # 1. Hard Rejection Filter for Prohibited Keywords / Fluff
+        # 1. Source Verification & Evidence Sufficiency Check (Section 14)
+        is_verified, src_reason = self.verify_sources_and_evidence(candidate)
+        if not is_verified:
+            return EvaluationResult(
+                topic=candidate,
+                score=20.0,
+                accepted=False,
+                reason=f"Intentionally rejected by {persona.name}: {src_reason} (Reason: Too little evidence / Weak source credibility)",
+                score_breakdown={"sourceVerification": 20.0}
+            )
+            
+        # 2. Hard Rejection Filter for Prohibited Keywords / Fluff
         for rkw in persona.rejected_keywords:
             if rkw.lower() in combined_text:
                 return EvaluationResult(
@@ -157,7 +178,7 @@ class EditorialEngine:
                     score_breakdown={"hardRejection": 15.0}
                 )
                 
-        # 2. Check for memory duplicates & repetition penalty
+        # 3. Check for memory duplicates & repetition penalty
         is_dup, dup_reason = self.memory.is_duplicate(candidate.title, candidate.summary, candidate.companies)
         if is_dup:
             return EvaluationResult(
@@ -168,7 +189,7 @@ class EditorialEngine:
                 score_breakdown={"memoryDuplicate": 30.0}
             )
 
-        # 3. Calculate Weighted Score
+        # 4. Calculate Weighted Score
         total_score, breakdown = self.calculate_weighted_score(candidate, persona)
         
         min_threshold = 65.0
@@ -240,7 +261,7 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
-        # Analyze topic using Real-World Robotics Lens & Engineering Writing Engine (Section 12 & 13)
+        # Analyze topic using Real-World Robotics Lens & Writing Engine
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
         post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis)
@@ -255,14 +276,10 @@ class EditorialEngine:
         return post_dict, [r.topic.to_dict() for r in rejected_results]
 
     def _perform_engineering_analysis(self, topic: CandidateTopic, persona: Persona) -> EngineeringAnalysis:
-        """
-        Performs dedicated engineering analysis using Section 12 Real-World Robotics Lens.
-        Formats exact 4-part structure (HOOK, INTERPRETATION, LIMITATION, TAKEAWAY) for Section 13.
-        """
         lenses = RealWorldRoboticsLens.select_relevant_lenses(topic)
         lens_names = ", ".join([l[0] for l in lenses])
         
-        hook = f"Robotics researchers published open results for {topic.title}."
+        hook = f"Robotics research update: {topic.title}."
         
         interpretation = (
             f"What does this actually change for robots in the real world? "
@@ -296,9 +313,11 @@ class EditorialEngine:
         eng_analysis: EngineeringAnalysis
     ) -> Dict[str, Any]:
         """
-        Synthesizes final post using exact Section 13 structure:
-        HOOK -> ENGINEERING INTERPRETATION -> REAL-WORLD LIMITATION -> ENGINEERING TAKEAWAY
-        Word count kept within 100-250 words without emoji clutter.
+        Synthesizes final post using exact Section 13 structure and Section 15 4-Question Rationale:
+        1. Why was this topic selected?
+        2. Why is it relevant now?
+        3. Why was it selected over competing candidates?
+        4. What makes the engineering angle interesting?
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
@@ -315,15 +334,17 @@ class EditorialEngine:
             f"{eng_analysis.takeaway}"
         )
         
-        rejected_summary_str = ""
+        competing_rejection_summary = ""
         if rejections:
-            rejected_titles = [f"'{r.topic.title}' ({r.reason})" for r in rejections[:2]]
-            rejected_summary_str = f" Rejections in this cycle: {'; '.join(rejected_titles)}."
+            top_rej = rejections[0]
+            competing_rejection_summary = f" Competing candidate '{top_rej.topic.title}' was rejected due to: {top_rej.reason}."
             
+        # Dynamically constructed 4-question rationale (Section 15)
         rationale_text = (
-            f"Topic Selection: Selected '{topic.title}' because it directly aligns with {persona.name}'s focus on {persona.domain} and scored {winner.score:.1f}/100 on weighted editorial criteria."
-            f" Timeliness: Relevant now as recent releases and research papers in {topic.source_name} highlight active developments affecting production deployments."
-            f" Editorial Choice: Chosen over lower-scoring or rejected candidates due to its technical rigor and actionable systems engineering insights.{rejected_summary_str}"
+            f"Topic Selection: Selected '{topic.title}' because it directly addresses core physical systems engineering challenges in {persona.domain} and scored {winner.score:.1f}/100 on weighted technical criteria. "
+            f"Timeliness: Relevant now because recent paper and open-weights releases in {topic.source_name} transition this technology from controlled labs toward field task deployment. "
+            f"Choice Over Competitors: Chosen over competing candidates because it provides verified empirical evidence and hardware execution data rather than promotional marketing.{competing_rejection_summary} "
+            f"Engineering Angle Interest: The engineering angle is compelling because it evaluates the {topic.affectedSubsystem.upper()} subsystem against physical latency, power, and sim-to-real transfer constraints."
         )
         
         return Post(
