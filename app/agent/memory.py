@@ -1,9 +1,9 @@
 """
-Persistent Agent Memory Engine (Section 10 & Amendment 03)
+Persistent Agent Memory Engine (Section 10 & Amendments 03, 04, 05)
 Maintains 5 explicit memory structures:
 1. Published Memory: Post ID, Topic, Timestamp, Main argument, Editorial angle, Sources, Technologies, Companies, Keywords.
 2. Rejected Memory: Topic, Timestamp, Rejection reason, Score, Candidate representation.
-3. Editorial Memory: Recurring themes, Stable opinions, Topics frequently discussed, Topics recently covered.
+3. Editorial Memory: Recurring themes, Stable opinions, Provisional Engineering Beliefs (Amendment 05).
 4. Similarity Memory: Checks duplicate stories, duplicate arguments, duplicate hooks, repetitive source coverage, and company repetition.
 5. Curiosity Memory (Amendment 03): Persistent unresolved engineering questions arising naturally from observed developments.
 """
@@ -84,7 +84,7 @@ class AgentMemory:
         # 2. Rejected Memory
         self.rejected_topics: List[Dict[str, Any]] = []
         
-        # 3. Editorial Memory
+        # 3. Editorial Memory & Provisional Beliefs (Amendment 05)
         self.editorial_themes: List[str] = [
             "Sim-to-real transfer bottlenecks",
             "Physical hardware execution vs software simulation",
@@ -94,6 +94,7 @@ class AgentMemory:
         ]
         self.company_coverage_counts: Dict[str, int] = {}
         self.concept_index: List[str] = []
+        self.provisional_beliefs: List[Dict[str, Any]] = []
         
         # 5. Curiosity Memory (Amendment 03)
         self.unresolved_questions: List[Dict[str, Any]] = []
@@ -116,8 +117,9 @@ class AgentMemory:
                     self.editorial_themes = data.get("editorial_themes", self.editorial_themes)
                     self.company_coverage_counts = data.get("company_coverage_counts", {})
                     self.concept_index = data.get("concept_index", [])
+                    self.provisional_beliefs = data.get("provisional_beliefs", [])
                     self.unresolved_questions = data.get("unresolved_questions", [])
-                    logger.info(f"Loaded {len(self.posts)} posts, {len(self.rejected_topics)} rejections, and {len(self.unresolved_questions)} curiosity questions.")
+                    logger.info(f"Loaded {len(self.posts)} posts, {len(self.rejected_topics)} rejections, {len(self.provisional_beliefs)} beliefs, and {len(self.unresolved_questions)} curiosity questions.")
             except Exception as e:
                 logger.error(f"Failed loading memory file: {e}")
 
@@ -132,6 +134,7 @@ class AgentMemory:
                     "editorial_themes": self.editorial_themes,
                     "company_coverage_counts": self.company_coverage_counts,
                     "concept_index": self.concept_index,
+                    "provisional_beliefs": self.provisional_beliefs,
                     "unresolved_questions": self.unresolved_questions
                 }, f, indent=2)
         except Exception as e:

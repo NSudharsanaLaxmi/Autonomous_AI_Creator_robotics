@@ -273,6 +273,10 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
+        # Amendment 05 — Belief Evolution Engine: Evaluate & evolve provisional engineering beliefs
+        from app.agent.beliefs import BeliefEvolutionEngine
+        belief_res, belief_note = BeliefEvolutionEngine.evaluate_and_evolve(winner.topic, self.memory)
+        
         # Amendment 04 — Memory as Context: Retrieve historical context & classify relationship (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
         from app.agent.context import CognitiveMemoryContextEngine
         cog_context = CognitiveMemoryContextEngine.retrieve_and_reason(winner.topic, self.memory)
@@ -288,7 +292,7 @@ class EditorialEngine:
         # Analyze topic using Real-World Robotics Lens & Writing Engine
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
-        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context)
+        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context, belief_note)
         
         self.memory.add_post(
             post_dict, 
@@ -336,16 +340,18 @@ class EditorialEngine:
         persona: Persona,
         eng_analysis: EngineeringAnalysis,
         updated_understanding: Optional[str] = None,
-        cog_context: Optional[Any] = None
+        cog_context: Optional[Any] = None,
+        belief_note: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, Amendment 04 cognitive memory context, and Section 15 4-Question Rationale.
+        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, Amendment 04 cognitive memory context, Amendment 05 belief evolution, and Section 15 4-Question Rationale.
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
         now_iso = datetime.now(timezone.utc).isoformat()
         
         curiosity_str = f"\n\n{updated_understanding}" if updated_understanding else ""
+        belief_str = f"\n\n{belief_note}" if belief_note else ""
         
         post_text = (
             f"HOOK\n"
@@ -357,6 +363,7 @@ class EditorialEngine:
             f"ENGINEERING TAKEAWAY\n"
             f"{eng_analysis.takeaway}"
             f"{curiosity_str}"
+            f"{belief_str}"
         )
         
         competing_rejection_summary = ""

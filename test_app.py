@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -10,6 +10,7 @@ Verifies contract requirements & Amendments 01, 02, 03, 04:
 7. Amendment 02 Engineering Attention Evaluator enforces 7 Core Tests
 8. Amendment 03 Autonomous Curiosity Engine generates natural open questions & updates understanding
 9. Amendment 04 Cognitive Memory Context Engine classifies relationships (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
+10. Amendment 05 Belief Evolution Engine tracks provisional engineering beliefs (REMAIN, WEAKEN, EVOLVE)
 """
 
 import sys
@@ -32,6 +33,7 @@ from app.agent.intelligence import intelligence_instance
 from app.agent.attention import EngineeringAttentionEvaluator
 from app.agent.curiosity import AutonomousCuriosityEngine
 from app.agent.context import CognitiveMemoryContextEngine
+from app.agent.beliefs import BeliefEvolutionEngine
 
 
 async def run_tests():
@@ -129,14 +131,20 @@ async def run_tests():
         memory_instance.add_question(q)
     print(f"[PASS] Curiosity Engine generated {len(questions)} natural engineering questions.")
 
-    # Test 9: Amendment 04 — Memory as Context (4 Conceptual Layers & Relationship Classification)
+    # Test 9: Amendment 04 — Memory as Context Engine
     print("\n[Test 9] Testing Amendment 04 — Memory as Context Engine...")
     cog_res = CognitiveMemoryContextEngine.retrieve_and_reason(valid_cand, memory_instance)
     assert cog_res.relationship_type in ["CONFIRMS", "CONTRADICTS", "EXTENDS", "UNRELATED"], "Invalid cognitive relationship classification"
-    print(f"[PASS] Cognitive Memory Context Engine verified.")
-    print(f"   Historical Relation: {cog_res.has_historical_relation}")
-    print(f"   Relationship Type: {cog_res.relationship_type}")
-    print(f"   Cognitive Reasoning: '{cog_res.cognitive_reasoning}'")
+    print(f"[PASS] Cognitive Memory Context Engine verified. Relationship: {cog_res.relationship_type}")
+
+    # Test 10: Amendment 05 — Belief Evolution Engine
+    print("\n[Test 10] Testing Amendment 05 — Belief Evolution Engine...")
+    belief_res, note = BeliefEvolutionEngine.evaluate_and_evolve(valid_cand, memory_instance)
+    assert len(memory_instance.provisional_beliefs) > 0, "Provisional engineering beliefs must be stored in memory"
+    print(f"[PASS] Belief Evolution Engine verified.")
+    print(f"   Active Provisional Beliefs in Memory: {len(memory_instance.provisional_beliefs)}")
+    if belief_res:
+        print(f"   Belief Evolution Triggered ({belief_res.action}): '{belief_res.updated_stance}'")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")
