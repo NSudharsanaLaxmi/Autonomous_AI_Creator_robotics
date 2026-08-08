@@ -220,6 +220,13 @@ Store enriched rejection schema (evidenceConsidered, reEvaluationEligible, reEva
 Allow dynamic unblocking & re-evaluation when fresh primary evidence or higher significance emerges.
 ```
 
+### Amendment 10 — Competitive Topic Selection Prompt (`editorial.py`)
+```text
+Make publishing decision comparative rather than absolute.
+Preserve competitive decision record: selectedTopicId, strongestRejectedAlternatives, and comparativeReasoning.
+Never fabricate alternatives after decision — ground comparison strictly on actual candidates evaluated in the exact cycle.
+```
+
 ---
 
 ## 10. Deployment Prompts

@@ -404,23 +404,33 @@ class EditorialEngine:
         )
         
         competing_rejection_summary = ""
+        strongest_alternatives = []
         if rejections:
-            top_rej = rejections[0]
-            competing_rejection_summary = f" Competing candidate '{top_rej.topic.title}' was rejected due to: {top_rej.reason}."
+            top_rejs = rejections[:3]
+            strongest_alternatives = [
+                {
+                    "topicId": r.topic.topicId,
+                    "title": r.topic.title,
+                    "score": round(r.score, 1),
+                    "rejectionReason": r.reason
+                } for r in top_rejs
+            ]
+            alt_titles = ", ".join([f"'{r.topic.title}' (Score: {r.score:.1f}, {r.reason})" for r in top_rejs])
+            competing_rejection_summary = f" Evaluated against real candidates in this cycle: {alt_titles}. '{topic.title}' was selected over these alternatives due to higher technical significance and empirical source verification."
             
         cog_summary = ""
         if cog_context and cog_context.has_historical_relation:
             cog_summary = f" Historical Memory Context ({cog_context.relationship_type}): {cog_context.cognitive_reasoning}"
 
-        # Dynamically constructed 4-question rationale (Section 15 & Amendment 04)
+        # Dynamically constructed 4-question rationale (Section 15, Amendment 04, Amendment 10)
         rationale_text = (
             f"Topic Selection: Selected '{topic.title}' because it directly addresses core physical systems engineering challenges in {persona.domain} and scored {winner.score:.1f}/100 on weighted technical criteria.{cog_summary} "
             f"Timeliness: Relevant now because recent paper and open-weights releases in {topic.source_name} transition this technology from controlled labs toward field task deployment. "
-            f"Choice Over Competitors: Chosen over competing candidates because it provides verified empirical evidence and hardware execution data rather than promotional marketing.{competing_rejection_summary} "
+            f"Choice Over Competitors: Chosen over competing candidates evaluated in this exact cycle.{competing_rejection_summary} "
             f"Engineering Angle Interest: The engineering angle is compelling because it evaluates the {topic.affectedSubsystem.upper()} subsystem against physical latency, power, and sim-to-real transfer constraints."
         )
         
-        return Post(
+        post_obj = Post(
             post_id=post_id,
             created_at=now_iso,
             text=post_text,
@@ -428,3 +438,11 @@ class EditorialEngine:
             sources=topic.sources,
             engineering_analysis=eng_analysis.to_dict()
         )
+        post_obj["competitiveDecisionRecord"] = {
+            "selectedTopicId": topic.topicId,
+            "selectedTopicTitle": topic.title,
+            "selectedScore": round(winner.score, 1),
+            "strongestRejectedAlternatives": strongest_alternatives,
+            "comparativeReasoning": f"Selected '{topic.title}' (Score: {winner.score:.1f}) over {len(strongest_alternatives)} candidate alternatives in current cycle because it provides verified technical evidence and physical impact rather than unverified marketing hype."
+        }
+        return post_obj
