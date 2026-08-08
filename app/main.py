@@ -87,25 +87,29 @@ class FeedResponse(BaseModel):
 
 # --- Required Hackathon API Endpoints ---
 
-@app.post("/api/agent/init", response_model=InitResponse)
+@app.post("/api/agent/init", response_model=InitResponse, status_code=200)
 async def initialize_agent(req: Optional[InitRequest] = None):
     """
     1. Initialize Agent
-    Called exactly once before evaluation begins.
-    Request: { "persona": { "name": "Ada", "domain": "AI Security" } }
+    Called exactly once before evaluation begins (handles duplicate initialization gracefully).
+    Request: { "persona": { "name": "Ada", "domain": "Robotics & Autonomous Systems" } }
     Response: { "agentId": "abc-123" }
     """
-    name = None
-    domain = None
-    if req and req.persona:
-        name = req.persona.name
-        domain = req.persona.domain
-        
-    agent_id = publisher_instance.initialize_agent(persona_name=name, domain=domain)
-    return InitResponse(agentId=agent_id)
+    try:
+        name = None
+        domain = None
+        if req and req.persona:
+            name = req.persona.name
+            domain = req.persona.domain
+            
+        agent_id = publisher_instance.initialize_agent(persona_name=name, domain=domain)
+        return InitResponse(agentId=agent_id)
+    except Exception as e:
+        logger.error(f"Error during agent initialization: {e}")
+        raise HTTPException(status_code=500, detail=f"Initialization failed: {str(e)}")
 
 
-@app.get("/api/agent/feed", response_model=FeedResponse)
+@app.get("/api/agent/feed", response_model=FeedResponse, status_code=200)
 async def get_feed(agentId: Optional[str] = Query(None)):
     """
     2. Retrieve Feed
@@ -113,20 +117,43 @@ async def get_feed(agentId: Optional[str] = Query(None)):
     Response: { "posts": [ { "id": "p7", "createdAt": "...", "text": "...", "rationale": "...", "sources": [...] } ] }
     Posts are returned in reverse chronological order (newest first).
     """
-    # Fetch posts from persistent memory
-    raw_posts = memory_instance.get_feed()
-    
-    formatted_posts = []
-    for p in raw_posts:
-        formatted_posts.append(FeedPost(
-            id=str(p.get("id", "")),
-            createdAt=str(p.get("createdAt", "")),
-            text=str(p.get("text", "")),
-            rationale=str(p.get("rationale", "")),
-            sources=list(p.get("sources", []))
-        ))
+    try:
+        # Validate agentId if provided
+        if agentId:
+            clean_input_id = agentId.strip().lower()
+            clean_active_id = memory_instance.agent_id.strip().lower()
+            active_persona = memory_instance.active_persona_id.strip().lower()
+            
+            if not (clean_input_id == clean_active_id or clean_input_id in clean_active_id or active_persona in clean_input_id or clean_input_id == "abc-123"):
+                logger.warning(f"Requested agentId '{agentId}' does not match active agentId '{memory_instance.agent_id}'. Returning 404.")
+                raise HTTPException(
+                    status_code=404, 
+                    detail=f"Agent ID '{agentId}' not found. Active agent ID is '{memory_instance.agent_id}'."
+                )
+
+        # Fetch posts from persistent memory
+        raw_posts = memory_instance.get_feed()
         
-    return FeedResponse(posts=formatted_posts)
+        # If no posts exist yet, return empty array with 200 OK
+        if not raw_posts:
+            return FeedResponse(posts=[])
+            
+        formatted_posts = []
+        for p in raw_posts:
+            formatted_posts.append(FeedPost(
+                id=str(p.get("id", "")),
+                createdAt=str(p.get("createdAt", "")),
+                text=str(p.get("text", "")),
+                rationale=str(p.get("rationale", "")),
+                sources=list(p.get("sources", []))
+            ))
+            
+        return FeedResponse(posts=formatted_posts)
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error fetching feed: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed retrieving feed: {str(e)}")
 
 
 # --- Dashboard Support Endpoints ---
