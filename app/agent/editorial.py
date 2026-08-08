@@ -285,6 +285,10 @@ class EditorialEngine:
         accepted_results.sort(key=lambda x: x.score, reverse=True)
         winner = accepted_results[0]
         
+        # Amendment 07 — Engineering Reality Check Engine (Distinguishes DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS)
+        from app.agent.reality_check import EngineeringRealityCheckEngine
+        reality_check_res = EngineeringRealityCheckEngine.perform_reality_check(winner.topic)
+        
         # Amendment 05 — Belief Evolution Engine: Evaluate & evolve provisional engineering beliefs
         from app.agent.beliefs import BeliefEvolutionEngine
         belief_res, belief_note = BeliefEvolutionEngine.evaluate_and_evolve(winner.topic, self.memory)
@@ -304,7 +308,7 @@ class EditorialEngine:
         # Analyze topic using Real-World Robotics Lens & Writing Engine
         eng_analysis = self._perform_engineering_analysis(winner.topic, persona)
         
-        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context, belief_note)
+        post_dict = self._synthesize_post(winner, rejected_results, persona, eng_analysis, updated_understanding_str, cog_context, belief_note, reality_check_res)
         
         self.memory.add_post(
             post_dict, 
@@ -353,10 +357,11 @@ class EditorialEngine:
         eng_analysis: EngineeringAnalysis,
         updated_understanding: Optional[str] = None,
         cog_context: Optional[Any] = None,
-        belief_note: Optional[str] = None
+        belief_note: Optional[str] = None,
+        reality_check_res: Optional[Any] = None
     ) -> Dict[str, Any]:
         """
-        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, Amendment 04 cognitive memory context, Amendment 05 belief evolution, and Section 15 4-Question Rationale.
+        Synthesizes final post using exact Section 13 structure, Amendment 03 curiosity loop, Amendment 04 cognitive memory context, Amendment 05 belief evolution, Amendment 07 reality check, and Section 15 4-Question Rationale.
         """
         topic = winner.topic
         post_id = f"p-{uuid.uuid4().hex[:6]}"
@@ -365,6 +370,10 @@ class EditorialEngine:
         curiosity_str = f"\n\n{updated_understanding}" if updated_understanding else ""
         belief_str = f"\n\n{belief_note}" if belief_note else ""
         
+        rc_str = ""
+        if reality_check_res:
+            rc_str = f"\n\n{reality_check_res.format_summary()}"
+
         post_text = (
             f"HOOK\n"
             f"{topic.title}\n\n"
@@ -376,6 +385,7 @@ class EditorialEngine:
             f"{eng_analysis.takeaway}"
             f"{curiosity_str}"
             f"{belief_str}"
+            f"{rc_str}"
         )
         
         competing_rejection_summary = ""

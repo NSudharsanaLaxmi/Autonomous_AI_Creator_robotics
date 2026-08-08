@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -12,6 +12,7 @@ Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06:
 9. Amendment 04 Cognitive Memory Context Engine classifies relationships (CONFIRMS, CONTRADICTS, EXTENDS, UNRELATED)
 10. Amendment 05 Belief Evolution Engine tracks provisional engineering beliefs (REMAIN, WEAKEN, EVOLVE)
 11. Amendment 06 Novelty vs Significance Matrix Evaluator rejects Quadrant III trending fluff
+12. Amendment 07 Engineering Reality Check Engine distinguishes DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS
 """
 
 import sys
@@ -36,6 +37,7 @@ from app.agent.curiosity import AutonomousCuriosityEngine
 from app.agent.context import CognitiveMemoryContextEngine
 from app.agent.beliefs import BeliefEvolutionEngine
 from app.agent.matrix import NoveltySignificanceMatrixEvaluator
+from app.agent.reality_check import EngineeringRealityCheckEngine
 
 
 async def run_tests():
@@ -119,7 +121,8 @@ async def run_tests():
         sources=["https://arxiv.org/abs/2608.03819"],
         source_name="ArXiv cs.RO",
         published_at="2026-08-08T14:00:00Z",
-        raw_keywords=["sim-to-real", "bipedal", "torque", "locomotion"]
+        raw_keywords=["sim-to-real", "bipedal", "torque", "locomotion"],
+        source_quality=85.0
     )
     attn_res = EngineeringAttentionEvaluator.evaluate_attention(valid_cand, memory_instance)
     assert attn_res.passed_attention_gate, "High-quality robotics candidate MUST pass Engineering Attention Gate"
@@ -145,7 +148,7 @@ async def run_tests():
     assert len(memory_instance.provisional_beliefs) > 0, "Provisional engineering beliefs must be stored in memory"
     print(f"[PASS] Belief Evolution Engine verified. Active Beliefs: {len(memory_instance.provisional_beliefs)}")
 
-    # Test 11: Amendment 06 — Novelty vs Significance Matrix (Trending Fluff Rejection)
+    # Test 11: Amendment 06 — Novelty vs Significance Matrix
     print("\n[Test 11] Testing Amendment 06 — Novelty vs Significance Matrix...")
     trending_fluff = CandidateTopic(
         title="Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
@@ -161,9 +164,16 @@ async def run_tests():
     )
     matrix_res = NoveltySignificanceMatrixEvaluator.evaluate_matrix(trending_fluff)
     assert not matrix_res.is_publishable, "Trending fluff with low technical significance MUST be rejected (Quadrant III)"
-    print(f"[PASS] Novelty vs Significance Matrix verified.")
-    print(f"   Quadrant: {matrix_res.quadrant} ({matrix_res.quadrant_name})")
-    print(f"   Rejection Reason: {matrix_res.rejection_reason}")
+    print(f"[PASS] Novelty vs Significance Matrix verified. Quadrant: {matrix_res.quadrant}")
+
+    # Test 12: Amendment 07 — Engineering Reality Check Engine
+    print("\n[Test 12] Testing Amendment 07 — Engineering Reality Check Engine...")
+    rc_res = EngineeringRealityCheckEngine.perform_reality_check(valid_cand)
+    assert rc_res.maturity_level in ["DEMONSTRATION", "CAPABILITY", "DEPLOYMENT READINESS"], "Invalid reality check maturity level"
+    print(f"[PASS] Engineering Reality Check Engine verified.")
+    print(f"   Maturity Level: {rc_res.maturity_level}")
+    print(f"   Demonstrated: '{rc_res.demonstrated[:60]}...'")
+    print(f"   Primary Bottleneck: '{rc_res.primary_bottleneck}'")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")
