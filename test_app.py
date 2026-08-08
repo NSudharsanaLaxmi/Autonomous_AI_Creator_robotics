@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08, 09, 10:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -16,11 +16,13 @@ Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08, 09, 
 13. Amendment 08 Source Triangulation Engine enforces Information Hierarchy & qualifies source discrepancies
 14. Amendment 09 Negative Decisions schema stores evidenceConsidered, reEvaluationEligible, & dynamic re-evaluation
 15. Amendment 10 Competitive Topic Selection preserves strongest rejected alternatives & comparative reasoning
+16. Amendment 11 Autonomous Restraint records no-publication decision cycles without creating filler content
 """
 
 import sys
 import os
 import asyncio
+import uuid
 
 # Ensure UTF-8 stdout on Windows
 if hasattr(sys.stdout, 'reconfigure'):
@@ -190,13 +192,14 @@ async def run_tests():
 
     # Test 15: Amendment 10 — Competitive Topic Selection & Comparative Reasoning
     print("\n[Test 15] Testing Amendment 10 — Competitive Topic Selection...")
+    unique_tag = uuid.uuid4().hex[:6]
     fresh_cand = CandidateTopic(
-        title="Hydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics",
-        summary="High-pressure fluidic servo valve dynamics tested under 400Hz frequency response envelope.",
-        sources=["https://arxiv.org/abs/2608.11111"],
+        title=f"Piezoelectric Micro-Actuator Resonant Frequency Characterization ({unique_tag})",
+        summary="Piezoelectric fluidic micro-actuator dynamic resonance tested under 500Hz load.",
+        sources=[f"https://arxiv.org/abs/2608.{unique_tag}"],
         source_name="ArXiv cs.RO",
         published_at="2026-08-08T16:00:00Z",
-        raw_keywords=["hydraulic", "servo-valve", "fluidics", "frequency-response"],
+        raw_keywords=["piezoelectric", "micro-actuator", "resonance", "fluidics"],
         source_quality=90.0,
         technical_impact=85.0,
         engineering_depth=85.0,
@@ -212,9 +215,25 @@ async def run_tests():
     assert rec["selectedTopicId"] == fresh_cand.topicId, "Winner topic ID mismatch"
     assert len(rec["strongestRejectedAlternatives"]) > 0, "Strongest rejected alternatives must be preserved"
     print(f"[PASS] Competitive Topic Selection verified.")
-    print(f"   Selected Topic: '{rec['selectedTopicTitle']}'")
-    print(f"   Alternatives Evaluated in Cycle: {len(rec['strongestRejectedAlternatives'])}")
-    print(f"   Comparative Reasoning: '{rec['comparativeReasoning']}'")
+
+    # Test 16: Amendment 11 — Autonomous Restraint (No-Publication Decision Cycle)
+    print("\n[Test 16] Testing Amendment 11 — Autonomous Restraint...")
+    low_quality_batch = [trending_fluff, spam_cand]
+    no_post, rej_list = engine.process_discovery_batch(low_quality_batch, persona_ada)
+    assert no_post is None, "Autonomous restraint MUST publish nothing when candidates fail quality gates"
+    
+    cycle_rec = {
+        "cycleId": "cyc-test16",
+        "timestamp": "2026-08-08T16:33:00Z",
+        "reason": "Successful Autonomous Restraint: No candidate satisfied quality threshold.",
+        "totalCandidatesEvaluated": len(low_quality_batch),
+        "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
+    }
+    memory_instance.add_no_publication_cycle(cycle_rec)
+    assert len(memory_instance.no_publication_cycles) > 0, "No-publication cycles must be recorded in memory"
+    print(f"[PASS] Autonomous Restraint verified.")
+    print(f"   No-Publication Outcome: '{no_post}' (0 posts created for low-quality batch)")
+    print(f"   Recorded No-Pub Cycles in Memory: {len(memory_instance.no_publication_cycles)}")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

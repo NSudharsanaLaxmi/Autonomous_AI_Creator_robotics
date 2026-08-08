@@ -107,6 +107,9 @@ class AgentMemory:
         # 5. Curiosity Memory (Amendment 03)
         self.unresolved_questions: List[Dict[str, Any]] = []
         
+        # 6. Autonomous Restraint Memory (Amendment 11)
+        self.no_publication_cycles: List[Dict[str, Any]] = []
+        
         self._ensure_dir()
         self.load()
 
@@ -127,7 +130,8 @@ class AgentMemory:
                     self.concept_index = data.get("concept_index", [])
                     self.provisional_beliefs = data.get("provisional_beliefs", [])
                     self.unresolved_questions = data.get("unresolved_questions", [])
-                    logger.info(f"Loaded {len(self.posts)} posts, {len(self.rejected_topics)} rejections, {len(self.provisional_beliefs)} beliefs, and {len(self.unresolved_questions)} curiosity questions.")
+                    self.no_publication_cycles = data.get("no_publication_cycles", [])
+                    logger.info(f"Loaded {len(self.posts)} posts, {len(self.rejected_topics)} rejections, {len(self.provisional_beliefs)} beliefs, and {len(self.no_publication_cycles)} no-pub cycles.")
             except Exception as e:
                 logger.error(f"Failed loading memory file: {e}")
 
@@ -143,10 +147,18 @@ class AgentMemory:
                     "company_coverage_counts": self.company_coverage_counts,
                     "concept_index": self.concept_index,
                     "provisional_beliefs": self.provisional_beliefs,
-                    "unresolved_questions": self.unresolved_questions
+                    "unresolved_questions": self.unresolved_questions,
+                    "no_publication_cycles": self.no_publication_cycles
                 }, f, indent=2)
         except Exception as e:
             logger.error(f"Failed saving memory file: {e}")
+
+    def add_no_publication_cycle(self, cycle_record: Dict[str, Any]):
+        """Records a successful no-publication cycle under Amendment 11 Autonomous Restraint."""
+        self.no_publication_cycles.insert(0, cycle_record)
+        if len(self.no_publication_cycles) > 50:
+            self.no_publication_cycles = self.no_publication_cycles[:50]
+        self.save()
 
     def add_question(self, question_dict: Dict[str, Any]):
         """Adds a natural engineering question into persistent curiosity memory (Amendment 03)."""

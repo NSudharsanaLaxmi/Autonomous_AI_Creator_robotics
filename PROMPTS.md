@@ -227,6 +227,14 @@ Preserve competitive decision record: selectedTopicId, strongestRejectedAlternat
 Never fabricate alternatives after decision — ground comparison strictly on actual candidates evaluated in the exact cycle.
 ```
 
+### Amendment 11 — Autonomous Restraint Prompt (`publisher.py` & `memory.py`)
+```text
+Complete autonomous cycle without publishing if no candidate satisfies threshold.
+Do not create filler content, repeat old topics, or manufacture opinions.
+Record cycle as a no-publication decision in persistent memory (no_publication_cycles).
+Continuous independent judgment is the objective, not continuous output.
+```
+
 ---
 
 ## 10. Deployment Prompts

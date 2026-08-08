@@ -3,6 +3,48 @@
   "active_persona_id": "ada",
   "posts": [
     {
+      "id": "p-f222cd",
+      "createdAt": "2026-08-08T11:05:38.485146+00:00",
+      "text": "HOOK\nPiezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)\n\nENGINEERING INTERPRETATION\nWhat does this actually change for robots in the real world? Evaluating through the lens of Reliability, Hardware, this work addresses fundamental physical execution bottlenecks. Rather than relying on high-level LLM reasoning alone, it couples spatial representations directly with low-latency control loops.\n\nREAL-WORLD LIMITATION\nWhile simulation policy transfer is improving, unmodeled surface friction, joint actuator latency, and thermal compute budgets remain major deployment bottlenecks. A policy that functions in a controlled environment is not yet a reliable field-ready system.\n\nENGINEERING TAKEAWAY\nWatch for empirical benchmarks measuring long-horizon task execution repeatability and edge inference latency on physical hardware.\n\nENGINEERING REALITY CHECK [Maturity Level: DEMONSTRATION]\n\u2022 Demonstrated: Controlled laboratory proof-of-concept demonstration (Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)).\n\u2022 Claimed vs Proven: Promising autonomous capabilities for future robotics platforms.. Video trajectory clips and published synthetic simulation benchmarks.\n\u2022 Assumptions & Bottlenecks: Depends on Idealized simulation dynamics with zero actuator latency spikes.. Sim-to-real domain gap and high-frequency torque control latency. remains key bottleneck.\n\u2022 Path to Deployment Readiness: Zero-shot sim-to-real transfer validation on physical robot arms/bipeds.",
+      "rationale": "Topic Selection: Selected 'Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)' because it directly addresses core physical systems engineering challenges in Robotics & Autonomous Systems and scored 82.8/100 on weighted technical criteria. Timeliness: Relevant now because recent paper and open-weights releases in ArXiv cs.RO transition this technology from controlled labs toward field task deployment. Choice Over Competitors: Chosen over competing candidates evaluated in this exact cycle. Evaluated against real candidates in this cycle: 'Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral' (Score: 40.0, Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)), 'Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network' (Score: 15.0, Intentionally rejected: Contains non-technical or promotional prohibited phrase ('crypto'). (Reason: Primarily promotional content / Generic AI hype)). 'Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)' was selected over these alternatives due to higher technical significance and empirical source verification. Engineering Angle Interest: The engineering angle is compelling because it evaluates the CONTROL subsystem against physical latency, power, and sim-to-real transfer constraints.",
+      "sources": [
+        "https://arxiv.org/abs/2608.1d504c"
+      ],
+      "engineeringAnalysis": {
+        "hook": "Robotics research update: Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c).",
+        "interpretation": "What does this actually change for robots in the real world? Evaluating through the lens of Reliability, Hardware, this work addresses fundamental physical execution bottlenecks. Rather than relying on high-level LLM reasoning alone, it couples spatial representations directly with low-latency control loops.",
+        "limitation": "While simulation policy transfer is improving, unmodeled surface friction, joint actuator latency, and thermal compute budgets remain major deployment bottlenecks. A policy that functions in a controlled environment is not yet a reliable field-ready system.",
+        "takeaway": "Watch for empirical benchmarks measuring long-horizon task execution repeatability and edge inference latency on physical hardware.",
+        "relevantLenses": [
+          "Reliability",
+          "Hardware"
+        ]
+      },
+      "companies": [],
+      "technologies": [],
+      "keywords": [],
+      "competitiveDecisionRecord": {
+        "selectedTopicId": "top-a5c20925",
+        "selectedTopicTitle": "Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)",
+        "selectedScore": 82.8,
+        "strongestRejectedAlternatives": [
+          {
+            "topicId": "top-6d0e9217",
+            "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+            "score": 40.0,
+            "rejectionReason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)"
+          },
+          {
+            "topicId": "top-3f3e3e18",
+            "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+            "score": 15.0,
+            "rejectionReason": "Intentionally rejected: Contains non-technical or promotional prohibited phrase ('crypto'). (Reason: Primarily promotional content / Generic AI hype)"
+          }
+        ],
+        "comparativeReasoning": "Selected 'Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)' (Score: 82.8) over 2 candidate alternatives in current cycle because it provides verified technical evidence and physical impact rather than unverified marketing hype."
+      }
+    },
+    {
       "id": "p-3ab215",
       "createdAt": "2026-08-08T11:02:55.491643+00:00",
       "text": "HOOK\nHydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics\n\nENGINEERING INTERPRETATION\nWhat does this actually change for robots in the real world? Evaluating through the lens of Reliability, Hardware, this work addresses fundamental physical execution bottlenecks. Rather than relying on high-level LLM reasoning alone, it couples spatial representations directly with low-latency control loops.\n\nREAL-WORLD LIMITATION\nWhile simulation policy transfer is improving, unmodeled surface friction, joint actuator latency, and thermal compute budgets remain major deployment bottlenecks. A policy that functions in a controlled environment is not yet a reliable field-ready system.\n\nENGINEERING TAKEAWAY\nWatch for empirical benchmarks measuring long-horizon task execution repeatability and edge inference latency on physical hardware.\n\nENGINEERING REALITY CHECK [Maturity Level: DEMONSTRATION]\n\u2022 Demonstrated: Controlled laboratory proof-of-concept demonstration (Hydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics).\n\u2022 Claimed vs Proven: Promising autonomous capabilities for future robotics platforms.. Video trajectory clips and published synthetic simulation benchmarks.\n\u2022 Assumptions & Bottlenecks: Depends on Idealized simulation dynamics with zero actuator latency spikes.. Sim-to-real domain gap and high-frequency torque control latency. remains key bottleneck.\n\u2022 Path to Deployment Readiness: Zero-shot sim-to-real transfer validation on physical robot arms/bipeds.",
@@ -64,6 +106,1697 @@
     }
   ],
   "rejected_topics": [
+    {
+      "id": "top-3f3e3e18",
+      "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+      "source_url": "https://example.com/spam-news",
+      "source_name": "Clickbait Tech Blog",
+      "rejectedAt": "2026-08-08T11:05:38.542334+00:00",
+      "reason": "Intentionally rejected: Contains non-technical or promotional prohibited phrase ('crypto'). (Reason: Primarily promotional content / Generic AI hype)",
+      "score": 15.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-3f3e3e18",
+        "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "summary": "Spam networks flood social channels with fake announcements for a novel AI token.",
+        "sources": [
+          "https://example.com/spam-news"
+        ],
+        "sourceName": "Clickbait Tech Blog",
+        "publishedAt": "2026-08-08T12:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 70.0,
+        "novelty": 70.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 70.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 70.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "crypto",
+          "nft",
+          "token"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Clickbait Tech Blog",
+        "https://example.com/spam-news"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": false,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-6d0e9217",
+      "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+      "source_url": "https://example.com/viral-video",
+      "source_name": "Trending Social Feed",
+      "rejectedAt": "2026-08-08T11:05:38.510160+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-6d0e9217",
+        "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "summary": "Viral social media video shows a humanoid robot dancing with zero technical paper or open weights.",
+        "sources": [
+          "https://example.com/viral-video"
+        ],
+        "sourceName": "Trending Social Feed",
+        "publishedAt": "2026-08-08T15:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 20.0,
+        "novelty": 95.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 20.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 20.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "viral",
+          "teaser",
+          "dance"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Trending Social Feed",
+        "https://example.com/viral-video"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-3f3e3e18",
+      "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+      "source_url": "https://example.com/spam-news",
+      "source_name": "Clickbait Tech Blog",
+      "rejectedAt": "2026-08-08T11:05:38.435395+00:00",
+      "reason": "Intentionally rejected: Contains non-technical or promotional prohibited phrase ('crypto'). (Reason: Primarily promotional content / Generic AI hype)",
+      "score": 15.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-3f3e3e18",
+        "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "summary": "Spam networks flood social channels with fake announcements for a novel AI token.",
+        "sources": [
+          "https://example.com/spam-news"
+        ],
+        "sourceName": "Clickbait Tech Blog",
+        "publishedAt": "2026-08-08T12:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 70.0,
+        "novelty": 70.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 70.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 70.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "crypto",
+          "nft",
+          "token"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Clickbait Tech Blog",
+        "https://example.com/spam-news"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": false,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-6d0e9217",
+      "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+      "source_url": "https://example.com/viral-video",
+      "source_name": "Trending Social Feed",
+      "rejectedAt": "2026-08-08T11:05:38.413346+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-6d0e9217",
+        "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "summary": "Viral social media video shows a humanoid robot dancing with zero technical paper or open weights.",
+        "sources": [
+          "https://example.com/viral-video"
+        ],
+        "sourceName": "Trending Social Feed",
+        "publishedAt": "2026-08-08T15:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 20.0,
+        "novelty": 95.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 20.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 20.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "viral",
+          "teaser",
+          "dance"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Trending Social Feed",
+        "https://example.com/viral-video"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-3368884e",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.436869+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-3368884e",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 702 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.339142+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-7113464f",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.420027+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-7113464f",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 36 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.339087+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 43.6,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-68a37992",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.405368+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-68a37992",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 243 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.339049+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 64.3,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://genesisopenmodels.anl.gov/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-55767450",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.388325+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-55767450",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 646 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.339005+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://arcprize.org/results/deepseek-v4-flash-0731"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-7f0fa5f7",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.368012+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-7f0fa5f7",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 227 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.338934+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.7,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-2241805f",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:35.341738+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-2241805f",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 122 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:35.338826+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 52.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://github.com/xoreaxeaxeax/rosenbridge"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-2ff8ee77",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.421864+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-2ff8ee77",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 701 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316887+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-39c69648",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.408207+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-39c69648",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 36 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316794+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 43.6,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-f02589db",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.385064+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-f02589db",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 242 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316728+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 64.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://genesisopenmodels.anl.gov/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-7354c780",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.369396+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-7354c780",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 646 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316657+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://arcprize.org/results/deepseek-v4-flash-0731"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-aeb8d3f2",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.343684+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-aeb8d3f2",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 227 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316546+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.7,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-d0491fa1",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:05:12.319976+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-d0491fa1",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 122 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:05:12.316390+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 52.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://github.com/xoreaxeaxeax/rosenbridge"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-48a7eb6b",
+      "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+      "source_url": "https://example.com/spam-news",
+      "source_name": "Clickbait Tech Blog",
+      "rejectedAt": "2026-08-08T11:04:53.465454+00:00",
+      "reason": "Intentionally rejected: Contains non-technical or promotional prohibited phrase ('crypto'). (Reason: Primarily promotional content / Generic AI hype)",
+      "score": 15.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-48a7eb6b",
+        "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "summary": "Spam networks flood social channels with fake announcements for a novel AI token.",
+        "sources": [
+          "https://example.com/spam-news"
+        ],
+        "sourceName": "Clickbait Tech Blog",
+        "publishedAt": "2026-08-08T12:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 70.0,
+        "novelty": 70.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 70.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 70.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "crypto",
+          "nft",
+          "token"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Clickbait Tech Blog",
+        "https://example.com/spam-news"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": false,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-afdda874",
+      "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+      "source_url": "https://example.com/viral-video",
+      "source_name": "Trending Social Feed",
+      "rejectedAt": "2026-08-08T11:04:53.436030+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-afdda874",
+        "title": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "summary": "Viral social media video shows a humanoid robot dancing with zero technical paper or open weights.",
+        "sources": [
+          "https://example.com/viral-video"
+        ],
+        "sourceName": "Trending Social Feed",
+        "publishedAt": "2026-08-08T15:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 20.0,
+        "novelty": 95.0,
+        "timeliness": 80.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 20.0,
+        "sourceQuality": 80.0,
+        "realWorldImpact": 20.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Super Viral Startup Teaser: Flashy Humanoid Robot Dance Video Going Viral",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "viral",
+          "teaser",
+          "dance"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "Trending Social Feed",
+        "https://example.com/viral-video"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-d32ce34a",
+      "title": "Hydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics",
+      "source_url": "https://arxiv.org/abs/2608.11111",
+      "source_name": "ArXiv cs.RO",
+      "rejectedAt": "2026-08-08T11:04:53.410097+00:00",
+      "reason": "Intentionally rejected due to memory constraint: High conceptual overlap with previous post 'p-3ab215' on topics: pressure, servo, biped (Reason: Duplicate topic / Previously covered angle)",
+      "score": 30.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-d32ce34a",
+        "title": "Hydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics",
+        "summary": "High-pressure fluidic servo valve dynamics tested under 400Hz frequency response envelope.",
+        "sources": [
+          "https://arxiv.org/abs/2608.11111"
+        ],
+        "sourceName": "ArXiv cs.RO",
+        "publishedAt": "2026-08-08T16:00:00Z",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 85.0,
+        "timeliness": 85.0,
+        "roboticsRelevance": 75.0,
+        "engineeringDepth": 85.0,
+        "sourceQuality": 90.0,
+        "realWorldImpact": 85.0,
+        "editorialPotential": 75.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Hydraulic Pressure Servo Valve Dynamic Frequency Analysis for Biped Kinematics",
+        "affectedSubsystem": "control",
+        "rawKeywords": [
+          "hydraulic",
+          "servo-valve",
+          "fluidics",
+          "frequency-response"
+        ],
+        "companies": [],
+        "technologies": []
+      },
+      "evidenceConsidered": [
+        "ArXiv cs.RO",
+        "https://arxiv.org/abs/2608.11111"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-e2230f89",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.488459+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-e2230f89",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 701 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379903+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-d001faeb",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.462475+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-d001faeb",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 36 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379846+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 43.6,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-47ffc9b7",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.445369+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-47ffc9b7",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 242 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379805+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 64.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://genesisopenmodels.anl.gov/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-a4187dd1",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.430021+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-a4187dd1",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 646 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379759+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://arcprize.org/results/deepseek-v4-flash-0731"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-0c9d36af",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.412934+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-0c9d36af",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 227 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379683+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.7,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-2308d7e4",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:50.383888+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-2308d7e4",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 122 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:50.379569+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 52.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://github.com/xoreaxeaxeax/rosenbridge"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-8466a122",
+      "title": "What happens if an entire class of workers loses faith in their careers",
+      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.664059+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-8466a122",
+        "title": "What happens if an entire class of workers loses faith in their careers",
+        "summary": "HackerNews story with 701 points discussing: What happens if an entire class of workers loses faith in their careers",
+        "sources": [
+          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.557950+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "what",
+          "happens",
+          "if",
+          "an",
+          "entire",
+          "class",
+          "of",
+          "workers",
+          "loses",
+          "faith",
+          "in",
+          "their",
+          "careers"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-93ac1318",
+      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.646243+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-93ac1318",
+        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "summary": "HackerNews story with 36 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "sources": [
+          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.557838+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 43.6,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "new",
+          "amazon",
+          "data",
+          "center",
+          "is",
+          "set",
+          "to",
+          "have",
+          "the",
+          "most",
+          "polluting",
+          "power",
+          "plant",
+          "in",
+          "the",
+          "u.s."
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-1ac3e140",
+      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+      "source_url": "https://genesisopenmodels.anl.gov/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.630001+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-1ac3e140",
+        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "summary": "HackerNews story with 242 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "sources": [
+          "https://genesisopenmodels.anl.gov/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.557760+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 64.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "u.s.",
+          "department",
+          "of",
+          "energy",
+          "launches",
+          "the",
+          "genesis",
+          "open",
+          "models",
+          "initiative"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://genesisopenmodels.anl.gov/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-8787ae04",
+      "title": "DeepSeek V4 Flash 0731",
+      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.612507+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-8787ae04",
+        "title": "DeepSeek V4 Flash 0731",
+        "summary": "HackerNews story with 646 points discussing: DeepSeek V4 Flash 0731",
+        "sources": [
+          "https://arcprize.org/results/deepseek-v4-flash-0731"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.557667+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 85.0,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "DeepSeek V4 Flash 0731",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "deepseek",
+          "v4",
+          "flash",
+          "0731"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://arcprize.org/results/deepseek-v4-flash-0731"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-f4c977cf",
+      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.592661+00:00",
+      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
+      "score": 35.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-f4c977cf",
+        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "summary": "HackerNews story with 227 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "sources": [
+          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.556823+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 62.7,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 35.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "a",
+          "physicist",
+          "rigged",
+          "his",
+          "pet",
+          "hamster\u2019s",
+          "wheel",
+          "to",
+          "upload",
+          "to",
+          "strava"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
+    {
+      "id": "top-a0a07585",
+      "title": "Hardware backdoors in some x86 CPUs",
+      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
+      "source_name": "HackerNews",
+      "rejectedAt": "2026-08-08T11:04:33.561131+00:00",
+      "reason": "Intentionally rejected by Ada: Rejected by Novelty-Significance Matrix: High trending novelty but low technical significance (Significance < 60.0). (Quadrant: Q3)",
+      "score": 40.0,
+      "personaId": "ada",
+      "candidateRepresentation": {
+        "topicId": "top-a0a07585",
+        "title": "Hardware backdoors in some x86 CPUs",
+        "summary": "HackerNews story with 122 points discussing: Hardware backdoors in some x86 CPUs",
+        "sources": [
+          "https://github.com/xoreaxeaxeax/rosenbridge"
+        ],
+        "sourceName": "HackerNews",
+        "publishedAt": "2026-08-08T11:04:33.555827+00:00",
+        "domain": "Robotics & Autonomous Systems",
+        "technicalImpact": 52.2,
+        "novelty": 75.0,
+        "timeliness": 90.0,
+        "roboticsRelevance": 65.0,
+        "engineeringDepth": 60.0,
+        "sourceQuality": 70.0,
+        "realWorldImpact": 60.0,
+        "editorialPotential": 70.0,
+        "overallScore": 0.0,
+        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
+        "affectedSubsystem": "planning",
+        "rawKeywords": [
+          "hardware",
+          "backdoors",
+          "in",
+          "some",
+          "x86",
+          "cpus"
+        ],
+        "companies": [
+          "HackerNews Community"
+        ],
+        "technologies": [
+          "Tech Stack"
+        ]
+      },
+      "evidenceConsidered": [
+        "HackerNews",
+        "https://github.com/xoreaxeaxeax/rosenbridge"
+      ],
+      "relatedPreviousTopics": [],
+      "reEvaluationEligible": true,
+      "reEvaluatedStatus": "REJECTED"
+    },
     {
       "id": "top-8c706434",
       "title": "Pump-and-Dump AI Crypto Token Promoted by Automated Bot Network",
@@ -3685,1557 +5418,6 @@
           "Tech Stack"
         ]
       }
-    },
-    {
-      "id": "top-e8e9b7a1",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:55:02.007798+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-e8e9b7a1",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 223 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:55:01.989589+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.3,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-df486c4a",
-      "title": "Hardware backdoors in some x86 CPUs",
-      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:55:01.993063+00:00",
-      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.6/100).",
-      "score": 57.57,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-df486c4a",
-        "title": "Hardware backdoors in some x86 CPUs",
-        "summary": "HackerNews story with 116 points discussing: Hardware backdoors in some x86 CPUs",
-        "sources": [
-          "https://github.com/xoreaxeaxeax/rosenbridge"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:55:01.989486+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 51.6,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 65.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 57.57,
-        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "hardware",
-          "backdoors",
-          "in",
-          "some",
-          "x86",
-          "cpus"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-c6d9013e",
-      "title": "What happens if an entire class of workers loses faith in their careers",
-      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.445773+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-c6d9013e",
-        "title": "What happens if an entire class of workers loses faith in their careers",
-        "summary": "HackerNews story with 693 points discussing: What happens if an entire class of workers loses faith in their careers",
-        "sources": [
-          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293648+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "what",
-          "happens",
-          "if",
-          "an",
-          "entire",
-          "class",
-          "of",
-          "workers",
-          "loses",
-          "faith",
-          "in",
-          "their",
-          "careers"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-c830e59f",
-      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.394172+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-c830e59f",
-        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "summary": "HackerNews story with 23 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "sources": [
-          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293553+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 42.3,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "new",
-          "amazon",
-          "data",
-          "center",
-          "is",
-          "set",
-          "to",
-          "have",
-          "the",
-          "most",
-          "polluting",
-          "power",
-          "plant",
-          "in",
-          "the",
-          "u.s."
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-f98efc4f",
-      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-      "source_url": "https://genesisopenmodels.anl.gov/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.373306+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-f98efc4f",
-        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "summary": "HackerNews story with 239 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "sources": [
-          "https://genesisopenmodels.anl.gov/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293485+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 63.9,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "u.s.",
-          "department",
-          "of",
-          "energy",
-          "launches",
-          "the",
-          "genesis",
-          "open",
-          "models",
-          "initiative"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-520d1ea8",
-      "title": "DeepSeek V4 Flash 0731",
-      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.332185+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-520d1ea8",
-        "title": "DeepSeek V4 Flash 0731",
-        "summary": "HackerNews story with 644 points discussing: DeepSeek V4 Flash 0731",
-        "sources": [
-          "https://arcprize.org/results/deepseek-v4-flash-0731"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293409+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "DeepSeek V4 Flash 0731",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "deepseek",
-          "v4",
-          "flash",
-          "0731"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-ca9eb74d",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.316118+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-ca9eb74d",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 223 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293289+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.3,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-3f420a49",
-      "title": "Hardware backdoors in some x86 CPUs",
-      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:53:14.298174+00:00",
-      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.6/100).",
-      "score": 57.57,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-3f420a49",
-        "title": "Hardware backdoors in some x86 CPUs",
-        "summary": "HackerNews story with 116 points discussing: Hardware backdoors in some x86 CPUs",
-        "sources": [
-          "https://github.com/xoreaxeaxeax/rosenbridge"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:53:14.293150+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 51.6,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 65.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 57.57,
-        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "hardware",
-          "backdoors",
-          "in",
-          "some",
-          "x86",
-          "cpus"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-e5016118",
-      "title": "What happens if an entire class of workers loses faith in their careers",
-      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.344145+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-e5016118",
-        "title": "What happens if an entire class of workers loses faith in their careers",
-        "summary": "HackerNews story with 693 points discussing: What happens if an entire class of workers loses faith in their careers",
-        "sources": [
-          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277799+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "what",
-          "happens",
-          "if",
-          "an",
-          "entire",
-          "class",
-          "of",
-          "workers",
-          "loses",
-          "faith",
-          "in",
-          "their",
-          "careers"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-6acaad10",
-      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.329442+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-6acaad10",
-        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "summary": "HackerNews story with 22 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "sources": [
-          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277744+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 42.2,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "new",
-          "amazon",
-          "data",
-          "center",
-          "is",
-          "set",
-          "to",
-          "have",
-          "the",
-          "most",
-          "polluting",
-          "power",
-          "plant",
-          "in",
-          "the",
-          "u.s."
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-4d3b7524",
-      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-      "source_url": "https://genesisopenmodels.anl.gov/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.315651+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-4d3b7524",
-        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "summary": "HackerNews story with 239 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "sources": [
-          "https://genesisopenmodels.anl.gov/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277704+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 63.9,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "u.s.",
-          "department",
-          "of",
-          "energy",
-          "launches",
-          "the",
-          "genesis",
-          "open",
-          "models",
-          "initiative"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-f4a9b013",
-      "title": "DeepSeek V4 Flash 0731",
-      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.306414+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-f4a9b013",
-        "title": "DeepSeek V4 Flash 0731",
-        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
-        "sources": [
-          "https://arcprize.org/results/deepseek-v4-flash-0731"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277622+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "DeepSeek V4 Flash 0731",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "deepseek",
-          "v4",
-          "flash",
-          "0731"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-72920f1a",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.294616+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-72920f1a",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 223 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277497+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.3,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-7812dc4a",
-      "title": "Hardware backdoors in some x86 CPUs",
-      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:52:10.280778+00:00",
-      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.5/100).",
-      "score": 57.53,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-7812dc4a",
-        "title": "Hardware backdoors in some x86 CPUs",
-        "summary": "HackerNews story with 114 points discussing: Hardware backdoors in some x86 CPUs",
-        "sources": [
-          "https://github.com/xoreaxeaxeax/rosenbridge"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:52:10.277052+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 51.4,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 65.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 57.53,
-        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "hardware",
-          "backdoors",
-          "in",
-          "some",
-          "x86",
-          "cpus"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-d000d336",
-      "title": "What happens if an entire class of workers loses faith in their careers",
-      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.149335+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-d000d336",
-        "title": "What happens if an entire class of workers loses faith in their careers",
-        "summary": "HackerNews story with 691 points discussing: What happens if an entire class of workers loses faith in their careers",
-        "sources": [
-          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.096332+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "what",
-          "happens",
-          "if",
-          "an",
-          "entire",
-          "class",
-          "of",
-          "workers",
-          "loses",
-          "faith",
-          "in",
-          "their",
-          "careers"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-2470fd64",
-      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.141389+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-2470fd64",
-        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "summary": "HackerNews story with 21 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "sources": [
-          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.096238+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 42.1,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "new",
-          "amazon",
-          "data",
-          "center",
-          "is",
-          "set",
-          "to",
-          "have",
-          "the",
-          "most",
-          "polluting",
-          "power",
-          "plant",
-          "in",
-          "the",
-          "u.s."
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-ed6bc591",
-      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-      "source_url": "https://genesisopenmodels.anl.gov/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.134353+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-ed6bc591",
-        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "summary": "HackerNews story with 239 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "sources": [
-          "https://genesisopenmodels.anl.gov/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.096173+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 63.9,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "u.s.",
-          "department",
-          "of",
-          "energy",
-          "launches",
-          "the",
-          "genesis",
-          "open",
-          "models",
-          "initiative"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-478eb9b3",
-      "title": "DeepSeek V4 Flash 0731",
-      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.122747+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-478eb9b3",
-        "title": "DeepSeek V4 Flash 0731",
-        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
-        "sources": [
-          "https://arcprize.org/results/deepseek-v4-flash-0731"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.096102+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "DeepSeek V4 Flash 0731",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "deepseek",
-          "v4",
-          "flash",
-          "0731"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-468b6fa3",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.115430+00:00",
-      "reason": "Intentionally rejected by Ada: Discarded by Engineering Attention Gate: Failed tests [Low importance, Low robotics relevance]. (Reason: Failed Engineering Attention 7 Core Tests)",
-      "score": 35.0,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-468b6fa3",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 222 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.095973+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.2,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 0.0,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-0cfc61d6",
-      "title": "Hardware backdoors in some x86 CPUs",
-      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:50:56.099571+00:00",
-      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.5/100).",
-      "score": 57.49,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-0cfc61d6",
-        "title": "Hardware backdoors in some x86 CPUs",
-        "summary": "HackerNews story with 112 points discussing: Hardware backdoors in some x86 CPUs",
-        "sources": [
-          "https://github.com/xoreaxeaxeax/rosenbridge"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:50:56.095841+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 51.2,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 65.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 57.49,
-        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "hardware",
-          "backdoors",
-          "in",
-          "some",
-          "x86",
-          "cpus"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-09af8ba5",
-      "title": "What happens if an entire class of workers loses faith in their careers",
-      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.254004+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
-      "score": 64.25,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-09af8ba5",
-        "title": "What happens if an entire class of workers loses faith in their careers",
-        "summary": "HackerNews story with 691 points discussing: What happens if an entire class of workers loses faith in their careers",
-        "sources": [
-          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.203985+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 64.25,
-        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "what",
-          "happens",
-          "if",
-          "an",
-          "entire",
-          "class",
-          "of",
-          "workers",
-          "loses",
-          "faith",
-          "in",
-          "their",
-          "careers"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-c103a3e5",
-      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.243052+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 55.7/100).",
-      "score": 55.67,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-c103a3e5",
-        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "summary": "HackerNews story with 21 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "sources": [
-          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.203879+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 42.1,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 55.67,
-        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "new",
-          "amazon",
-          "data",
-          "center",
-          "is",
-          "set",
-          "to",
-          "have",
-          "the",
-          "most",
-          "polluting",
-          "power",
-          "plant",
-          "in",
-          "the",
-          "u.s."
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-2df4fdc3",
-      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-      "source_url": "https://genesisopenmodels.anl.gov/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.231482+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 60.0/100).",
-      "score": 60.03,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-2df4fdc3",
-        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "summary": "HackerNews story with 239 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "sources": [
-          "https://genesisopenmodels.anl.gov/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.203808+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 63.9,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 60.03,
-        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "u.s.",
-          "department",
-          "of",
-          "energy",
-          "launches",
-          "the",
-          "genesis",
-          "open",
-          "models",
-          "initiative"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-78334740",
-      "title": "DeepSeek V4 Flash 0731",
-      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.221417+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
-      "score": 64.25,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-78334740",
-        "title": "DeepSeek V4 Flash 0731",
-        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
-        "sources": [
-          "https://arcprize.org/results/deepseek-v4-flash-0731"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.203710+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 64.25,
-        "factualDevelopment": "DeepSeek V4 Flash 0731",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "deepseek",
-          "v4",
-          "flash",
-          "0731"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-dfe4e588",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.213415+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 59.7/100).",
-      "score": 59.69,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-dfe4e588",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 222 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.202690+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.2,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 59.69,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-c85cc3c4",
-      "title": "Hardware backdoors in some x86 CPUs",
-      "source_url": "https://github.com/xoreaxeaxeax/rosenbridge",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:49:57.207857+00:00",
-      "reason": "Topic intentionally rejected by Ada: Insufficient technical substance / No meaningful new information (Score: 57.5/100).",
-      "score": 57.47,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-c85cc3c4",
-        "title": "Hardware backdoors in some x86 CPUs",
-        "summary": "HackerNews story with 111 points discussing: Hardware backdoors in some x86 CPUs",
-        "sources": [
-          "https://github.com/xoreaxeaxeax/rosenbridge"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:49:57.201478+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 51.1,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 65.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 57.47,
-        "factualDevelopment": "Hardware backdoors in some x86 CPUs",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "hardware",
-          "backdoors",
-          "in",
-          "some",
-          "x86",
-          "cpus"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-d7dab5b7",
-      "title": "What happens if an entire class of workers loses faith in their careers",
-      "source_url": "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:45:55.166157+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
-      "score": 64.25,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-d7dab5b7",
-        "title": "What happens if an entire class of workers loses faith in their careers",
-        "summary": "HackerNews story with 691 points discussing: What happens if an entire class of workers loses faith in their careers",
-        "sources": [
-          "https://www.noemamag.com/why-is-everyone-in-tech-so-sad/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:45:55.078047+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 64.25,
-        "factualDevelopment": "What happens if an entire class of workers loses faith in their careers",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "what",
-          "happens",
-          "if",
-          "an",
-          "entire",
-          "class",
-          "of",
-          "workers",
-          "loses",
-          "faith",
-          "in",
-          "their",
-          "careers"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-22c9dfe6",
-      "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-      "source_url": "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:45:55.154019+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 55.6/100).",
-      "score": 55.63,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-22c9dfe6",
-        "title": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "summary": "HackerNews story with 19 points discussing: New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "sources": [
-          "https://www.nytimes.com/2026/08/08/climate/amazon-data-center-texas-pollution.html"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:45:55.077889+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 41.9,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 55.63,
-        "factualDevelopment": "New Amazon Data Center Is Set to Have the Most Polluting Power Plant in the U.S.",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "new",
-          "amazon",
-          "data",
-          "center",
-          "is",
-          "set",
-          "to",
-          "have",
-          "the",
-          "most",
-          "polluting",
-          "power",
-          "plant",
-          "in",
-          "the",
-          "u.s."
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-1c1366fc",
-      "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-      "source_url": "https://genesisopenmodels.anl.gov/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:45:55.126626+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 60.0/100).",
-      "score": 60.01,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-1c1366fc",
-        "title": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "summary": "HackerNews story with 238 points discussing: U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "sources": [
-          "https://genesisopenmodels.anl.gov/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:45:55.077764+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 63.8,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 60.01,
-        "factualDevelopment": "U.S. Department of Energy Launches the Genesis Open Models Initiative",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "u.s.",
-          "department",
-          "of",
-          "energy",
-          "launches",
-          "the",
-          "genesis",
-          "open",
-          "models",
-          "initiative"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-bd4f979d",
-      "title": "DeepSeek V4 Flash 0731",
-      "source_url": "https://arcprize.org/results/deepseek-v4-flash-0731",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:45:55.110108+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 64.2/100).",
-      "score": 64.25,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-bd4f979d",
-        "title": "DeepSeek V4 Flash 0731",
-        "summary": "HackerNews story with 643 points discussing: DeepSeek V4 Flash 0731",
-        "sources": [
-          "https://arcprize.org/results/deepseek-v4-flash-0731"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:45:55.077653+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 85.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 64.25,
-        "factualDevelopment": "DeepSeek V4 Flash 0731",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "deepseek",
-          "v4",
-          "flash",
-          "0731"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
-    },
-    {
-      "id": "top-908e2ee7",
-      "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-      "source_url": "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/",
-      "source_name": "HackerNews",
-      "rejectedAt": "2026-08-08T10:45:55.094687+00:00",
-      "reason": "Topic intentionally rejected by Ada: Low robotics relevance (Score: 59.6/100).",
-      "score": 59.65,
-      "personaId": "ada",
-      "candidateRepresentation": {
-        "topicId": "top-908e2ee7",
-        "title": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "summary": "HackerNews story with 220 points discussing: A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "sources": [
-          "https://www.runnersworld.com/news/a73355106/hamster-wheel-strava-running/"
-        ],
-        "sourceName": "HackerNews",
-        "publishedAt": "2026-08-08T10:45:55.076647+00:00",
-        "domain": "Robotics & Autonomous Systems",
-        "technicalImpact": 62.0,
-        "novelty": 75.0,
-        "timeliness": 90.0,
-        "roboticsRelevance": 35.0,
-        "engineeringDepth": 60.0,
-        "sourceQuality": 70.0,
-        "realWorldImpact": 60.0,
-        "editorialPotential": 70.0,
-        "overallScore": 59.65,
-        "factualDevelopment": "A Physicist Rigged His Pet Hamster\u2019s Wheel to Upload to Strava",
-        "affectedSubsystem": "planning",
-        "rawKeywords": [
-          "a",
-          "physicist",
-          "rigged",
-          "his",
-          "pet",
-          "hamster\u2019s",
-          "wheel",
-          "to",
-          "upload",
-          "to",
-          "strava"
-        ],
-        "companies": [
-          "HackerNews Community"
-        ],
-        "technologies": [
-          "Tech Stack"
-        ]
-      }
     }
   ],
   "editorial_themes": [
@@ -5250,14 +5432,17 @@
     "hydraulic",
     "servo-valve",
     "fluidics",
-    "frequency-response"
+    "frequency-response",
+    "piezoelectric",
+    "micro-actuator",
+    "resonance"
   ],
   "provisional_beliefs": [
     {
       "beliefId": "bel-001",
       "beliefText": "Sim-to-real policy transfer requires domain randomization and high-frequency low-level torque compensation.",
       "confidenceScore": 95.0,
-      "evidenceCount": 13,
+      "evidenceCount": 16,
       "status": "evolved",
       "createdAt": "2026-08-08T10:54:56.923345+00:00",
       "evolutionHistory": [
@@ -5320,6 +5505,24 @@
           "action": "EVOLVE",
           "evidence": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
           "updatedStance": "Updated understanding: Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints demonstrates that direct sensor-to-action policies can bypass traditional intermediate torque layers under verified conditions."
+        },
+        {
+          "timestamp": "2026-08-08T11:04:53.388889+00:00",
+          "action": "EVOLVE",
+          "evidence": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+          "updatedStance": "Updated understanding: Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints demonstrates that direct sensor-to-action policies can bypass traditional intermediate torque layers under verified conditions."
+        },
+        {
+          "timestamp": "2026-08-08T11:05:14.896645+00:00",
+          "action": "EVOLVE",
+          "evidence": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+          "updatedStance": "Updated understanding: Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints demonstrates that direct sensor-to-action policies can bypass traditional intermediate torque layers under verified conditions."
+        },
+        {
+          "timestamp": "2026-08-08T11:05:38.384021+00:00",
+          "action": "EVOLVE",
+          "evidence": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+          "updatedStance": "Updated understanding: Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints demonstrates that direct sensor-to-action policies can bypass traditional intermediate torque layers under verified conditions."
         }
       ]
     },
@@ -5343,6 +5546,90 @@
     }
   ],
   "unresolved_questions": [
+    {
+      "questionId": "q-e32fa3",
+      "originTopicId": "top-a5c20925",
+      "originTopicTitle": "Piezoelectric Micro-Actuator Resonant Frequency Characterization (1d504c)",
+      "subsystem": "control",
+      "category": "failure modes",
+      "questionText": "What deterministic safety fallback occurs when the perception model experiences environmental occlusion?",
+      "createdAt": "2026-08-08T11:05:38.467173+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-ca04c4",
+      "originTopicId": "top-b67ee4ea",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "compute",
+      "category": "inference latency",
+      "questionText": "Can the 7B motor policy inference run locally within a strict sub-15ms edge compute envelope without cloud tethering?",
+      "createdAt": "2026-08-08T11:05:38.332035+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-0dbbcb",
+      "originTopicId": "top-b67ee4ea",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "control",
+      "category": "sim-to-real performance",
+      "questionText": "What is the empirical zero-shot sim-to-real degradation rate for Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints when tested under unmodeled surface friction?",
+      "createdAt": "2026-08-08T11:05:38.332035+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-0ea207",
+      "originTopicId": "top-3811acf0",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "compute",
+      "category": "inference latency",
+      "questionText": "Can the 7B motor policy inference run locally within a strict sub-15ms edge compute envelope without cloud tethering?",
+      "createdAt": "2026-08-08T11:05:14.828471+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-9e39e0",
+      "originTopicId": "top-3811acf0",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "control",
+      "category": "sim-to-real performance",
+      "questionText": "What is the empirical zero-shot sim-to-real degradation rate for Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints when tested under unmodeled surface friction?",
+      "createdAt": "2026-08-08T11:05:14.828471+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-7c7e31",
+      "originTopicId": "top-d8ace823",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "compute",
+      "category": "inference latency",
+      "questionText": "Can the 7B motor policy inference run locally within a strict sub-15ms edge compute envelope without cloud tethering?",
+      "createdAt": "2026-08-08T11:04:53.340695+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
+    {
+      "questionId": "q-0f1776",
+      "originTopicId": "top-d8ace823",
+      "originTopicTitle": "Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints",
+      "subsystem": "control",
+      "category": "sim-to-real performance",
+      "questionText": "What is the empirical zero-shot sim-to-real degradation rate for Zero-Shot Sim-to-Real Locomotion for Bipedal Robots under Motor Torque Constraints when tested under unmodeled surface friction?",
+      "createdAt": "2026-08-08T11:04:53.340695+00:00",
+      "status": "unresolved",
+      "answeringTopicTitle": null,
+      "answeringEvidence": null
+    },
     {
       "questionId": "q-275529",
       "originTopicId": "top-83da0bd3",
@@ -5642,6 +5929,39 @@
       "status": "unresolved",
       "answeringTopicTitle": null,
       "answeringEvidence": null
+    }
+  ],
+  "no_publication_cycles": [
+    {
+      "cycleId": "cyc-test16",
+      "timestamp": "2026-08-08T16:33:00Z",
+      "reason": "Successful Autonomous Restraint: No candidate satisfied quality threshold.",
+      "totalCandidatesEvaluated": 2,
+      "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
+    },
+    {
+      "cycleId": "cyc-141b16",
+      "timestamp": "2026-08-08T11:05:32.929822+00:00",
+      "reason": "Successful Autonomous Restraint: No candidate satisfied the minimum quality threshold (65.0/100) or engineering attention gate.",
+      "totalCandidatesEvaluated": 6,
+      "rejectedCandidatesCount": 6,
+      "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
+    },
+    {
+      "cycleId": "cyc-f0ca2a",
+      "timestamp": "2026-08-08T11:05:08.967954+00:00",
+      "reason": "Successful Autonomous Restraint: No candidate satisfied the minimum quality threshold (65.0/100) or engineering attention gate.",
+      "totalCandidatesEvaluated": 6,
+      "rejectedCandidatesCount": 6,
+      "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
+    },
+    {
+      "cycleId": "cyc-8e269f",
+      "timestamp": "2026-08-08T11:04:47.827753+00:00",
+      "reason": "Successful Autonomous Restraint: No candidate satisfied the minimum quality threshold (65.0/100) or engineering attention gate.",
+      "totalCandidatesEvaluated": 6,
+      "rejectedCandidatesCount": 6,
+      "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
     }
   ]
 }

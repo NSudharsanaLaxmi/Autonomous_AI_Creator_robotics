@@ -6,6 +6,7 @@ Uses asyncio.Lock for concurrency safety and structured logging for observabilit
 
 import asyncio
 import logging
+import uuid
 from datetime import datetime, timezone, timedelta
 from typing import Dict, Any, Optional
 from app.agent.persona import resolve_persona, Persona
@@ -131,8 +132,18 @@ class AutonomousPublisher:
                 logger.info(f"[PUBLISHING] post_id='{new_post['id']}' timestamp='{new_post['createdAt']}' source_urls={new_post['sources']}")
                 logger.info(f"[MEMORY] Memory updated: Published posts={len(self.memory.posts)}, Rejected total={len(self.memory.rejected_topics)}")
             else:
-                logger.info(f"[JUDGMENT] All candidates rejected by weighted editorial criteria. Published count: 0 (Intentional quality gate).")
-                logger.info(f"[MEMORY] Memory updated: Logged {len(rejections)} new rejected candidates into persistent memory.")
+                cycle_id = f"cyc-{uuid.uuid4().hex[:6]}"
+                cycle_record = {
+                    "cycleId": cycle_id,
+                    "timestamp": now_str,
+                    "reason": "Successful Autonomous Restraint: No candidate satisfied the minimum quality threshold (65.0/100) or engineering attention gate.",
+                    "totalCandidatesEvaluated": len(candidates),
+                    "rejectedCandidatesCount": len(rejections),
+                    "outcome": "SUCCESSFUL_AUTONOMOUS_RESTRAINT"
+                }
+                self.memory.add_no_publication_cycle(cycle_record)
+                logger.info(f"[JUDGMENT] Autonomous cycle {cycle_id} completed with outcome: SUCCESSFUL_AUTONOMOUS_RESTRAINT. Continuous independent judgment exercised; 0 posts published.")
+                logger.info(f"[MEMORY] Memory updated: Logged {len(rejections)} rejected candidates and 1 no-pub cycle into persistent memory.")
                 
             return new_post
 

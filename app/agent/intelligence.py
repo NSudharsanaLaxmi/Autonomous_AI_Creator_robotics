@@ -140,6 +140,8 @@ class AutonomousRoboticsIntelligenceEngine:
             "technicallySignificantDeltas": len(significant_signals),
             "filteredNoiseRatio": f"{(len(noise_signals) / max(1, len(raw_candidates))) * 100:.1f}%",
             "publishingRecommended": publishing_recommended,
+            "noPublicationCyclesCount": len(self.memory.no_publication_cycles),
+            "noPublicationCycles": self.memory.no_publication_cycles[:5],
             "signals": [s.to_dict() for s in evaluated_signals],
             "significantSignals": [s.to_dict() for s in significant_signals],
             "noiseSignals": [s.to_dict() for s in noise_signals]
