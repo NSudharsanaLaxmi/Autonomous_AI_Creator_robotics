@@ -1,6 +1,6 @@
 """
 Autonomous AI Creator - Automated API & Integration Test Suite
-Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07:
+Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07, 08:
 1. POST /api/agent/init returns agentId for Ada (Robotics & Autonomous Systems)
 2. GET /api/agent/feed returns posts array with id, createdAt, text, rationale, sources (reverse chronological)
 3. Editorial filter intentionally rejects non-matching topics and superficial marketing fluff
@@ -13,6 +13,7 @@ Verifies contract requirements & Amendments 01, 02, 03, 04, 05, 06, 07:
 10. Amendment 05 Belief Evolution Engine tracks provisional engineering beliefs (REMAIN, WEAKEN, EVOLVE)
 11. Amendment 06 Novelty vs Significance Matrix Evaluator rejects Quadrant III trending fluff
 12. Amendment 07 Engineering Reality Check Engine distinguishes DEMONSTRATION vs CAPABILITY vs DEPLOYMENT READINESS
+13. Amendment 08 Source Triangulation Engine enforces Information Hierarchy & qualifies source discrepancies
 """
 
 import sys
@@ -38,6 +39,7 @@ from app.agent.context import CognitiveMemoryContextEngine
 from app.agent.beliefs import BeliefEvolutionEngine
 from app.agent.matrix import NoveltySignificanceMatrixEvaluator
 from app.agent.reality_check import EngineeringRealityCheckEngine
+from app.agent.triangulation import SourceTriangulationEngine
 
 
 async def run_tests():
@@ -170,10 +172,16 @@ async def run_tests():
     print("\n[Test 12] Testing Amendment 07 — Engineering Reality Check Engine...")
     rc_res = EngineeringRealityCheckEngine.perform_reality_check(valid_cand)
     assert rc_res.maturity_level in ["DEMONSTRATION", "CAPABILITY", "DEPLOYMENT READINESS"], "Invalid reality check maturity level"
-    print(f"[PASS] Engineering Reality Check Engine verified.")
-    print(f"   Maturity Level: {rc_res.maturity_level}")
-    print(f"   Demonstrated: '{rc_res.demonstrated[:60]}...'")
-    print(f"   Primary Bottleneck: '{rc_res.primary_bottleneck}'")
+    print(f"[PASS] Engineering Reality Check Engine verified. Maturity Level: {rc_res.maturity_level}")
+
+    # Test 13: Amendment 08 — Source Triangulation Engine
+    print("\n[Test 13] Testing Amendment 08 — Source Triangulation Engine...")
+    tri_res = SourceTriangulationEngine.triangulate_sources(valid_cand)
+    assert tri_res.primary_source_found, "ArXiv candidate MUST be recognized as PRIMARY_SOURCE"
+    assert tri_res.hierarchy_level == "PRIMARY_SOURCE", "Hierarchy level MUST be PRIMARY_SOURCE"
+    print(f"[PASS] Source Triangulation Engine verified.")
+    print(f"   Hierarchy Level: {tri_res.hierarchy_level}")
+    print(f"   Source Qualification: '{tri_res.source_qualification_note}'")
 
     print("\n==================================================")
     print("SUCCESS: ALL VERIFICATION TESTS PASSED PERFECTLY!")

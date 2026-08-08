@@ -156,7 +156,7 @@ class EditorialEngine:
         """Evaluates candidate topic against source verification, rejection filters, and memory."""
         combined_text = f"{candidate.title} {candidate.summary}".lower()
         
-        # 1. Source Verification & Evidence Sufficiency Check (Section 14)
+        # 1. Source Verification & Evidence Sufficiency Check (Section 14 & Amendment 08)
         is_verified, src_reason = self.verify_sources_and_evidence(candidate)
         if not is_verified:
             return EvaluationResult(
@@ -165,6 +165,17 @@ class EditorialEngine:
                 accepted=False,
                 reason=f"Intentionally rejected by {persona.name}: {src_reason} (Reason: Too little evidence / Weak source credibility)",
                 score_breakdown={"sourceVerification": 20.0}
+            )
+            
+        from app.agent.triangulation import SourceTriangulationEngine
+        tri_res = SourceTriangulationEngine.triangulate_sources(candidate)
+        if not tri_res.is_acceptable:
+            return EvaluationResult(
+                topic=candidate,
+                score=25.0,
+                accepted=False,
+                reason=f"Intentionally rejected by {persona.name}: {tri_res.source_qualification_note} (Action: {tri_res.resolution_action})",
+                score_breakdown={"sourceTriangulation": 25.0}
             )
             
         # 2. Hard Rejection Filter for Prohibited Keywords / Fluff
